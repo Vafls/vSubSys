@@ -546,7 +546,5 @@ if __name__ == "__main__":
         print("2.The system wasn't installed on the right directory")
         print("3.User tried to run kernel files instead of 'main.py'")
         print("You can follow next steps to try to fix it")
-        print("1.Reinstall system and try again(If didn't help, contact the support: support.vafls.com)")
+        print("1.Reinstall system and try again")
         print("2.Run 'main.py' as an administrator")
-        #print("Can't start the kernel.")
-        #print("Please provide either -d/--launcher or -l/--lockscreen argument.")
