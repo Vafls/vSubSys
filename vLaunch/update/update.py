@@ -2,10 +2,11 @@ import os
 import shutil
 import tkinter as tk
 from tkinter import messagebox
+import sys
 
 def check_for_update():
     update_file = "c24krnl.py"
-    current_kernel = "C:\vLaunch\kernel\kernel.py"
+    current_kernel = r"C:\vLaunch\kernel\kernel.py"
 
     if os.path.exists(update_file):
         response = messagebox.askquestion("Обновление", "Обнаружено новое обновление. Хотите применить его?")
