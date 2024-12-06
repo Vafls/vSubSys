@@ -7,6 +7,10 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QHBoxLayout,
 from PyQt5.QtCore import Qt, QSize, QPoint, QTimer, QDateTime
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtGui import QImage
+from PyQt5.QtWidgets import QLineEdit
+import random
+from PyQt5.QtCore import QPropertyAnimation, QRect
+from PyQt5.QtCore import QObject
 
 
 
@@ -14,7 +18,7 @@ class CustomTitleBar(QWidget):
     def __init__(self, parent, window):
         super().__init__(parent)
         self.window = window
-        self.setFixedHeight(40)  # Увеличенная высота для удобства
+        self.setFixedHeight(40)
         self.setStyleSheet("background-color: black; color: white;")
 
         layout = QHBoxLayout(self)
@@ -24,20 +28,18 @@ class CustomTitleBar(QWidget):
         title_label.setStyleSheet("color: white;")
         layout.addWidget(title_label)
 
-        # Кнопка свернуть
         minimize_button = QPushButton("_", self)
         minimize_button.setFixedSize(QSize(30, 30))  # Увеличенный размер кнопок
         minimize_button.setStyleSheet("background-color: black; color: white;")
         minimize_button.clicked.connect(window.showMinimized)
         layout.addWidget(minimize_button)
-        # Кнопка развернуть
+
         maximize_button = QPushButton("□", self)
         maximize_button.setFixedSize(QSize(30, 30))
         maximize_button.setStyleSheet("background-color: black; color: white;")
         maximize_button.clicked.connect(self.toggle_maximize_restore)
         layout.addWidget(maximize_button)
 
-        # Кнопка закрыть
         close_button = QPushButton("X", self)
         close_button.setFixedSize(QSize(30, 30))
         close_button.setStyleSheet("background-color: red; color: white; border-radius: 2px;")
@@ -95,7 +97,6 @@ class AppWindow(QMainWindow):
         self.close_callback(self)
         event.accept()
 
-
 class LockScreen(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -106,39 +107,90 @@ class LockScreen(QMainWindow):
         self.central_widget = QWidget(self)
         self.setCentralWidget(self.central_widget)
 
-        layout = QVBoxLayout(self.central_widget)
-        layout.setContentsMargins(0, 0, 0, 0)
+        self.background_label = QLabel(self.central_widget)
+        self.setup_background()
 
+        self.time_label = QLabel(self.central_widget)
+        self.time_label.setStyleSheet("color: white; font-size: 48px; background-color: rgba(0, 0, 0, 50);")
+        self.time_label.setAlignment(Qt.AlignCenter)
+        self.update_time()
+        self.randomize_time_position()
+
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.randomize_time_position)
+        self.timer.start(10000)
+
+        self.swipe_arrow = QLabel(self.central_widget)
+        self.setup_swipe_arrow()
+
+        self.is_dragging = False
+        self.start_y = 0
+
+    def setup_background(self):
         background_path = "C:\\vLaunch\\source\\lock_screen_wallpaper.png"
         if os.path.exists(background_path):
             pixmap = QPixmap(background_path)
         else:
-            pixmap = QPixmap(800, 600)
+            pixmap = QPixmap(1920, 1080)
             pixmap.fill(Qt.black)
 
-        background_label = QLabel(self)
-        background_label.setPixmap(pixmap)
-        background_label.setScaledContents(True)
-        layout.addWidget(background_label)
+        self.background_label.setPixmap(pixmap)
+        self.background_label.setScaledContents(True)
+        self.background_label.setGeometry(0, 0, self.width(), self.height())
 
-        self.time_label = QLabel(self)
-        self.time_label.setStyleSheet("color: white; font-size: 48px;")
-        self.time_label.setAlignment(Qt.AlignCenter)
-        layout.addWidget(self.time_label)
-
-        self.update_time()
-        self.central_widget.mousePressEvent = self.launch_kernel
-        self.central_widget.keyPressEvent = self.launch_kernel
+    def setup_swipe_arrow(self):
+        self.swipe_arrow.setText("↑")
+        self.swipe_arrow.setStyleSheet("color: white; font-size: 64px; background-color: rgba(128, 128, 128, 100);")
+        self.swipe_arrow.setAlignment(Qt.AlignCenter)
+        self.swipe_arrow.setFixedSize(100, 100)
+        self.swipe_arrow.move((self.width() - 100) // 2, self.height() - 150)
 
     def update_time(self):
         current_time = QDateTime.currentDateTime().toString("hh:mm:ss\nddd, dd MMM yyyy")
         self.time_label.setText(current_time)
+        self.time_label.adjustSize()
         QTimer.singleShot(1000, self.update_time)
 
-    def launch_kernel(self, event=None):
+    def randomize_time_position(self):
+        screen_width = self.width()
+        screen_height = self.height()
+        label_width = self.time_label.width()
+        label_height = self.time_label.height()
+
+        random_x = random.randint(0, max(0, screen_width - label_width))
+        random_y = random.randint(0, max(0, screen_height - label_height))
+
+        self.time_label.move(random_x, random_y)
+
+    def launch_kernel(self):
         self.close()
-        self.kernel_window = KernelWindow()
-        self.kernel_window.show()
+        global kernel
+        kernel = KernelWindow()
+        kernel.show()
+
+    def mousePressEvent(self, event):
+        if self.swipe_arrow.geometry().contains(event.pos()):
+            self.is_dragging = True
+            self.start_y = event.y()
+
+    def mouseMoveEvent(self, event):
+        if self.is_dragging:
+            delta_y = event.y() - self.start_y
+            if delta_y < 0:  # Свайп вверх
+                self.swipe_arrow.move(self.swipe_arrow.x(), self.swipe_arrow.y() + delta_y)
+                self.start_y = event.y()
+
+    def mouseReleaseEvent(self, event):
+        if self.is_dragging:
+            self.is_dragging = False
+            if self.swipe_arrow.y() < self.height() // 3:  # Если стрелочка поднята достаточно высоко
+                self.launch_kernel()
+            else:  # Если свайп недостаточный, вернуть стрелочку
+                self.swipe_arrow.move((self.width() - 100) // 2, self.height() - 150)
+
+    def keyPressEvent(self, event):
+        if event.key() in {Qt.Key_Enter, Qt.Key_Return, Qt.Key_Space}:
+            self.launch_kernel()
 
 
 class KernelWindow(QMainWindow):
@@ -157,6 +209,7 @@ class KernelWindow(QMainWindow):
 
         self.add_settings_shortcut()
         self.add_camera_shortcut()
+        self.add_terminal_shortcut()
 
         self.dock_panel = QFrame(self)
         self.dock_panel.setFixedHeight(60)
@@ -167,7 +220,7 @@ class KernelWindow(QMainWindow):
         self.dock_layout = QHBoxLayout(self.dock_panel)
         self.dock_layout.setContentsMargins(10, 5, 10, 5)
 
-        self.start_menu_button = QPushButton("Меню Пуск", self)
+        self.start_menu_button = QPushButton("Start Menu", self)
         self.start_menu_button.setFixedSize(100, 40)
         self.start_menu_button.clicked.connect(self.show_start_menu)
         self.dock_layout.addWidget(self.start_menu_button)
@@ -177,6 +230,9 @@ class KernelWindow(QMainWindow):
 
         self.battery_label = QLabel(self)
         self.dock_layout.addWidget(self.battery_label)
+
+        self.init_clock_applet()
+        self.init_wlan_applet()
 
         self.battery_update_timer = QTimer(self)
         self.battery_update_timer.timeout.connect(self.update_battery_status)
@@ -223,6 +279,26 @@ class KernelWindow(QMainWindow):
 
         self.desktop_layout.insertWidget(0, shortcut_frame, alignment=Qt.AlignTop | Qt.AlignLeft)
 
+    def add_terminal_shortcut(self): # line 160
+        shortcut_layout = QVBoxLayout()
+        shortcut_layout.setContentsMargins(0, 0, 0, 0)
+
+        icon_label = QLabel(self)
+        pixmap = QPixmap("C:/vLaunch/source/app5.png").scaled(64, 64, Qt.KeepAspectRatio)
+        icon_label.setPixmap(pixmap)
+
+        text_label = QLabel("Terminal", self)
+
+        shortcut_layout.addWidget(icon_label)
+        shortcut_layout.addWidget(text_label)
+
+        shortcut_frame = QFrame(self)
+        shortcut_frame.setLayout(shortcut_layout)
+        shortcut_frame.setFixedWidth(80)
+        shortcut_frame.mousePressEvent = self.open_terminal
+
+        self.desktop_layout.insertWidget(0, shortcut_frame, alignment=Qt.AlignTop | Qt.AlignLeft)
+
 
     def update_battery_status(self):
         battery = psutil.sensors_battery()
@@ -233,12 +309,49 @@ class KernelWindow(QMainWindow):
         else:
             self.battery_label.setText("Battery info not available")
 
+    def init_clock_applet(self):
+        self.clock_applet = QLabel(self)
+        self.clock_applet.setStyleSheet("color: white; font-size: 14px; text-align: center;")
+        self.dock_layout.addWidget(self.clock_applet, alignment=Qt.AlignRight)
+
+        self.clock_timer = QTimer(self)
+        self.clock_timer.timeout.connect(self.update_clock)
+        self.clock_timer.start(1000)
+
+        self.update_clock()
+
+    def update_clock(self):
+        current_time = QDateTime.currentDateTime()
+        time_str = current_time.toString("hh:mm")
+        date_str = current_time.toString("ddd, dd MMM yyyy")
+        self.clock_applet.setText(f"{time_str}\n{date_str}")
+
+    def init_wlan_applet(self):
+        self.wlan_applet = QLabel(self)
+        self.wlan_applet.setStyleSheet("color: white; font-size: 14px; text-align: center;")
+        self.dock_layout.addWidget(self.wlan_applet, alignment=Qt.AlignRight)
+
+        self.wlan_timer = QTimer(self)
+        self.wlan_timer.timeout.connect(self.update_wlan_status)
+        self.wlan_timer.start(5000)
+        self.update_wlan_status()
+
+    def update_wlan_status(self):
+        if os.path.exists("C:/vLaunch/source/wlanon.png"):
+            wlan_status = "WI-FI: ON"
+        elif os.path.exists("C:/vLaunch/source/wlanoff.png"):
+            wlan_status = "WI-FI: NC"
+        else:
+            wlan_status = "WI-FI: OFF"
+
+        self.wlan_applet.setText(wlan_status)
+
     def show_start_menu(self):
         menu = QMenu(self)
-        shutdown_action = QAction("Завершение работы", self)
+        shutdown_action = QAction("Shutdown", self)
         shutdown_action.triggered.connect(self.shutdown)
 
-        restart_action = QAction("Перезагрузка", self)
+        restart_action = QAction("Restart", self)
         restart_action.triggered.connect(self.restart)
 
         menu.addAction(shutdown_action)
@@ -261,16 +374,16 @@ class KernelWindow(QMainWindow):
 
     def open_camera(self=None, event=None):
 
-        if hasattr(self, 'camera_window') and self.camera_window is not None:
-            self.camera_window.raise_()
-            self.camera_window.activateWindow()
+        if "Camera" in self.open_windows:
+            window = self.open_windows["Camera"]
+            window.raise_()
+            window.activateWindow()
             return
 
         app = QApplication.instance()
         if app is None:
             app = QApplication([])
 
-    # Окно камеры
         window = QWidget()
         window.setWindowFlags(Qt.FramelessWindowHint)
         window.setWindowTitle("Camera")
@@ -279,7 +392,6 @@ class KernelWindow(QMainWindow):
 
         layout = QVBoxLayout(window)
 
-    # Заголовочная панель
         title_bar = QWidget()
         title_bar.setFixedHeight(30)
         title_bar.setStyleSheet("background-color: black; color: white;")
@@ -310,20 +422,17 @@ class KernelWindow(QMainWindow):
 
         layout.addWidget(title_bar)
 
-    # Область для вывода видео
         video_label = QLabel()
         layout.addWidget(video_label)
 
-    # Кнопки управления
         button_layout = QHBoxLayout()
-        snapshot_button = QPushButton("Снимок")
+        snapshot_button = QPushButton("Photo")
         button_layout.addWidget(snapshot_button)
 
-        record_button = QPushButton("Начать запись")
+        record_button = QPushButton("Start Record")
         button_layout.addWidget(record_button)
         layout.addLayout(button_layout)
 
-    # Захват камеры
         cap = cv2.VideoCapture(0)
         recording = [False]
         video_writer = [None]
@@ -346,7 +455,7 @@ class KernelWindow(QMainWindow):
             if ret:
                 filename = f"snapshot_{int(time.time())}.png"
                 cv2.imwrite(filename, frame)
-                print(f"Снимок сохранен: {filename}")
+                print(f"image saved: {filename}")
 
         def toggle_recording():
             if not recording[0]:
@@ -354,30 +463,30 @@ class KernelWindow(QMainWindow):
                 fourcc = cv2.VideoWriter_fourcc(*'XVID')
                 video_writer[0] = cv2.VideoWriter(filename, fourcc, 20.0, (int(cap.get(3)), int(cap.get(4))))
                 recording[0] = True
-                record_button.setText("Остановить запись")
+                record_button.setText("Stop Record")
                 print(f"Запись началась: {filename}")
             else:
                 recording[0] = False
                 video_writer[0].release()
                 video_writer[0] = None
-                record_button.setText("Начать запись")
-                print("Запись остановлена.")
+                record_button.setText("Start Record")
+                print("Video record stopped")
 
         snapshot_button.clicked.connect(take_snapshot)
         record_button.clicked.connect(toggle_recording)
 
-    # Добавление кнопки на док-панель
-        camera_button = QPushButton("Camera")
-        camera_button.setFixedSize(100, 40)
-        camera_button.clicked.connect(lambda: window.showNormal())
-
-        self.dock_layout.insertWidget(1, camera_button)  # Вставка кнопки на док после Меню Пуск
+        self.open_windows["Camera"] = window
+        self.update_dock()
 
         def close_camera(window):
-
             window.close()
-            camera_button.setParent(None)
-            self.camera_window = None
+            if "Camera" in self.open_windows:
+                del self.open_windows["Camera"]
+            self.update_dock()
+
+        def mousePressEvent(event):
+            if event.button() == Qt.LeftButton:
+                window.old_pos = event.globalPos()
 
         def mouseMoveEvent(event):
             if event.buttons() == Qt.LeftButton:
@@ -385,12 +494,136 @@ class KernelWindow(QMainWindow):
                 window.move(window.pos() + delta)
                 window.old_pos = event.globalPos()
 
-        #title_bar.mousePressEvent = self.mousePressEvent - TODO ↓↓↓
-        #title_bar.mouseMoveEvent = mouseMoveEvent - правильная реализаци перетаскивания окна
+        title_bar.mousePressEvent = mousePressEvent
+        title_bar.mouseMoveEvent = mouseMoveEvent
+
         update_frame()
+        window.show()
+
+    def open_terminal(self=None, event=None):
+    
+        if "Terminal" in self.open_windows:
+            window = self.open_windows["Terminal"]
+            window.raise_()
+            window.activateWindow()
+            return
+
+        app = QApplication.instance()
+        if app is None:
+            app = QApplication([])
+
+        window = QWidget()
+        window.setWindowFlags(Qt.FramelessWindowHint)
+        window.setWindowTitle("Terminal")
+        window.setGeometry(300, 200, 800, 600)
+        window.setStyleSheet("border: 2px solid black; background-color: white;")
+
+        layout = QVBoxLayout(window)
+
+        title_bar = QWidget()
+        title_bar.setFixedHeight(30)
+        title_bar.setStyleSheet("background-color: black; color: white;")
+        title_layout = QHBoxLayout(title_bar)
+        title_layout.setContentsMargins(0, 0, 0, 0)
+
+        title_label = QLabel("Terminal")
+        title_label.setStyleSheet("color: white;")
+        title_layout.addWidget(title_label)
+
+        minimize_button = QPushButton("_")
+        minimize_button.setFixedSize(QSize(30, 30))
+        minimize_button.setStyleSheet("background-color: black; color: white;")
+        minimize_button.clicked.connect(window.showMinimized)
+        title_layout.addWidget(minimize_button)
+
+        maximize_button = QPushButton("□")
+        maximize_button.setFixedSize(QSize(30, 30))
+        maximize_button.setStyleSheet("background-color: black; color: white;")
+        maximize_button.clicked.connect(lambda: window.showNormal() if window.isMaximized() else window.showMaximized())
+        title_layout.addWidget(maximize_button)
+
+        close_button = QPushButton("X")
+        close_button.setFixedSize(QSize(30, 30))
+        close_button.setStyleSheet("background-color: red; color: white;")
+        close_button.clicked.connect(lambda: close_terminal(window))
+        title_layout.addWidget(close_button)
+
+        layout.addWidget(title_bar)
+
+        output_label = QLabel()
+        output_label.setStyleSheet("background-color: black; color: white; padding: 5px;")
+        output_label.setAlignment(Qt.AlignTop | Qt.AlignLeft)
+        output_label.setWordWrap(True)
+        output_label.setText("Terminal started...\n")
+        layout.addWidget(output_label)
+
+        input_field = QLineEdit()
+        input_field.setStyleSheet("background-color: black; color: white; padding: 5px;")
+        layout.addWidget(input_field)
+
+        current_dir = os.getcwd()
+
+        def execute_command():
+            nonlocal current_dir
+            command = input_field.text().strip()
+            output = ""
+
+            if command.startswith("cd "):
+                try:
+                    new_dir = command[3:].strip()
+                    os.chdir(new_dir)
+                    current_dir = os.getcwd()
+                    output = f"Changed directory to: {current_dir}"
+                except Exception as e:
+                    output = f"Error: {str(e)}"
+            elif command == "dir":
+                try:
+                    files = os.listdir(current_dir)
+                    output = "\n".join(files)
+                except Exception as e:
+                    output = f"Error: {str(e)}"
+            elif command == "exit":
+                close_terminal(window)
+                return
+            elif command == "whoami":
+                output = "root"
+            elif command.startswith("pkg-install "):
+                output = "pkg-install: Currently not available"
+            elif command == "pkg-install":
+                output = "pkg-install: Currently not available"
+            elif command == "help":
+                output = "help, exit, whoami, cd, dir, pkg-install"
+            else:
+                output = f"Command not found: {command}"
+
+            output_label.setText(output_label.text() + f"\n{current_dir}> {command}\n{output}\n")
+            input_field.clear()
+
+        input_field.returnPressed.connect(execute_command)
+
+        def close_terminal(window):
+            window.close()
+            if "Terminal" in self.open_windows:
+                del self.open_windows["Terminal"]
+            self.update_dock()
+
+        def mousePressEvent(event):
+            if event.button() == Qt.LeftButton:
+                window.old_pos = event.globalPos()
+
+        def mouseMoveEvent(event):
+            if event.buttons() == Qt.LeftButton:
+                delta = QPoint(event.globalPos() - window.old_pos)
+                window.move(window.pos() + delta)
+                window.old_pos = event.globalPos()
+
+        title_bar.mousePressEvent = mousePressEvent
+        title_bar.mouseMoveEvent = mouseMoveEvent
+
+        self.open_windows["Terminal"] = window
+        self.update_dock()
 
         window.show()
-        self.camera_window = window  # Сохраняем ссылку на окно камеры
 
 
     def on_window_close(self, window):
@@ -400,28 +633,41 @@ class KernelWindow(QMainWindow):
         self.update_dock()
 
     def update_dock(self):
-        while self.dock_layout.count() > 3:
-            item = self.dock_layout.takeAt(1)
-            if item is not None and item.widget() is not None:
-                item.widget().setParent(None)
 
-        for app_name, window in self.open_windows.items():
-            button = QPushButton(app_name, self)
+        for i in reversed(range(self.dock_layout.count())):
+            item = self.dock_layout.itemAt(i)
+            widget = item.widget() if item else None
+            if widget and widget not in {self.start_menu_button, self.battery_label}:
+                widget.setParent(None)
+
+        if self.dock_layout.itemAt(0).widget() != self.start_menu_button:
+            self.dock_layout.insertWidget(0, self.start_menu_button)
+
+        index = 1
+        for name, window in self.open_windows.items():
+            button = QPushButton(name)
             button.setFixedSize(100, 40)
-            button.clicked.connect(lambda checked, win=window: self.raise_or_restore(win))
-            self.dock_layout.insertWidget(1, button)
+            button.clicked.connect(lambda checked, win=window: win.showNormal())
+            self.dock_layout.insertWidget(index, button)
+            index += 1
 
-    def raise_or_restore(self, window):
-        if window.isMinimized():
-            window.showNormal()
-        window.raise_()
+        if self.dock_layout.itemAt(self.dock_layout.count() - 1).widget() != self.battery_label:
+            self.dock_layout.addWidget(self.battery_label)
+
+        def raise_or_restore(self, window):
+            if window.isMinimized():
+                window.showNormal()
+            window.raise_()
 
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    #lock_screen = LockScreen()
+    #lock_screen.show()
+    global lock_screen
     lock_screen = LockScreen()
     lock_screen.show()
     sys.exit(app.exec_())
     window.show()
-
-# BUILD_0.2
+    lock_screen = start_lock_screen(KernelWindow)
+# BUILD_0.3
