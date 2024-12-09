@@ -11,6 +11,9 @@ from PyQt5.QtWidgets import QLineEdit
 import random
 from PyQt5.QtCore import QPropertyAnimation, QRect
 from PyQt5.QtCore import QObject
+from PyQt5.QtGui import QCursor
+import importlib.util
+import zipfile
 
 
 
@@ -126,6 +129,24 @@ class LockScreen(QMainWindow):
         self.is_dragging = False
         self.start_y = 0
 
+        self.set_custom_cursor()
+
+    def set_custom_cursor(self):
+        cursor_path = "C:\\vLaunch\\source\\pointer.png"
+        try:
+            pixmap = QPixmap(cursor_path)
+
+            scaled_pixmap = pixmap.scaled(
+                pixmap.width() // 5,
+                pixmap.height() // 5,
+                Qt.KeepAspectRatio,
+                Qt.SmoothTransformation
+            )
+            custom_cursor = QCursor(scaled_pixmap)
+            self.setCursor(custom_cursor)
+        except Exception as e:
+            print(f"Error while loading <pointer>: {e}")
+
     def setup_background(self):
         background_path = "C:\\vLaunch\\source\\lock_screen_wallpaper.png"
         if os.path.exists(background_path):
@@ -239,7 +260,25 @@ class KernelWindow(QMainWindow):
         self.battery_update_timer.start(10000)
         self.update_battery_status()
 
-    def add_settings_shortcut(self): # line 158
+        self.set_custom_cursor()
+
+    def set_custom_cursor(self):
+        cursor_path = "C:\\vLaunch\\source\\pointer.png"
+        try:
+            pixmap = QPixmap(cursor_path)
+
+            scaled_pixmap = pixmap.scaled(
+                pixmap.width() // 5,
+                pixmap.height() // 5,
+                Qt.KeepAspectRatio,
+                Qt.SmoothTransformation
+            )
+            custom_cursor = QCursor(scaled_pixmap)
+            self.setCursor(custom_cursor)
+        except Exception as e:
+            print(f"Error while loading <pointer>: {e}")
+
+    def add_settings_shortcut(self): # line 224
         shortcut_layout = QVBoxLayout()
         shortcut_layout.setContentsMargins(0, 0, 0, 0)
 
@@ -259,7 +298,7 @@ class KernelWindow(QMainWindow):
 
         self.desktop_layout.insertWidget(0, shortcut_frame, alignment=Qt.AlignTop | Qt.AlignLeft)
 
-    def add_camera_shortcut(self): # line 159
+    def add_camera_shortcut(self): # line 225
         shortcut_layout = QVBoxLayout()
         shortcut_layout.setContentsMargins(0, 0, 0, 0)
 
@@ -279,7 +318,7 @@ class KernelWindow(QMainWindow):
 
         self.desktop_layout.insertWidget(0, shortcut_frame, alignment=Qt.AlignTop | Qt.AlignLeft)
 
-    def add_terminal_shortcut(self): # line 160
+    def add_terminal_shortcut(self): # line 226
         shortcut_layout = QVBoxLayout()
         shortcut_layout.setContentsMargins(0, 0, 0, 0)
 
@@ -299,7 +338,51 @@ class KernelWindow(QMainWindow):
 
         self.desktop_layout.insertWidget(0, shortcut_frame, alignment=Qt.AlignTop | Qt.AlignLeft)
 
+    def install_package(self, vys_file):
+        if not os.path.isfile(vys_file):
+            raise FileNotFoundError(f"File {vys_file} not found!")
 
+        if not vys_file.endswith(".vys"):
+            raise ValueError("This isn't .vys file!")
+
+        extract_path = os.path.join("C:\\vLaunch\\apps\\temp")
+        try:
+            with zipfile.ZipFile(vys_file, 'r') as zip_ref:
+                zip_ref.extractall(extract_path)
+        except zipfile.BadZipFile:
+            raise ValueError("File .vys damaged!")
+
+        build_info_path = os.path.join(extract_path, "build.info.py")
+        if not os.path.isfile(build_info_path):
+            raise FileNotFoundError("File not found: build.info.py!")
+
+        spec = importlib.util.spec_from_file_location("build_info", build_info_path)
+        build_info = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(build_info)
+
+        app_name = getattr(build_info, "name", None)
+        if not app_name:
+            raise ValueError("In build.info.py can't find 'name'.")
+
+        app_install_path = os.path.join("C:\\vLaunch\\apps\\user_apps", app_name)
+        if not os.path.exists(app_install_path):
+            os.makedirs(app_install_path)
+
+        for item in os.listdir(extract_path):
+            s = os.path.join(extract_path, item)
+            d = os.path.join(app_install_path, item)
+            if os.path.isdir(s):
+                if not os.path.exists(d):
+                    os.makedirs(d)
+            else:
+                os.rename(s, d)
+
+        try:
+            os.rmdir(extract_path)
+        except OSError:
+            pass
+
+    
     def update_battery_status(self):
         battery = psutil.sensors_battery()
         if battery:
@@ -334,18 +417,21 @@ class KernelWindow(QMainWindow):
         self.wlan_timer = QTimer(self)
         self.wlan_timer.timeout.connect(self.update_wlan_status)
         self.wlan_timer.start(5000)
+
         self.update_wlan_status()
 
     def update_wlan_status(self):
-        if os.path.exists("C:/vLaunch/source/wlanon.png"):
-            wlan_status = "WI-FI: ON"
-        elif os.path.exists("C:/vLaunch/source/wlanoff.png"):
-            wlan_status = "WI-FI: NC"
-        else:
-            wlan_status = "WI-FI: OFF"
-
+        wlan_status = "WI-FI: OFF"
+        for net in psutil.net_if_addrs():
+            if "Wi-Fi" in net or "wlan" in net.lower():
+                connections = psutil.net_if_stats().get(net, None)
+                if connections and connections.isup:
+                    wlan_status = "WI-FI: ON"
+                else:
+                    wlan_status = "WI-FI: NC"
+                break
         self.wlan_applet.setText(wlan_status)
-
+    
     def show_start_menu(self):
         menu = QMenu(self)
         shutdown_action = QAction("Shutdown", self)
@@ -370,7 +456,7 @@ class KernelWindow(QMainWindow):
             settings_window = AppWindow("Settings", self.on_window_close)
             settings_window.show()
             self.open_windows["Settings"] = settings_window
-        self.update_dock()
+        self.update_dock()       
 
     def open_camera(self=None, event=None):
 
@@ -587,10 +673,17 @@ class KernelWindow(QMainWindow):
                 return
             elif command == "whoami":
                 output = "root"
-            elif command.startswith("pkg-install "):
-                output = "pkg-install: Currently not available"
-            elif command == "pkg-install":
-                output = "pkg-install: Currently not available"
+            elif command.startswith("pkg-install"):
+                parts = command.split()
+                if len(parts) < 2:
+                    output = "Error: Choose the correct .vys file to begin the installation process.\nExample: pkg-install example.vys"
+                else:
+                    vys_file = parts[1]
+                    try:
+                        self.install_package(vys_file)
+                        output = f"App from {vys_file} successfully installed!"
+                    except Exception as e:
+                        output = f"error during the installation: {str(e)}"
             elif command == "help":
                 output = "help, exit, whoami, cd, dir, pkg-install"
             else:
@@ -637,7 +730,7 @@ class KernelWindow(QMainWindow):
         for i in reversed(range(self.dock_layout.count())):
             item = self.dock_layout.itemAt(i)
             widget = item.widget() if item else None
-            if widget and widget not in {self.start_menu_button, self.battery_label}:
+            if widget and widget not in {self.start_menu_button, self.battery_label, self.clock_applet, self.wlan_applet}:
                 widget.setParent(None)
 
         if self.dock_layout.itemAt(0).widget() != self.start_menu_button:
@@ -651,23 +744,28 @@ class KernelWindow(QMainWindow):
             self.dock_layout.insertWidget(index, button)
             index += 1
 
+        if self.dock_layout.itemAt(self.dock_layout.count() - 2).widget() != self.clock_applet:
+            self.dock_layout.insertWidget(self.dock_layout.count() - 1, self.clock_applet)
+
+        if self.dock_layout.itemAt(self.dock_layout.count() - 1).widget() != self.wlan_applet:
+            self.dock_layout.insertWidget(self.dock_layout.count(), self.wlan_applet)
+
         if self.dock_layout.itemAt(self.dock_layout.count() - 1).widget() != self.battery_label:
             self.dock_layout.addWidget(self.battery_label)
 
-        def raise_or_restore(self, window):
-            if window.isMinimized():
-                window.showNormal()
-            window.raise_()
+    def raise_or_restore(self, window):
+        if window.isMinimized():
+            window.showNormal()
+        window.raise_()
+
 
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    #lock_screen = LockScreen()
-    #lock_screen.show()
     global lock_screen
     lock_screen = LockScreen()
     lock_screen.show()
     sys.exit(app.exec_())
     window.show()
     lock_screen = start_lock_screen(KernelWindow)
-# BUILD_0.3
+# BUILD_0.4
