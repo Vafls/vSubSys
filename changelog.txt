@@ -1,0 +1,19 @@
+#BUILD 0.4
+
+- Custom pointer in desktop
+- Example of .vys file structure (native executable programm: )
+
+#BUILD 0.3
+
+- New wallpaper for lockscreen
+- New Terminal application, new applets, rebuilt of lockscreen
+
+#BUILD 0.2
+
+- Camera application has been added
+
+#BUILD 0.1
+
+First version of the sub-system with basic capabilities
+
+- Have only one app emulation - Settings
