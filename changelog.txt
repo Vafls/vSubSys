@@ -1,3 +1,13 @@
+# BUILD 1.0.0
+
+First release build!
+
+- New IDE application has been added
+- Re-build of settings application
+- Now you can code, compile and run .vys files in the sub-system
+- Updated Lockscreen
+- Bug fix
+
 #BUILD 0.4
 
 - Custom pointer in desktop
