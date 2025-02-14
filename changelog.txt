@@ -5,6 +5,7 @@
 - SU (super-user) access in terminal
 - New boot-loader that allows you to configure your profile (run it instead of kernel.py file)
 - Re-builded settings app
+- New path-system of the sub-system
 - Bug fixes
 
 # BUILD 1.0.0
