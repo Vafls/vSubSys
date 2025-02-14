@@ -1,3 +1,12 @@
+# BUILD 1.0.1
+
+- New snake game has been added
+- New App Store app has been added
+- SU (super-user) access in terminal
+- New boot-loader that allows you to configure your profile (run it instead of kernel.py file)
+- Re-builded settings app
+- Bug fixes
+
 # BUILD 1.0.0
 
 First release build!
