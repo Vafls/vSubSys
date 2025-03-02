@@ -3,8 +3,8 @@ import os
 import psutil
 import time
 import cv2
-from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, QWidget, QLabel, QPushButton, QFrame, QSpacerItem, QSizePolicy, QMenu, QAction
-from PyQt5.QtCore import Qt, QSize, QPoint, QTimer, QDateTime
+from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, QWidget, QLabel, QPushButton, QFrame, QSpacerItem, QSizePolicy, QMenu, QAction, QToolBar
+from PyQt5.QtCore import Qt, QSize, QPoint, QTimer, QDateTime, QUrl
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtGui import QImage
 from PyQt5.QtWidgets import QLineEdit
@@ -27,6 +27,8 @@ from PyQt5.QtWidgets import QTabWidget
 from PyQt5.QtGui import QPainter
 from PyQt5.QtWidgets import QInputDialog
 import shutil
+from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEnginePage, QWebEngineSettings, QWebEngineProfile, QWebEngineDownloadItem, QWebEngineHistory, QWebEngineCertificateError, QWebEngineFullScreenRequest
+from PyQt5.QtWebEngineWidgets import QWebEngineScript, QWebEngineScriptCollection, QWebEngineSettings
 
 
 class CustomTitleBar(QWidget):
@@ -229,7 +231,7 @@ class LockScreen(QMainWindow):
 class KernelWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Kernel_build_1.0.1")
+        self.setWindowTitle("Kernel_build_1.0.2")
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.showFullScreen()
 
@@ -240,12 +242,14 @@ class KernelWindow(QMainWindow):
         self.desktop_layout.setContentsMargins(10, 10, 10, 10)
         self.setCentralWidget(self.desktop_widget)
 
+        self.url_bar = QLineEdit()
         self.add_settings_shortcut()
         self.add_camera_shortcut()
         self.add_terminal_shortcut()
         self.add_ide_shortcut()
         self.add_snake_shortcut()
         self.add_store_shortcut()
+        self.add_browser_shortcut()
 
         self.dock_panel = QFrame(self)
         self.dock_panel.setFixedHeight(60)
@@ -410,6 +414,26 @@ class KernelWindow(QMainWindow):
         shortcut_frame.setLayout(shortcut_layout)
         shortcut_frame.setFixedWidth(80)
         shortcut_frame.mousePressEvent = self.open_store
+
+        self.desktop_layout.insertWidget(0, shortcut_frame, alignment=Qt.AlignTop | Qt.AlignLeft)
+
+    def add_browser_shortcut(self): # line 247
+        shortcut_layout = QVBoxLayout()
+        shortcut_layout.setContentsMargins(0, 0, 0, 0)
+
+        icon_label = QLabel(self)
+        pixmap = QPixmap("C:/vLaunch/source/app1.png").scaled(64, 64, Qt.KeepAspectRatio)
+        icon_label.setPixmap(pixmap)
+
+        text_label = QLabel("V-Browser", self)
+
+        shortcut_layout.addWidget(icon_label)
+        shortcut_layout.addWidget(text_label)
+
+        shortcut_frame = QFrame(self)
+        shortcut_frame.setLayout(shortcut_layout)
+        shortcut_frame.setFixedWidth(80)
+        shortcut_frame.mousePressEvent = self.open_browser
 
         self.desktop_layout.insertWidget(0, shortcut_frame, alignment=Qt.AlignTop | Qt.AlignLeft)
 
@@ -583,7 +607,7 @@ class KernelWindow(QMainWindow):
         close_button = QPushButton("X")
         close_button.setFixedSize(QSize(30, 30))
         close_button.setStyleSheet("background-color: red; color: white;")
-        close_button.clicked.connect(lambda: close_camera(window))
+        close_button.clicked.connect(lambda: self.close_camera(window))
         title_layout.addWidget(close_button)
 
         layout.addWidget(title_bar)
@@ -638,6 +662,57 @@ class KernelWindow(QMainWindow):
                 record_button.setText("Start Record")
                 print("Video record stopped")
 
+        def toggle_tracking():
+            nonlocal tracking_enabled
+            tracking_enabled = not tracking_enabled
+            track_button.setText("Disable face Tracking" if tracking_enabled else "Enable face Tracking")
+
+        track_button = QPushButton("Enable face Tracking")
+        track_button.clicked.connect(toggle_tracking)
+        button_layout.addWidget(track_button)
+
+        tracking_enabled = False
+
+        face_cascade = cv2.CascadeClassifier("C:\\vLaunch\\kernel\\config\\haarcascade_frontalface_default.xml")
+        hand_cascade_path = "C:\\vLaunch\\kernel\\config\\haarcascade_hand.xml"
+        if not os.path.exists(hand_cascade_path):
+            print(f"Error: {hand_cascade_path} not found.")
+            hand_cascade = None
+        else:
+            hand_cascade = cv2.CascadeClassifier(hand_cascade_path)
+
+        def update_frame():
+            ret, frame = cap.read()
+            if ret:
+                if hand_cascade:
+                    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+                    hands = hand_cascade.detectMultiScale(gray, 1.1, 4)
+                else:
+                    hands = []
+            faces = []
+            if tracking_enabled:
+                gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+                faces = face_cascade.detectMultiScale(gray, 1.1, 4)
+                hands = hand_cascade.detectMultiScale(gray, 1.1, 4)
+
+            for (x, y, w, h) in faces:
+                cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
+                cv2.putText(frame, "Face", (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (255, 0, 0), 2)
+
+            for (x, y, w, h) in hands:
+                cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+                cv2.putText(frame, "Hand", (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 0), 2)
+
+            rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            h, w, ch = rgb_frame.shape
+            image = QImage(rgb_frame.data, w, h, ch * w, QImage.Format_RGB888)
+            video_label.setPixmap(QPixmap.fromImage(image))
+
+            if recording[0] and video_writer[0]:
+                video_writer[0].write(frame)
+
+            QTimer.singleShot(10, update_frame)
+
         snapshot_button.clicked.connect(take_snapshot)
         record_button.clicked.connect(toggle_recording)
 
@@ -665,6 +740,238 @@ class KernelWindow(QMainWindow):
 
         update_frame()
         window.show()
+
+    def close_browser(self, window):
+        window.close()
+        if "Browser" in self.open_windows:
+            del self.open_windows["Browser"]
+        self.update_dock()
+
+    def close_current_tab(self, index):
+        if self.tabs.count() < 2:
+            return
+        self.tabs.removeTab(index)
+
+    def open_browser(self, event=None):
+        if "Browser" in self.open_windows:
+            window = self.open_windows["Browser"]
+            window.raise_()
+            window.activateWindow()
+            return
+
+        window = QMainWindow()
+        window.setWindowFlags(Qt.FramelessWindowHint)
+        window.setWindowTitle("Browser")
+        window.setGeometry(300, 200, 800, 600)
+        window.setStyleSheet("border: 2px solid black; background-color: white;")
+
+        tabs = QTabWidget()
+        tabs.tabCloseRequested.connect(self.close_current_tab)
+        tabs.setDocumentMode(True)
+        tabs.tabBarDoubleClicked.connect(lambda i: add_new_tab() if i == -1 else None)
+
+        def close_browser(self, window):
+            window.close()
+            if "Browser" in self.open_windows:
+                del self.open_windows["Browser"]
+            self.update_dock()
+
+        def close_current_tab(self, index):
+            if self.tabs.count() < 2:
+                return
+            self.tabs.removeTab(index)
+
+        def update_urlbar(qurl, browser=None):
+            if browser != tabs.currentWidget():
+                return
+            url_bar.setText(qurl.toString())
+            url_bar.setCursorPosition(0)
+
+        tabs.currentChanged.connect(lambda i: update_urlbar(tabs.currentWidget().url(), tabs.currentWidget()))
+        tabs.setTabsClosable(True)
+        def close_current_tab(i):
+            if tabs.count() < 2:
+                return
+            tabs.removeTab(i)
+
+        tabs.tabCloseRequested.connect(close_current_tab)
+
+        window.setCentralWidget(tabs)
+
+        navtb = QToolBar("Navigation")
+        window.addToolBar(navtb)
+
+        url_bar = QLineEdit()
+        def navigate_to_url():
+            url = url_bar.text()
+            if not url.startswith('http'):
+                url = 'http://' + url
+            tabs.currentWidget().setUrl(QUrl(url))
+
+        url_bar.returnPressed.connect(navigate_to_url)
+
+        home_button = QAction('Home', window)
+        def navigate_home():
+            tabs.currentWidget().setUrl(QUrl('https://www.google.com'))
+
+        home_button.triggered.connect(navigate_home)
+
+        new_tab_button = QAction('New Tab', window)
+        def add_new_tab(qurl=None, label="Blank"):
+            if qurl is None or not isinstance(qurl, QUrl):
+                qurl = QUrl('')
+
+            browser = QWebEngineView()
+            browser.setUrl(qurl)
+
+            i = tabs.addTab(browser, label)
+            tabs.setCurrentIndex(i)
+
+            browser.urlChanged.connect(lambda qurl, browser=browser: update_urlbar(qurl, browser))
+            browser.loadFinished.connect(lambda _, i=i, browser=browser: tabs.setTabText(i, browser.page().title()))
+
+        new_tab_button.triggered.connect(add_new_tab)
+
+        navtb.addAction(home_button)
+        navtb.addAction(new_tab_button)
+        navtb.addWidget(url_bar)
+
+        add_new_tab(QUrl('https://www.google.com'), 'Homepage')
+
+        title_bar = QWidget()
+        title_bar.setFixedHeight(30)
+        title_bar.setStyleSheet("background-color: black; color: white;")
+        title_layout = QHBoxLayout(title_bar)
+        title_layout.setContentsMargins(0, 0, 0, 0)
+
+        title_label = QLabel("Browser")
+        title_label.setStyleSheet("color: white;")
+        title_layout.addWidget(title_label)
+
+        minimize_button = QPushButton("_")
+        minimize_button.setFixedSize(QSize(30, 30))
+        minimize_button.setStyleSheet("background-color: black; color: white;")
+        minimize_button.clicked.connect(window.showMinimized)
+        title_layout.addWidget(minimize_button)
+
+        maximize_button = QPushButton("□")
+        maximize_button.setFixedSize(QSize(30, 30))
+        maximize_button.setStyleSheet("background-color: black; color: white;")
+        maximize_button.clicked.connect(lambda: window.showNormal() if window.isMaximized() else window.showMaximized())
+        title_layout.addWidget(maximize_button)
+
+        close_button = QPushButton("X")
+        close_button.setFixedSize(QSize(30, 30))
+        close_button.setStyleSheet("background-color: red; color: white;")
+        close_button.clicked.connect(lambda: self.close_browser(window))
+        title_layout.addWidget(close_button)
+
+        navtb.addWidget(title_bar)
+
+        def mousePressEvent(event):
+            if event.button() == Qt.LeftButton:
+                window.old_pos = event.globalPos()
+
+        def mouseMoveEvent(event):
+            if event.buttons() == Qt.LeftButton:
+                delta = QPoint(event.globalPos() - window.old_pos)
+                window.move(window.pos() + delta)
+                window.old_pos = event.globalPos()
+
+        title_bar.mousePressEvent = mousePressEvent
+        title_bar.mouseMoveEvent = mouseMoveEvent
+
+        window.show()
+        self.open_windows["Browser"] = window
+        self.update_dock()
+        def update_urlbar(qurl, browser=None):
+            if browser != tabs.currentWidget():
+                return
+            url_bar.setText(qurl.toString())
+            url_bar.setCursorPosition(0)
+
+        def add_new_tab(qurl=None, label="Blank"):
+            if qurl is None or not isinstance(qurl, QUrl):
+                qurl = QUrl('')
+
+            browser = QWebEngineView()
+            browser.setUrl(qurl)
+
+            i = tabs.addTab(browser, label)
+            tabs.setCurrentIndex(i)
+
+            browser.urlChanged.connect(lambda qurl, browser=browser: update_urlbar(qurl, browser))
+            browser.loadFinished.connect(lambda _, i=i, browser=browser: tabs.setTabText(i, browser.page().title()))
+
+        def navigate_to_url():
+            url = url_bar.text()
+            if not url.startswith('http'):
+                url = 'http://' + url
+            tabs.currentWidget().setUrl(QUrl(url))
+
+        def close_current_tab(i):
+            if tabs.count() < 2:
+                return
+            tabs.removeTab(i)
+
+        def navigate_home():
+            tabs.currentWidget().setUrl(QUrl('https://www.google.com'))
+
+        if "Browser" in self.open_windows:
+            window = self.open_windows["Browser"]
+            window.raise_()
+            window.activateWindow()
+            return
+
+        window = QMainWindow()
+        window.setWindowFlags(Qt.FramelessWindowHint)
+        window.setWindowTitle("Browser")
+        window.setGeometry(300, 200, 800, 600)
+        window.setStyleSheet("border: 2px solid black; background-color: white;")
+
+        tabs = QTabWidget()
+        tabs.setDocumentMode(True)
+        tabs.tabBarDoubleClicked.connect(lambda i: add_new_tab() if i == -1 else None)
+        tabs.currentChanged.connect(lambda i: update_urlbar(tabs.currentWidget().url(), tabs.currentWidget()))
+        tabs.setTabsClosable(True)
+        tabs.tabCloseRequested.connect(close_current_tab)
+
+        window.setCentralWidget(tabs)
+
+        navtb = QToolBar("Navigation")
+        window.addToolBar(navtb)
+
+        url_bar = QLineEdit()
+        url_bar.returnPressed.connect(navigate_to_url)
+
+        home_button = QAction('Home', window)
+        home_button.triggered.connect(navigate_home)
+
+        new_tab_button = QAction('New Tab', window)
+        new_tab_button.triggered.connect(add_new_tab)
+
+        navtb.addAction(home_button)
+        navtb.addAction(new_tab_button)
+        navtb.addWidget(url_bar)
+
+        add_new_tab(QUrl('https://www.google.com'), 'Homepage')
+
+        def mousePressEvent(event):
+            if event.button() == Qt.LeftButton:
+                window.old_pos = event.globalPos()
+
+        def mouseMoveEvent(event):
+            if event.buttons() == Qt.LeftButton:
+                delta = QPoint(event.globalPos() - window.old_pos)
+                window.move(window.pos() + delta)
+                window.old_pos = event.globalPos()
+
+        window.mousePressEvent = mousePressEvent
+        window.mouseMoveEvent = mouseMoveEvent
+
+        window.show()
+        self.open_windows["Browser"] = window
+        self.update_dock()
 
     def open_snake_game(self, event=None):
         if "Snake" in self.open_windows:
@@ -1427,6 +1734,8 @@ class KernelWindow(QMainWindow):
         wifi_settings_button.clicked.connect(lambda: self.show_wifi_settings(content_layout))
         menu_layout.addWidget(wifi_settings_button)
 
+        menu_layout.addStretch()
+
         menu_widget = QWidget()
         menu_widget.setLayout(menu_layout)
         menu_widget.setFixedWidth(200)
@@ -1462,7 +1771,27 @@ class KernelWindow(QMainWindow):
             if widget:
                 widget.setParent(None)
 
-        disk_info_label = QLabel(self.get_disk_info())
+        disk_info = self.get_disk_info()
+
+        config_path = "C:\\vLaunch\\kernel\\config\\global.cfg"
+        if os.path.exists(config_path):
+            with open(config_path, "r") as config_file:
+                config_data = config_file.read().splitlines()
+                config_dict = {line.split('=')[0]: line.split('=')[1] for line in config_data if '=' in line}
+
+            sys_version = config_dict.get("sys_version", "Unknown")
+            based_os = config_dict.get("based_os", "Unknown")
+            bootloader_name = config_dict.get("bootloader_name", "Unknown")
+            bootloader_version = config_dict.get("bootloader_version", "Unknown")
+
+            disk_info += f"\n\nSubsystem Build Number: {sys_version}"
+            disk_info += f"\nBased OS: {based_os}"
+            disk_info += f"\nBootloader: {bootloader_name}"
+            disk_info += f"\nBootloader Version: {bootloader_version}"
+        else:
+            disk_info += "\n\nConfiguration file not found."
+
+        disk_info_label = QLabel(disk_info)
         disk_info_label.setAlignment(Qt.AlignCenter)
         layout.addWidget(disk_info_label)
 
@@ -1756,14 +2085,16 @@ class KernelWindow(QMainWindow):
             window.showNormal()
         window.raise_()
 
-
-
 if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    global lock_screen
-    lock_screen = LockScreen()
-    lock_screen.show()
-    sys.exit(app.exec_())
-    window.show()
-    lock_screen = start_lock_screen(KernelWindow)
-# BUILD_1.0.1
+    if len(sys.argv) != 2:
+        print("KERNEL PANIC: 2 [EXTRA]")
+    elif sys.argv[1] != "-auth8354":
+        print("KERNEL PANIC: 1 [EXTRA]")
+    else:
+        app = QApplication(sys.argv)
+        global lock_screen
+        lock_screen = LockScreen()
+        lock_screen.show()
+        sys.exit(app.exec_())
+
+# BUILD 1.0.2
