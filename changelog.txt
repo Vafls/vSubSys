@@ -1,3 +1,12 @@
+# BUILD 1.0.2
+
+- New application - V-browser
+- Hand and face tracking feature added to camera application
+- Authenticated boot added (secure boot)
+- Interface fix in settings application
+- New items in settings application
+- New starter added to make sub-system boot easier
+
 # BUILD 1.0.1
 
 - New snake game has been added
