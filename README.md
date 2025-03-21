@@ -1,5 +1,7 @@
 # vSubSys (NEW REVISION)
 
+Doesnt work well, press CTRL + C to proccess the file (kernel)
+
 vSubSys is a beta subsystem created by Vafls. To make it work, place it in the root of the "C:\\" drive. Currently, it is only available for Windows.
 
 # vSubSys (OLD REVISION) (OUTDATED)

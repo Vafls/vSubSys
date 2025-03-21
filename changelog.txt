@@ -1,3 +1,10 @@
+# BUILD 1.0.3
+
+- GUI added for violence bootloader
+- Sheila module added (Updater)
+- Code Optimization
+- Console version of the sub-system
+
 # BUILD 1.0.2
 
 - New application - V-browser
