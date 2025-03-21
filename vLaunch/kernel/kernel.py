@@ -3,33 +3,26 @@ import os
 import psutil
 import time
 import cv2
-from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, QWidget, QLabel, QPushButton, QFrame, QSpacerItem, QSizePolicy, QMenu, QAction, QToolBar
-from PyQt5.QtCore import Qt, QSize, QPoint, QTimer, QDateTime, QUrl
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtGui import QImage
-from PyQt5.QtWidgets import QLineEdit
 import random
-from PyQt5.QtCore import QPropertyAnimation, QRect
-from PyQt5.QtCore import QObject
-from PyQt5.QtGui import QCursor
+import shutil
 import importlib.util
 import zipfile
-from PyQt5.QtWidgets import QListWidget, QStackedWidget
 import platform
-from PyQt5.QtWidgets import QMenuBar
-from PyQt5.QtWidgets import QDialog
-from PyQt5.QtWidgets import QMessageBox
-from PyQt5.QtWidgets import QSpacerItem
-from PyQt5.QtWidgets import QFileDialog
-from PyQt5.QtWidgets import QPlainTextEdit
-from PyQt5.QtWidgets import QListWidgetItem
-from PyQt5.QtWidgets import QTabWidget
-from PyQt5.QtGui import QPainter
-from PyQt5.QtWidgets import QInputDialog
-import shutil
-from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEnginePage, QWebEngineSettings, QWebEngineProfile, QWebEngineDownloadItem, QWebEngineHistory, QWebEngineCertificateError, QWebEngineFullScreenRequest
-from PyQt5.QtWebEngineWidgets import QWebEngineScript, QWebEngineScriptCollection, QWebEngineSettings
-
+import getpass
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, QWidget, QLabel, QPushButton, QFrame, QSpacerItem, QSizePolicy, QMenu, QAction, QToolBar, QLineEdit, QListWidget, QStackedWidget, QMenuBar, QDialog, QMessageBox, QFileDialog, QPlainTextEdit, QListWidgetItem, QTabWidget, QInputDialog
+)
+from PyQt5.QtCore import Qt, QSize, QPoint, QTimer, QDateTime, QUrl, QPropertyAnimation, QRect, QObject
+from PyQt5.QtGui import QPixmap, QImage, QCursor, QPainter
+from PyQt5.QtWebEngineWidgets import QWebEngineView
+from prompt_toolkit import PromptSession
+from prompt_toolkit.completion import WordCompleter
+from prompt_toolkit.shortcuts import print_formatted_text
+from prompt_toolkit.formatted_text import HTML
+from prompt_toolkit.styles import Style
+import subprocess
+import webbrowser
+import requests
 
 class CustomTitleBar(QWidget):
     def __init__(self, parent, window):
@@ -227,11 +220,120 @@ class LockScreen(QMainWindow):
         if event.key() in {Qt.Key_Enter, Qt.Key_Return, Qt.Key_Space}:
             self.launch_kernel()
 
+class TUI_label:
+    def __init__(self):
+        self.current_dir = os.getcwd()
+        self.superuser_mode = False
+        self.commands = {
+            "help": self.show_help,
+            "exit": self.exit,
+            "cd": self.change_directory,
+            "ls": self.list_directory,
+            "pwd": self.print_working_directory,
+            "su": self.activate_superuser_mode,
+            "whoami": self.print_current_user
+        }
+        self.command_completer = WordCompleter(list(self.commands.keys()), ignore_case=True)
+        self.session = PromptSession(completer=self.command_completer)
+        self.style = Style.from_dict({
+            'prompt': 'ansicyan bold',
+            '': 'ansiblue'
+        })
+
+    def run(self):
+        while True:
+            try:
+                command = self.session.prompt(HTML('<prompt>{}</prompt>> '.format(self.current_dir)), style=self.style).strip()
+                if command:
+                    self.execute_command(command)
+            except KeyboardInterrupt:
+                print_formatted_text(HTML('<ansired>\nExiting...</ansired>'))
+                break
+            except Exception as e:
+                print_formatted_text(HTML('<ansired>Unexpected error: {}</ansired>'.format(str(e))))
+
+    def execute_command(self, command):
+        parts = command.split()
+        cmd = parts[0]
+        args = parts[1:]
+
+        if cmd in self.commands:
+            self.commands[cmd](args)
+        else:
+            print_formatted_text(HTML('<ansired>Command not found: {}</ansired>'.format(cmd)))
+
+    def show_help(self, args):
+        print_formatted_text(HTML('<ansigreen>Available commands: {}</ansigreen>'.format(', '.join(self.commands.keys()))))
+        print_formatted_text(HTML('<ansigreen>User: {}</ansigreen>'.format(getpass.getuser())))
+
+    def change_directory(self, args):
+        if not args:
+            print_formatted_text(HTML('<ansired>Usage: cd <directory></ansired>'))
+            return
+
+        path = args[0]
+        try:
+            os.chdir(path)
+            self.current_dir = os.getcwd()
+            print_formatted_text(HTML('<ansigreen>Changed directory to: {}</ansigreen>'.format(self.current_dir)))
+        except FileNotFoundError:
+            print_formatted_text(HTML('<ansired>Directory not found: {}</ansired>'.format(path)))
+        except PermissionError:
+            print_formatted_text(HTML('<ansired>Permission denied: {}</ansired>'.format(path)))
+        except Exception as e:
+            print_formatted_text(HTML('<ansired>Error: {}</ansired>'.format(str(e))))
+
+    def list_directory(self, args):
+        try:
+            files = os.listdir(self.current_dir)
+            print_formatted_text(HTML('<ansiblue>{}</ansiblue>'.format('\n'.join(files))))
+        except PermissionError:
+            print_formatted_text(HTML('<ansired>Permission denied</ansired>'))
+        except Exception as e:
+            print_formatted_text(HTML('<ansired>Error: {}</ansired>'.format(str(e))))
+
+    def print_working_directory(self, args):
+        print_formatted_text(HTML('<ansigreen>{}</ansigreen>'.format(self.current_dir)))
+
+    def activate_superuser_mode(self, args):
+        password = getpass.getpass("Password: ")
+        if self.check_password(password):
+            self.superuser_mode = True
+            print_formatted_text(HTML('<ansigreen>Superuser mode activated</ansigreen>'))
+        else:
+            print_formatted_text(HTML('<ansired>Authentication failed</ansired>'))
+
+    def check_password(self, password):
+        return password == "rootpassword"
+
+    def print_current_user(self, args):
+        print_formatted_text(HTML('<ansigreen>{}</ansigreen>'.format(getpass.getuser())))
+
+    def exit(self, args):
+        raise KeyboardInterrupt
+
+if __name__ == "__main__":
+    tui = TUI_label()
+    tui.run()
+
+class VSysInit:
+    #doesnt work probably should remove
+    def __init__(self):
+        self.python = sys.executable
+        self.violence_sysinit_path = "C:\\vLaunch\\kernel\\modules\\violence_sysinit.kernel"
+        if not os.path.exists(self.violence_sysinit_path):
+            self.violence_sysinit_path = "C:\\vLaunch\\kernel\\modules\\violence_sysinit.py"
+
+    def run(self):
+        if os.path.exists(self.violence_sysinit_path):
+            os.system(f"{self.python} {self.violence_sysinit_path}")
+        else:
+            print(f"File not found: {self.violence_sysinit_path}")
 
 class KernelWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Kernel_build_1.0.2")
+        self.setWindowTitle("Kernel_build_1.0.3")
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.showFullScreen()
 
@@ -242,7 +344,15 @@ class KernelWindow(QMainWindow):
         self.desktop_layout.setContentsMargins(10, 10, 10, 10)
         self.setCentralWidget(self.desktop_widget)
 
+        self.app = QApplication.instance() or QApplication(sys.argv)
+
         self.url_bar = QLineEdit()
+        self.tabs = QTabWidget()
+
+        self.superuser_mode = False
+
+        self.autostart()
+
         self.add_settings_shortcut()
         self.add_camera_shortcut()
         self.add_terminal_shortcut()
@@ -271,8 +381,12 @@ class KernelWindow(QMainWindow):
         self.battery_label = QLabel(self)
         self.dock_layout.addWidget(self.battery_label)
 
+        #self.notifications_label = QLabel(self)
+        #self.dock_layout.addWidget(self.notifications_label)
+
         self.init_clock_applet()
         self.init_wlan_applet()
+        self.init_notifications_applet()
 
         self.battery_update_timer = QTimer(self)
         self.battery_update_timer.timeout.connect(self.update_battery_status)
@@ -296,6 +410,11 @@ class KernelWindow(QMainWindow):
             self.setCursor(custom_cursor)
         except Exception as e:
             print(f"Error while loading <pointer>: {e}")
+
+    def autostart(self):
+        pass
+        #self.initialize_services()
+        #self.sheila()
 
     def add_settings_shortcut(self): # line 224
         shortcut_layout = QVBoxLayout()
@@ -535,6 +654,89 @@ class KernelWindow(QMainWindow):
                     wlan_status = "WI-FI: NC"
                 break
         self.wlan_applet.setText(wlan_status)
+
+    def init_notifications_applet(self):
+        self.notifications_label = QLabel("0", self)
+        self.notifications_label.setFixedSize(30, 30)
+        self.notifications_label.setAlignment(Qt.AlignCenter)
+        self.notifications_label.setStyleSheet("""
+            QLabel {
+                background: #e74c3c;
+                color: white;
+                border-radius: 15px;
+                font-weight: bold;
+            }
+        """)
+        self.notifications_label.mousePressEvent = self.show_notifications_menu
+
+    def show_notifications_menu(self, event):
+        if hasattr(self, 'notifications_menu') and self.notifications_menu.isVisible():
+            self.notifications_menu.hide()
+        else:
+            self.notifications_menu = QWidget(self)
+            self.notifications_menu.setWindowFlags(Qt.FramelessWindowHint)
+            self.notifications_menu.setGeometry(self.width() - 300, 0, 300, self.height())
+            self.notifications_menu.setStyleSheet("background-color: white; border: 1px solid black;")
+
+            layout = QVBoxLayout(self.notifications_menu)
+            self.notifications_list = QListWidget(self.notifications_menu)
+            layout.addWidget(self.notifications_list)
+
+            self.notifications_menu.show()
+            self.sheila()
+
+    def sheila(self):
+        local_version_file = r'C:\vLaunch\version_info.txt'
+        online_version_url = 'https://raw.githubusercontent.com/Vafls/vSubSys_UPD/main/version_info.txt'
+        history_file = r'C:\vLaunch\kernel\config\nt.history'
+
+        def read_local_version():
+            with open(local_version_file, 'r', encoding='utf-8') as file:
+                for line in file:
+                    if line.startswith('current_version'):
+                        return int(line.split('=')[1].strip())
+            return None
+
+        def read_online_version():
+            response = requests.get(online_version_url)
+            if response.status_code == 200:
+                for line in response.text.split('\n'):
+                    if line.startswith('current_version'):
+                        return int(line.split('=')[1].strip())
+            return None
+
+        def read_online_message():
+            response = requests.get(online_version_url)
+            if response.status_code == 200:
+                for line in response.text.split('\n'):
+                    if line.startswith('to_print'):
+                        return line.split('=')[1].strip()
+            return None
+
+        def check_for_updates():
+            local_version = read_local_version()
+            online_version = read_online_version()
+            update_message = read_online_message()
+
+            if online_version is not None and local_version is not None and online_version > local_version:
+                notification = f"{QDateTime.currentDateTime().toString('yyyy-MM-dd hh:mm:ss')} - Available update: {update_message}"
+                self.add_notification(notification)
+                self.save_notification_to_history(notification)
+
+        def save_notification_to_history(notification):
+            if not os.path.exists(history_file):
+                with open(history_file, 'w', encoding='utf-8') as file:
+                    file.write(notification + '\n')
+            else:
+                with open(history_file, 'r+', encoding='utf-8') as file:
+                    lines = file.readlines()
+                    if notification not in lines:
+                        file.write(notification + '\n')
+
+        check_for_updates()
+
+    def add_notification(self, notification):
+        self.notifications_list.addItem(notification)
     
     def show_start_menu(self):
         menu = QMenu(self)
@@ -884,6 +1086,7 @@ class KernelWindow(QMainWindow):
         window.show()
         self.open_windows["Browser"] = window
         self.update_dock()
+
         def update_urlbar(qurl, browser=None):
             if browser != tabs.currentWidget():
                 return
@@ -1668,6 +1871,18 @@ class KernelWindow(QMainWindow):
 
         editor.keyPressEvent = lambda event: self.save_file_on_ctrl_s(event, file_path, editor)
 
+    def initialize_services(self):
+        pass
+        #sheila_kernel_path = r'C:\vLaunch\kernel\modules\sheila.kernel'
+        #sheila_py_path = r'C:\vLaunch\kernel\modules\sheila.py'
+
+        #if os.path.exists(sheila_kernel_path):
+            #script_to_run = sheila_kernel_path
+        #else:
+            #script_to_run = sheila_py_path
+
+        #subprocess.run(['python', script_to_run])
+
     def save_file_on_ctrl_s(self, event, file_path, editor):
         if event.key() == Qt.Key_S and (event.modifiers() & Qt.ControlModifier):
             with open(file_path, 'w') as file:
@@ -1724,21 +1939,29 @@ class KernelWindow(QMainWindow):
         main_layout = QHBoxLayout()
         menu_layout = QVBoxLayout()
         menu_layout.setContentsMargins(0, 0, 0, 0)
-        menu_layout.setSpacing(1)
+        menu_layout.setSpacing(5)
+
+        button_style = "QPushButton { padding: 10px; background: #f0f0f0; border: none; }"
+        button_style += "QPushButton:hover { background: #e0e0e0; }"
+
 
         disk_info_button = QPushButton("Disk Info", window)
-        disk_info_button.clicked.connect(lambda: self.show_disk_info(content_layout))
+        disk_info_button.setStyleSheet(button_style)
         menu_layout.addWidget(disk_info_button)
 
         wifi_settings_button = QPushButton("Wi-Fi Settings", window)
-        wifi_settings_button.clicked.connect(lambda: self.show_wifi_settings(content_layout))
+        wifi_settings_button.setStyleSheet(button_style)
         menu_layout.addWidget(wifi_settings_button)
+
+        update_button = QPushButton("Update", window) # why doesnt it work????????
+        update_button.setStyleSheet(button_style)
+        menu_layout.addWidget(update_button)
 
         menu_layout.addStretch()
 
         menu_widget = QWidget()
         menu_widget.setLayout(menu_layout)
-        menu_widget.setFixedWidth(200)
+        menu_widget.setFixedWidth(220)
         main_layout.addWidget(menu_widget)
 
         content_layout = QVBoxLayout()
@@ -1864,187 +2087,196 @@ class KernelWindow(QMainWindow):
         system_info += f"RAM: {psutil.virtual_memory().total // (1024 ** 3)} GB\n"
         return system_info
 
-    def open_terminal(self=None, event=None):
-    
-        if "Terminal" in self.open_windows:
-            window = self.open_windows["Terminal"]
-            window.raise_()
-            window.activateWindow()
-            return
+    def open_terminal(self, event=None):
+        current_dir = os.getcwd()
+        superuser_mode = False
+        open_windows = self.open_windows
 
-        app = QApplication.instance()
-        if app is None:
-            app = QApplication([])
+        if "Terminal" in open_windows:
+            open_windows["Terminal"].raise_()
+            return
 
         window = QWidget()
         window.setWindowFlags(Qt.FramelessWindowHint)
         window.setWindowTitle("Terminal")
-        window.setGeometry(300, 200, 800, 600)
-        window.setStyleSheet("border: 2px solid black; background-color: white;")
+        window.setGeometry(300, 300, 800, 600)
+        window.setStyleSheet("""
+            background-color: black;
+            color: #00ff00;
+            font-family: Consolas;
+            font-size: 12px;
+        """)
 
         layout = QVBoxLayout(window)
+        layout.setContentsMargins(5, 5, 5, 5)
+        layout.setSpacing(5)
 
         title_bar = QWidget()
-        title_bar.setFixedHeight(30)
-        title_bar.setStyleSheet("background-color: black; color: white;")
+        title_bar.setFixedHeight(25)
         title_layout = QHBoxLayout(title_bar)
         title_layout.setContentsMargins(0, 0, 0, 0)
-
+    
         title_label = QLabel("Terminal")
-        title_label.setStyleSheet("color: white;")
+        close_button = QPushButton("✕")
+        close_button.setFixedSize(20, 20)
+        close_button.clicked.connect(window.close)
+    
         title_layout.addWidget(title_label)
-
-        minimize_button = QPushButton("_")
-        minimize_button.setFixedSize(QSize(30, 30))
-        minimize_button.setStyleSheet("background-color: black; color: white;")
-        minimize_button.clicked.connect(window.showMinimized)
-        title_layout.addWidget(minimize_button)
-
-        maximize_button = QPushButton("□")
-        maximize_button.setFixedSize(QSize(30, 30))
-        maximize_button.setStyleSheet("background-color: black; color: white;")
-        maximize_button.clicked.connect(lambda: window.showNormal() if window.isMaximized() else window.showMaximized())
-        title_layout.addWidget(maximize_button)
-
-        close_button = QPushButton("X")
-        close_button.setFixedSize(QSize(30, 30))
-        close_button.setStyleSheet("background-color: red; color: white;")
-        close_button.clicked.connect(lambda: close_terminal(window))
+        title_layout.addStretch()
         title_layout.addWidget(close_button)
-
+    
         layout.addWidget(title_bar)
 
-        output_label = QLabel()
-        output_label.setStyleSheet("background-color: black; color: white; padding: 5px;")
-        output_label.setAlignment(Qt.AlignTop | Qt.AlignLeft)
+        output_label = QLabel("vLaunch Terminal v1.0\nType 'help' for commands list\n")
         output_label.setWordWrap(True)
-        output_label.setText("Terminal started...\n")
-        layout.addWidget(output_label)
-
+        
         input_field = QLineEdit()
-        input_field.setStyleSheet("background-color: black; color: white; padding: 5px;")
+        input_field.setStyleSheet("background: #002200; color: #00ff00;")
+
+        layout.addWidget(output_label)
         layout.addWidget(input_field)
 
-        current_dir = os.getcwd()
+        def update_output(command, result):
+            nonlocal current_dir
+            new_text = f"{output_label.text()}\n{current_dir}> {command}\n{result}"
+            output_label.setText(new_text)
+            input_field.clear()
 
         def execute_command():
-            nonlocal current_dir
+            nonlocal current_dir, superuser_mode
             command = input_field.text().strip()
             output = ""
 
-            if command.startswith("cd "):
-                try:
-                    new_dir = command[3:].strip()
-                    os.chdir(new_dir)
-                    current_dir = os.getcwd()
-                    output = f"Changed directory to: {current_dir}"
-                except Exception as e:
-                    output = f"Error: {str(e)}"
-            elif command == "dir":
-                try:
-                    files = os.listdir(current_dir)
-                    output = "\n".join(files)
-                except Exception as e:
-                    output = f"Error: {str(e)}"
-            elif command == "exit":
-                close_terminal(window)
-                return
-            elif command == "whoami":
-                try:
-                    with open("C:\\vLaunch\\kernel\\config\\global.cfg", "r") as config_file:
-                        for line in config_file:
-                            if line.startswith("profile_1_name"):
-                                output = line.split("=")[1].strip()
-                                break
-                except Exception as e:
-                    output = f"Error: {str(e)}"
-            elif command.startswith("pkg-start "):
-                parts = command.split()
-                if len(parts) < 2:
-                    output = "Error: Choose the correct .vys file to run it.\nExample: pkg-start example.vys"
-                else:
-                    vys_file = parts[1]
-                    try:
-                        self.run_vys_package(vys_file)
-                        output = f"The program {vys_file} is running..."
-                    except Exception as e:
-                        output = f"Error during the execution of the file: {str(e)}"
-            elif command == "help":
-                output = "Available commands: help, exit, whoami, cd, dir, pkg-start, su"
-            elif command == "su":
-                try:
-                    with open("C:\\vLaunch\\kernel\\config\\global.cfg", "r") as config_file:
-                        for line in config_file:
-                            if line.startswith("profile_1_pass"):
-                                correct_password = line.split("=")[1].strip()
-                                break
-                    password, ok = QInputDialog.getText(window, "Superuser Authentication", "Enter password:", QLineEdit.Password)
-                    if ok and password == correct_password:
-                        output = "Superuser mode activated. Available commands: del, update"
-                        self.superuser_mode = True
-                    else:
-                        output = "Authentication failed. Incorrect password."
-                except Exception as e:
-                    output = f"Error: {str(e)}"
-            elif command.startswith("del ") or command == "update":
-                if not self.superuser_mode:
-                    output = "You're not root!"
-                else:
-                    if command.startswith("del "):
-                        try:
-                            file_to_delete = command.split(" ", 1)[1]
-                            if os.path.exists(file_to_delete):
-                                os.remove(file_to_delete)
-                                output = f"File {file_to_delete} deleted successfully."
-                            else:
-                                output = f"File {file_to_delete} not found."
-                        except Exception as e:
-                            output = f"Error: {str(e)}"
-                    elif command == "update":
-                        output = "System update initiated... (stub)"
-                try:
-                    file_to_delete = command.split(" ", 1)[1]
-                    if os.path.exists(file_to_delete):
-                        os.remove(file_to_delete)
-                        output = f"File {file_to_delete} deleted successfully."
-                    else:
-                        output = f"File {file_to_delete} not found."
-                except Exception as e:
-                    output = f"Error: {str(e)}"
-            elif self.superuser_mode and command == "update":
-                output = "System update initiated... (stub)"
-            else:
-                output = f"Command not found: {command}"
+            try:
+                if command == "help":
+                    help_text = [
+                        "help      - Show this help",
+                        "exit      - Close terminal",
+                        "clear     - Clear screen",
+                        "whoami    - Show current user",
+                        "cd <dir>  - Change directory",
+                        "dir       - List files",
+                        "pkg-start - Run .vys package",
+                        "su        - Superuser mode"
+                    ]
+                    if superuser_mode:
+                        help_text += ["\nSuperuser commands:", "del <file> - Delete file", "update - System update"]
+                    output = "\n".join(help_text)
 
-            output_label.setText(output_label.text() + f"\n{current_dir}> {command}\n{output}\n")
-            input_field.clear()
+                elif command == "exit":
+                    window.close()
+                    return
+
+                elif command == "clear":
+                    output_label.setText("")
+
+                elif command.startswith("cd "):
+                    new_dir = command[3:].strip()
+                    try:
+                        os.chdir(new_dir)
+                        current_dir = os.getcwd()
+                        output = f"Changed directory to: {current_dir}"
+                    except Exception as e:
+                        output = f"CD error: {str(e)}"
+
+                elif command == "dir":
+                    try:
+                        output = "\n".join(os.listdir(current_dir))
+                    except Exception as e:
+                        output = f"DIR error: {str(e)}"
+
+                elif command == "whoami":
+                    try:
+                        with open("C:\\vLaunch\\kernel\\config\\global.cfg", "r") as f:
+                            for line in f:
+                                if line.startswith("profile_1_name"):
+                                    output = line.split("=")[1].strip()
+                                    break
+                    except Exception as e:
+                        output = f"WHOAMI error: {str(e)}"
+
+                elif command == "su":
+                    try:
+                        with open("C:\\vLaunch\\kernel\\config\\global.cfg", "r") as f:
+                            correct_pass = None
+                            for line in f:
+                                if line.startswith("profile_1_pass"):
+                                    correct_pass = line.split("=")[1].strip()
+                                    break
+                            
+                        password, ok = QInputDialog.getText(
+                            window, "Authentication", "Enter password:", 
+                            QLineEdit.Password
+                        )
+                        
+                        if ok and password == correct_pass:
+                            superuser_mode = True
+                            output = "Superuser mode activated"
+                        else:
+                            output = "Authentication failed"
+                    
+                    except Exception as e:
+                        output = f"Auth error: {str(e)}"
+
+                elif command.startswith("del ") or command == "update":
+                    if not superuser_mode:
+                        output = "Permission denied! Use 'su' first"
+                    else:
+                        if command.startswith("del "):
+                            try:
+                                file_path = command.split(" ", 1)[1]
+                                if os.path.exists(file_path):
+                                    os.remove(file_path)
+                                    output = f"Deleted: {file_path}"
+                                else:
+                                    output = "File not found"
+                            except Exception as e:
+                                output = f"DELETE error: {str(e)}"
+                        elif command == "update":
+                            output = "System update initiated... (stub)"
+
+                elif command.startswith("pkg-start "):
+                    try:
+                        vys_file = command.split(" ", 1)[1]
+                        # Здесь должна быть логика запуска .vys файла
+                        output = f"Starting {vys_file}... (stub)"
+                    except IndexError:
+                        output = "Specify .vys file to run"
+                    except Exception as e:
+                        output = f"PKG-START error: {str(e)}"
+
+                else:
+                    output = f"Command not found: {command}"
+
+            except Exception as e:
+                output = f"Unexpected error: {str(e)}"
+
+            update_output(command, output)
 
         input_field.returnPressed.connect(execute_command)
-
-        def close_terminal(window):
-            window.close()
-            if "Terminal" in self.open_windows:
-                del self.open_windows["Terminal"]
-            self.update_dock()
-
-        def mousePressEvent(event):
+        
+        def mouse_press(event):
             if event.button() == Qt.LeftButton:
                 window.old_pos = event.globalPos()
 
-        def mouseMoveEvent(event):
-            if event.buttons() == Qt.LeftButton:
+        def mouse_move(event):
+            if hasattr(window, 'old_pos'):
                 delta = QPoint(event.globalPos() - window.old_pos)
                 window.move(window.pos() + delta)
                 window.old_pos = event.globalPos()
 
-        title_bar.mousePressEvent = mousePressEvent
-        title_bar.mouseMoveEvent = mouseMoveEvent
+        title_bar.mousePressEvent = mouse_press
+        title_bar.mouseMoveEvent = mouse_move
 
+        close_button.clicked.connect(close_terminal)
         self.open_windows["Terminal"] = window
-        self.update_dock()
-
         window.show()
 
+        def close_terminal():
+                window.close()
+                if "Terminal" in self.open_windows:
+                    del self.open_windows["Terminal"]
+                self.update_dock()
 
     def on_window_close(self, window):
         window_name = window.windowTitle()
@@ -2053,32 +2285,35 @@ class KernelWindow(QMainWindow):
         self.update_dock()
 
     def update_dock(self):
-
         for i in reversed(range(self.dock_layout.count())):
-            item = self.dock_layout.itemAt(i)
-            widget = item.widget() if item else None
-            if widget and widget not in {self.start_menu_button, self.battery_label, self.clock_applet, self.wlan_applet}:
-                widget.setParent(None)
-
-        if self.dock_layout.itemAt(0) is not None and self.dock_layout.itemAt(0).widget() != self.start_menu_button:
-            self.dock_layout.insertWidget(0, self.start_menu_button)
+            widget = self.dock_layout.itemAt(i).widget()
+            if widget and widget not in [
+                self.start_menu_button, 
+                self.clock_applet,
+                self.wlan_applet,
+                self.battery_label,
+                #self.notifications_label 
+            ]:
+                widget.deleteLater()
 
         index = 1
-        for name, window in self.open_windows.items():
-            button = QPushButton(name)
-            button.setFixedSize(100, 40)
-            button.clicked.connect(lambda checked, win=window: win.showNormal())
-            self.dock_layout.insertWidget(index, button)
+        for name in self.open_windows:
+            btn = QPushButton(name)
+            btn.setFixedSize(100, 40)
+            btn.clicked.connect(lambda _, n=name: self.open_windows[n].raise_())
+            self.dock_layout.insertWidget(index, btn)
             index += 1
 
-        if self.dock_layout.count() > 1 and self.dock_layout.itemAt(self.dock_layout.count() - 2).widget() != self.clock_applet:
-            self.dock_layout.insertWidget(self.dock_layout.count() - 1, self.clock_applet)
-
-        if self.dock_layout.count() > 0 and self.dock_layout.itemAt(self.dock_layout.count() - 1).widget() != self.wlan_applet:
-            self.dock_layout.insertWidget(self.dock_layout.count(), self.wlan_applet)
-
-        if self.dock_layout.count() > 0 and self.dock_layout.itemAt(self.dock_layout.count() - 1).widget() != self.battery_label:
-            self.dock_layout.addWidget(self.battery_label)
+        sys_widgets = [
+            self.clock_applet,
+            self.wlan_applet,
+            self.battery_label,
+            #self.notifications_label
+        ]
+        
+        for widget in sys_widgets:
+            if self.dock_layout.indexOf(widget) == -1:
+                self.dock_layout.addWidget(widget)
 
     def raise_or_restore(self, window):
         if window.isMinimized():
@@ -2086,15 +2321,30 @@ class KernelWindow(QMainWindow):
         window.raise_()
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("KERNEL PANIC: 2 [EXTRA]")
-    elif sys.argv[1] != "-auth8354":
+    import signal
+    signal.signal(signal.SIGINT, signal.SIG_DFL)
+
+    if len(sys.argv) < 2:
         print("KERNEL PANIC: 1 [EXTRA]")
-    else:
+        sys.exit(1)
+    
+    elif sys.argv[1] == "-auth8354":
         app = QApplication(sys.argv)
-        global lock_screen
+        app.setQuitOnLastWindowClosed(False)
+        
         lock_screen = LockScreen()
         lock_screen.show()
-        sys.exit(app.exec_())
-
-# BUILD 1.0.2
+        
+        try:
+            sys.exit(app.exec_())
+        except KeyboardInterrupt:
+            print("\nApplication interrupted by user")
+            app.quit()
+    
+    elif sys.argv[1] == "-auth8355":
+        tui = TUI_label()
+        tui.run()
+    
+    else:
+        print(f"KERNEL PANIC: UNKNOWN ARGUMENT {sys.argv[1]}")
+        sys.exit(2)
