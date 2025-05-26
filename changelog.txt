@@ -1,3 +1,9 @@
+# BUILD 1.0.3
+
+- New interface for "sheila"
+- Re-builded system modules
+- Bug fixes
+
 # BUILD 1.0.2
 
 - New application - V-browser
