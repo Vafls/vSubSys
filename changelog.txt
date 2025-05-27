@@ -1,3 +1,9 @@
+# BUILD 1.0.4
+
+- Settings interface fix
+- Terminal interface fix
+- Launchpad has been added
+
 # BUILD 1.0.3
 
 - New interface for "sheila"
