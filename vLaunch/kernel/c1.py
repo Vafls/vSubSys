@@ -10,10 +10,10 @@ import zipfile
 import platform
 import getpass
 from PyQt5.QtWidgets import (
-    QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, QWidget, QLabel, QPushButton, QFrame, QSpacerItem, QSizePolicy, QMenu, QAction, QToolBar, QLineEdit, QListWidget, QStackedWidget, QMenuBar, QDialog, QMessageBox, QFileDialog, QPlainTextEdit, QListWidgetItem, QTabWidget, QInputDialog
+    QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, QWidget, QLabel, QPushButton, QFrame, QSpacerItem, QSizePolicy, QMenu, QAction, QToolBar, QLineEdit, QListWidget, QStackedWidget, QMenuBar, QDialog, QMessageBox, QFileDialog, QPlainTextEdit, QListWidgetItem, QTabWidget, QInputDialog, QScrollArea, QGridLayout, QDesktopWidget
 )
 from PyQt5.QtCore import Qt, QSize, QPoint, QTimer, QDateTime, QUrl, QPropertyAnimation, QRect, QObject
-from PyQt5.QtGui import QPixmap, QImage, QCursor, QPainter
+from PyQt5.QtGui import QPixmap, QImage, QCursor, QPainter, QIcon
 from PyQt5.QtWebEngineWidgets import QWebEngineView
 from prompt_toolkit import PromptSession
 from prompt_toolkit.completion import WordCompleter
@@ -333,7 +333,7 @@ class VSysInit:
 class KernelWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Kernel_build_1.0.3")
+        self.setWindowTitle("Kernel_build_1.0.4")
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.showFullScreen()
 
@@ -381,8 +381,10 @@ class KernelWindow(QMainWindow):
         self.battery_label = QLabel(self)
         self.dock_layout.addWidget(self.battery_label)
 
-        #self.notifications_label = QLabel(self)
+        #self.notifications_label = QLabel(self) 
         #self.dock_layout.addWidget(self.notifications_label)
+
+        # should fix notifications applet as it doesnt show up
 
         self.init_clock_applet()
         self.init_wlan_applet()
@@ -746,8 +748,12 @@ class KernelWindow(QMainWindow):
         restart_action = QAction("Restart", self)
         restart_action.triggered.connect(self.restart)
 
+        launchpad_action = QAction("Launchpad", self)
+        launchpad_action.triggered.connect(self.launchpad)
+
         menu.addAction(shutdown_action)
         menu.addAction(restart_action)
+        menu.addAction(launchpad_action)
         menu.exec_(self.mapToGlobal(QPoint(10, self.height() - 50)))
 
     def shutdown(self):
@@ -756,6 +762,176 @@ class KernelWindow(QMainWindow):
     def restart(self):
         QApplication.quit()
         os.system(f"python {sys.argv[0]}")
+
+    def launchpad(self):
+        if "Launchpad" in self.open_windows:
+            window = self.open_windows["Launchpad"]
+            window.close()
+            del self.open_windows["Launchpad"]
+
+        window = QWidget()
+        window.setWindowTitle("Launchpad")
+        window.setFixedSize(1280, 720)
+        window.setWindowFlags(Qt.FramelessWindowHint)
+        window.setStyleSheet("""
+            background-color: #f0f0f0;
+            border-radius: 15px;
+            border: 2px solid #d0d0d0;
+        """)
+
+        screen_geometry = QApplication.desktop().screenGeometry()
+        x = (screen_geometry.width() - window.width()) // 2
+        y = (screen_geometry.height() - window.height()) // 2
+        window.move(x, y)
+
+        main_layout = QVBoxLayout(window)
+        main_layout.setContentsMargins(20, 20, 20, 20)
+        main_layout.setSpacing(20)
+
+        scroll_area = QScrollArea()
+        scroll_area.setWidgetResizable(True)
+        scroll_area.setStyleSheet("border: none; background: transparent;")
+
+        content_widget = QWidget()
+        content_widget.setStyleSheet("background: transparent;")
+        grid_layout = QGridLayout(content_widget)
+        grid_layout.setAlignment(Qt.AlignTop | Qt.AlignHCenter)
+        grid_layout.setSpacing(30)
+        grid_layout.setContentsMargins(10, 10, 10, 10)
+
+        self.load_apps(content_widget, grid_layout)
+
+        scroll_area.setWidget(content_widget)
+        main_layout.addWidget(scroll_area)
+
+        close_btn = QPushButton("Close Launchpad", window)
+        close_btn.setFixedSize(160, 40)
+        close_btn.setStyleSheet("""
+            QPushButton {
+                background: #ff4444;
+                color: white;
+                border-radius: 8px;
+                font: bold 12px Arial;
+            }
+            QPushButton:hover {
+                background: #cc0000;
+            }
+            QPushButton:pressed {
+                background: #aa0000;
+            }
+        """)
+        close_btn.clicked.connect(lambda: self.close_launchpad(window))
+
+        main_layout.addWidget(close_btn, alignment=Qt.AlignCenter)
+
+        self.open_windows["Launchpad"] = window
+        window.show()
+
+    def load_apps(self, parent, grid_layout):
+        apps_dir = "C:\\vLaunch\\apps\\user_apps"
+        valid_apps = []
+
+        for filename in os.listdir(apps_dir):
+            if filename.endswith(".vysico"):
+                filepath = os.path.join(apps_dir, filename)
+                try:
+                    with open(filepath, 'r') as f:
+                        app_data = {}
+                        for line in f:
+                            line = line.strip()
+                            if line and '=' in line:
+                                key, value = line.split('=', 1)
+                                app_data[key.strip().lower()] = value.strip()
+
+                        required = ['name', 'icon', 'app']
+                        if all(key in app_data for key in required):
+                            icon_path = os.path.join(apps_dir, app_data['icon'])
+                            app_path = os.path.join(apps_dir, app_data['app'])
+                            
+                            if os.path.exists(icon_path) and os.path.exists(app_path):
+                                app_data['icon_path'] = icon_path
+                                app_data['app_path'] = app_path
+                                valid_apps.append(app_data)
+                            else:
+                                print(f"Missing files for {filename}")
+                        else:
+                            print(f"Invalid config in {filename}")
+
+                except Exception as e:
+                    print(f"Error loading {filename}: {str(e)}")
+                    continue
+
+        row, col = 0, 0
+        max_cols = 6
+
+        for app in valid_apps:
+            app_widget = QWidget(parent)
+            app_widget.setFixedSize(120, 140)
+            app_layout = QVBoxLayout(app_widget)
+            app_layout.setAlignment(Qt.AlignCenter)
+            app_layout.setSpacing(5)
+
+            icon_btn = QPushButton()
+            icon_btn.setFixedSize(100, 100)
+            icon_btn.setIcon(QIcon(app['icon_path']))
+            icon_btn.setIconSize(QSize(80, 80))
+            icon_btn.setStyleSheet("""
+                QPushButton {
+                    background: white;
+                    border-radius: 15px;
+                    border: 2px solid #ddd;
+                }
+                QPushButton:hover {
+                    background: #e8e8e8;
+                    border-color: #ccc;
+                }
+            """)
+            icon_btn.clicked.connect(lambda _, p=app['app_path']: self.launch_app(p))
+
+            name_label = QLabel(app['name'])
+            name_label.setAlignment(Qt.AlignCenter)
+            name_label.setStyleSheet("""
+                font: 14px Arial;
+                color: #333;
+                max-width: 100px;
+                qproperty-wordWrap: true;
+            """)
+
+            app_layout.addWidget(icon_btn)
+            app_layout.addWidget(name_label)
+            grid_layout.addWidget(app_widget, row, col)
+
+            col += 1
+            if col >= max_cols:
+                col = 0
+                row += 1
+
+    def close_launchpad(self, window):
+        if window:
+            window.close()
+        if "Launchpad" in self.open_windows:
+            del self.open_windows["Launchpad"]
+        self.update_dock()
+
+    def launch_app(self, app_path):
+        try:
+            if os.path.exists(app_path):
+                if sys.platform == "win32":
+                    os.startfile(app_path)
+                else:
+                    subprocess.Popen([sys.executable, app_path])
+            else:
+                QMessageBox.warning(self, "Error", "Application file not found!")
+        except Exception as e:
+            QMessageBox.critical(self, "Launch Error", 
+                               f"Failed to launch application:\n{str(e)}")
+
+    def on_window_close(self, window):
+        title = window.windowTitle()
+        if title in self.open_windows:
+            del self.open_windows[title]
+        window.close()
+        self.update_dock()
 
     def open_settings(self, event=None):
         if "Settings" not in self.open_windows:
@@ -991,6 +1167,7 @@ class KernelWindow(QMainWindow):
 
         tabs.currentChanged.connect(lambda i: update_urlbar(tabs.currentWidget().url(), tabs.currentWidget()))
         tabs.setTabsClosable(True)
+
         def close_current_tab(i):
             if tabs.count() < 2:
                 return
@@ -1004,6 +1181,7 @@ class KernelWindow(QMainWindow):
         window.addToolBar(navtb)
 
         url_bar = QLineEdit()
+
         def navigate_to_url():
             url = url_bar.text()
             if not url.startswith('http'):
@@ -1013,12 +1191,14 @@ class KernelWindow(QMainWindow):
         url_bar.returnPressed.connect(navigate_to_url)
 
         home_button = QAction('Home', window)
+
         def navigate_home():
             tabs.currentWidget().setUrl(QUrl('https://www.google.com'))
 
         home_button.triggered.connect(navigate_home)
 
         new_tab_button = QAction('New Tab', window)
+
         def add_new_tab(qurl=None, label="Blank"):
             if qurl is None or not isinstance(qurl, QUrl):
                 qurl = QUrl('')
@@ -1873,15 +2053,6 @@ class KernelWindow(QMainWindow):
 
     def initialize_services(self):
         pass
-        #sheila_kernel_path = r'C:\vLaunch\kernel\modules\sheila.kernel'
-        #sheila_py_path = r'C:\vLaunch\kernel\modules\sheila.py'
-
-        #if os.path.exists(sheila_kernel_path):
-            #script_to_run = sheila_kernel_path
-        #else:
-            #script_to_run = sheila_py_path
-
-        #subprocess.run(['python', script_to_run])
 
     def save_file_on_ctrl_s(self, event, file_path, editor):
         if event.key() == Qt.Key_S and (event.modifiers() & Qt.ControlModifier):
@@ -1944,18 +2115,19 @@ class KernelWindow(QMainWindow):
         button_style = "QPushButton { padding: 10px; background: #f0f0f0; border: none; }"
         button_style += "QPushButton:hover { background: #e0e0e0; }"
 
-
-        disk_info_button = QPushButton("Disk Info", window)
-        disk_info_button.setStyleSheet(button_style)
-        menu_layout.addWidget(disk_info_button)
+        content_widget = QWidget()
+        content_layout = QVBoxLayout(content_widget)
+        main_layout.addWidget(content_widget)
 
         wifi_settings_button = QPushButton("Wi-Fi Settings", window)
         wifi_settings_button.setStyleSheet(button_style)
+        wifi_settings_button.clicked.connect(lambda: self.show_wifi_settings(content_layout))
         menu_layout.addWidget(wifi_settings_button)
 
-        update_button = QPushButton("Update", window) # why doesnt it work????????
-        update_button.setStyleSheet(button_style)
-        menu_layout.addWidget(update_button)
+        disk_info_button = QPushButton("System Info", window)
+        disk_info_button.setStyleSheet(button_style)
+        disk_info_button.clicked.connect(lambda: self.show_disk_info(content_layout))
+        menu_layout.addWidget(disk_info_button)
 
         menu_layout.addStretch()
 
@@ -2090,10 +2262,9 @@ class KernelWindow(QMainWindow):
     def open_terminal(self, event=None):
         current_dir = os.getcwd()
         superuser_mode = False
-        open_windows = self.open_windows
 
-        if "Terminal" in open_windows:
-            open_windows["Terminal"].raise_()
+        if "Terminal" in self.open_windows:
+            self.raise_or_restore(self.open_windows["Terminal"])
             return
 
         window = QWidget()
@@ -2111,40 +2282,56 @@ class KernelWindow(QMainWindow):
         layout.setContentsMargins(5, 5, 5, 5)
         layout.setSpacing(5)
 
+        button_style = """
+            QPushButton {
+                background-color: black;
+                color: green;
+                border: none;
+                font-weight: bold;
+            }
+            QPushButton:hover {
+                background-color: #333333;
+            }
+        """
+        close_button_style = "background-color: #ff4444; color: white;"
+
+
+        minimize_button = QPushButton("_")
+        minimize_button.setFixedSize(QSize(30, 30))
+        minimize_button.setStyleSheet(button_style)
+        minimize_button.clicked.connect(window.showMinimized)
+        
+        maximize_button = QPushButton("□")
+        maximize_button.setFixedSize(QSize(30, 30))
+        maximize_button.setStyleSheet(button_style)
+        maximize_button.clicked.connect(lambda: window.showMaximized() if not window.isMaximized() else window.showNormal())
+
         title_bar = QWidget()
-        title_bar.setFixedHeight(25)
+        title_bar.setFixedHeight(30)
         title_layout = QHBoxLayout(title_bar)
-        title_layout.setContentsMargins(0, 0, 0, 0)
-    
         title_label = QLabel("Terminal")
+        title_layout.addStretch()
+        title_layout.addWidget(title_label)
         close_button = QPushButton("✕")
         close_button.setFixedSize(20, 20)
-        close_button.clicked.connect(window.close)
-    
+        
         title_layout.addWidget(title_label)
         title_layout.addStretch()
+        title_layout.addWidget(minimize_button)
+        title_layout.addWidget(maximize_button)
         title_layout.addWidget(close_button)
-    
         layout.addWidget(title_bar)
 
-        output_label = QLabel("vLaunch Terminal v1.0\nType 'help' for commands list\n")
-        output_label.setWordWrap(True)
-        
-        input_field = QLineEdit()
-        input_field.setStyleSheet("background: #002200; color: #00ff00;")
+        self.terminal_output = QLabel("vLaunch Terminal v1.0\nType 'help' for commands list\n")
+        self.terminal_input = QLineEdit()
+        self.terminal_input.setStyleSheet("background: #002200; color: #00ff00;")
 
-        layout.addWidget(output_label)
-        layout.addWidget(input_field)
-
-        def update_output(command, result):
-            nonlocal current_dir
-            new_text = f"{output_label.text()}\n{current_dir}> {command}\n{result}"
-            output_label.setText(new_text)
-            input_field.clear()
+        layout.addWidget(self.terminal_output)
+        layout.addWidget(self.terminal_input)
 
         def execute_command():
             nonlocal current_dir, superuser_mode
-            command = input_field.text().strip()
+            command = self.terminal_input.text().strip()
             output = ""
 
             try:
@@ -2168,7 +2355,7 @@ class KernelWindow(QMainWindow):
                     return
 
                 elif command == "clear":
-                    output_label.setText("")
+                    self.terminal_output.setText("")
 
                 elif command.startswith("cd "):
                     new_dir = command[3:].strip()
@@ -2238,8 +2425,7 @@ class KernelWindow(QMainWindow):
                 elif command.startswith("pkg-start "):
                     try:
                         vys_file = command.split(" ", 1)[1]
-                        # Здесь должна быть логика запуска .vys файла
-                        output = f"Starting {vys_file}... (stub)"
+                        self.run_vys_package(self, vys_file)
                     except IndexError:
                         output = "Specify .vys file to run"
                     except Exception as e:
@@ -2253,14 +2439,33 @@ class KernelWindow(QMainWindow):
 
             update_output(command, output)
 
-        input_field.returnPressed.connect(execute_command)
+        self.terminal_input.returnPressed.connect(execute_command)
+        
+        def update_output(command, result):
+            nonlocal current_dir
+            new_text = f"{self.terminal_output.text()}\n{current_dir}> {command}\n{result}"
+            self.terminal_output.setText(new_text)
+            self.terminal_input.clear()
+
+        self.terminal_input.returnPressed.connect(execute_command)
 
         def close_terminal():
-                window.close()
-                if "Terminal" in self.open_windows:
-                    del self.open_windows["Terminal"]
-                self.update_dock()
-        
+            window.close()
+            if "Terminal" in self.open_windows:
+                del self.open_windows["Terminal"]
+            self.update_dock()
+
+        close_button.clicked.connect(lambda: close_terminal())
+        window.closeEvent = lambda e: close_terminal()
+
+        def handle_close_event(event):
+            close_terminal()
+            event.accept()
+
+        self.terminal_input.returnPressed.connect(execute_command)
+        close_button.clicked.connect(close_terminal)
+        window.closeEvent = handle_close_event
+
         def mouse_press(event):
             if event.button() == Qt.LeftButton:
                 window.old_pos = event.globalPos()
@@ -2274,15 +2479,9 @@ class KernelWindow(QMainWindow):
         title_bar.mousePressEvent = mouse_press
         title_bar.mouseMoveEvent = mouse_move
 
-        close_button.clicked.connect(close_terminal)
         self.open_windows["Terminal"] = window
-        window.show()
-
-    def on_window_close(self, window):
-        window_name = window.windowTitle()
-        if window_name in self.open_windows:
-            del self.open_windows[window_name]
         self.update_dock()
+        window.show()
 
     def update_dock(self):
         for i in reversed(range(self.dock_layout.count())):
@@ -2291,35 +2490,27 @@ class KernelWindow(QMainWindow):
                 self.start_menu_button, 
                 self.clock_applet,
                 self.wlan_applet,
-                self.battery_label,
-                #self.notifications_label 
+                self.battery_label
             ]:
                 widget.deleteLater()
 
-        index = 1
-        for name in self.open_windows:
+        for name, win in self.open_windows.items():
             btn = QPushButton(name)
             btn.setFixedSize(100, 40)
-            btn.clicked.connect(lambda _, n=name: self.open_windows[n].raise_())
-            self.dock_layout.insertWidget(index, btn)
-            index += 1
-
-        sys_widgets = [
-            self.clock_applet,
-            self.wlan_applet,
-            self.battery_label,
-            #self.notifications_label
-        ]
-        
-        for widget in sys_widgets:
-            if self.dock_layout.indexOf(widget) == -1:
-                self.dock_layout.addWidget(widget)
+            btn.clicked.connect(lambda _, w=win: self.raise_or_restore(w))
+            self.dock_layout.insertWidget(1, btn)
 
     def raise_or_restore(self, window):
         if window.isMinimized():
             window.showNormal()
         window.raise_()
+        window.activateWindow()
 
+    def on_window_close(self, window):
+        if window.windowTitle() in self.open_windows:
+            del self.open_windows[window.windowTitle()]
+        self.update_dock()
+    
 if __name__ == "__main__":
     import signal
     signal.signal(signal.SIGINT, signal.SIG_DFL)
