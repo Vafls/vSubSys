@@ -1,6 +1,6 @@
 # vSubSys (NEW REVISION)
 
-"ENG"
+--ENG--
 
 The vSubSys project is an interactive sandbox environment designed to showcase how operating systems operate and to let you hone skills across various IT domains.
 
@@ -8,7 +8,7 @@ Now out of beta — in its current maturity, vSubSys offers a safe virtual playg
 
 vSubSys is aimed at students, enthusiasts, and professionals: it empowers you not just to observe, but to experience how an OS works from the inside. It supports extensions and plugins, follows an open development model, and welcomes contributions or new research topics from the community.
 
-"RU"
+--RU--
 
 Проект vSubSys — это интерактивная песочница, созданная как современная платформа для демонстрации работы операционных систем и оттачивания навыков в разных областях IT.
 
