@@ -1,0 +1,78 @@
+
+def _tbar(title, win, on_close):
+    from PyQt5.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton
+    from PyQt5.QtCore import Qt
+    bar = QWidget(win); bar.setFixedHeight(30)
+    bar.setStyleSheet("background:#1a1a1a;")
+    L = QHBoxLayout(bar); L.setContentsMargins(8,0,0,0)
+    lbl = QLabel(title); lbl.setStyleSheet("color:white;font-size:12px;")
+    L.addWidget(lbl); L.addStretch()
+    for t,s,c in (("−",win.showMinimized,"background:#333;color:white;border:none;"),
+                  ("□",lambda: win.showNormal() if win.isMaximized() else win.showMaximized(),
+                   "background:#333;color:white;border:none;"),
+                  ("✕",on_close,"background:#c0392b;color:white;border:none;")):
+        b = QPushButton(t); b.setFixedSize(30,30); b.setStyleSheet(c)
+        b.clicked.connect(s); L.addWidget(b)
+    bar._dp = None
+    def _p(e):
+        if e.button()==Qt.LeftButton: bar._dp=e.globalPos()
+    def _m(e):
+        if bar._dp: win.move(win.pos()+(e.globalPos()-bar._dp)); bar._dp=e.globalPos()
+    bar.mousePressEvent=_p; bar.mouseMoveEvent=_m
+    return bar
+
+import webbrowser as _wb
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import Qt, QUrl
+
+_par   = globals().get("PARENT_WINDOW")
+_close = globals().get("APP_CLOSE_CALLBACK")
+_aid   = globals().get("APP_ID","")
+
+_WE_OK=False
+try:
+    import os; os.environ.setdefault("QTWEBENGINE_DISABLE_SANDBOX","1")
+    from PyQt5.QtWebEngineWidgets import QWebEngineView; _WE_OK=True
+except Exception: pass
+
+def _on_close():
+    if _close: _close(_aid)
+    else: win.close() if "win" in dir() else None
+
+if not _WE_OK:
+    msg=QMessageBox()
+    msg.setWindowTitle("Browser unavailable")
+    msg.setText("QtWebEngine not available.\nOpen system browser?")
+    msg.setStandardButtons(QMessageBox.Yes|QMessageBox.No)
+    if msg.exec_()==QMessageBox.Yes: _wb.open("https://www.google.com")
+else:
+    win=QMainWindow(_par); win.setWindowFlags(Qt.Tool|Qt.FramelessWindowHint)
+    win.setWindowTitle("V-Browser"); win.setGeometry(300,150,1100,740)
+    tabs=QTabWidget(); tabs.setDocumentMode(True); tabs.setTabsClosable(True)
+    win.setCentralWidget(tabs)
+    navtb=QToolBar("Nav"); url_bar=QLineEdit(); win.addToolBar(navtb)
+    def _cur(): return tabs.currentWidget()
+    def _upd(u,b=None):
+        if b is None or b is _cur(): url_bar.setText(u.toString()); url_bar.setCursorPosition(0)
+    def _add(qurl=None,label="Blank"):
+        if not isinstance(qurl,QUrl): qurl=QUrl("")
+        b=QWebEngineView(); b.setUrl(qurl)
+        i=tabs.addTab(b,label); tabs.setCurrentIndex(i)
+        b.urlChanged.connect(lambda u,_b=b:_upd(u,_b))
+        b.loadFinished.connect(lambda _,ii=i,_b=b:tabs.setTabText(ii,_b.page().title()))
+    def _nav():
+        url=url_bar.text()
+        if not url.startswith("http"): url="http://"+url
+        _cur().setUrl(QUrl(url))
+    tabs.tabCloseRequested.connect(lambda i: tabs.removeTab(i) if tabs.count()>1 else None)
+    tabs.currentChanged.connect(lambda _:_upd(_cur().url(),_cur()) if _cur() else None)
+    url_bar.returnPressed.connect(_nav)
+    home=QAction("🏠",win); home.triggered.connect(lambda:_cur().setUrl(QUrl("https://www.google.com")))
+    new=QAction("＋",win); new.triggered.connect(_add)
+    navtb.addAction(home); navtb.addAction(new); navtb.addWidget(url_bar)
+    navtb.addWidget(_tbar("V-Browser",win,_on_close))
+    _add(QUrl("https://www.google.com"),"Homepage")
+    win.closeEvent=lambda e:(_on_close(),e.ignore())
+    win.show()
+
+def on_program_exit(): pass

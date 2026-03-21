@@ -1,0 +1,94 @@
+
+def _tbar(title, win, on_close):
+    from PyQt5.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton
+    from PyQt5.QtCore import Qt
+    bar = QWidget(win); bar.setFixedHeight(30)
+    bar.setStyleSheet("background:#1a1a1a;")
+    L = QHBoxLayout(bar); L.setContentsMargins(8,0,0,0)
+    lbl = QLabel(title); lbl.setStyleSheet("color:white;font-size:12px;")
+    L.addWidget(lbl); L.addStretch()
+    for t,s,c in (("−",win.showMinimized,"background:#333;color:white;border:none;"),
+                  ("□",lambda: win.showNormal() if win.isMaximized() else win.showMaximized(),
+                   "background:#333;color:white;border:none;"),
+                  ("✕",on_close,"background:#c0392b;color:white;border:none;")):
+        b = QPushButton(t); b.setFixedSize(30,30); b.setStyleSheet(c)
+        b.clicked.connect(s); L.addWidget(b)
+    bar._dp = None
+    def _p(e):
+        if e.button()==Qt.LeftButton: bar._dp=e.globalPos()
+    def _m(e):
+        if bar._dp: win.move(win.pos()+(e.globalPos()-bar._dp)); bar._dp=e.globalPos()
+    bar.mousePressEvent=_p; bar.mouseMoveEvent=_m
+    return bar
+
+import random
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import Qt, QTimer
+from PyQt5.QtGui import *
+
+_par   = globals().get("PARENT_WINDOW")
+_close = globals().get("APP_CLOSE_CALLBACK")
+_aid   = globals().get("APP_ID","")
+
+GW,GH,BLK = 1000,660,20
+win = QWidget(_par)
+win.setWindowFlags(Qt.Tool|Qt.FramelessWindowHint)
+win.setWindowTitle("Snake"); win.setFixedSize(GW,GH)
+win.setStyleSheet("background:black;")
+
+def _on_close():
+    st["timer"].stop()
+    if _close: _close(_aid)
+    else: win.close()
+
+lay=QVBoxLayout(win); lay.setContentsMargins(0,0,0,0); lay.setSpacing(0)
+lay.addWidget(_tbar("Snake",win,_on_close))
+canvas=QLabel(); canvas.setStyleSheet("background:black;"); lay.addWidget(canvas)
+
+TH=30
+st=dict(body=[[GW//2,GH//2]],length=1,dx=0,dy=0,
+        fx=random.randint(0,(GW//BLK)-1)*BLK,
+        fy=random.randint(0,((GH-TH)//BLK)-1)*BLK,timer=None)
+
+def _draw():
+    px=QPixmap(canvas.size()); px.fill(Qt.black)
+    p=QPainter(px)
+    for sx,sy in st["body"]: p.fillRect(sx,sy,BLK,BLK,Qt.green)
+    p.fillRect(st["fx"],st["fy"],BLK,BLK,Qt.red); p.end(); canvas.setPixmap(px)
+
+def _reset():
+    st.update(body=[[GW//2,GH//2]],length=1,dx=0,dy=0,
+              fx=random.randint(0,(GW//BLK)-1)*BLK,
+              fy=random.randint(0,(canvas.height()//BLK)-1)*BLK)
+    st["timer"].start(100)
+
+def _tick():
+    hx=st["body"][-1][0]+st["dx"]; hy=st["body"][-1][1]+st["dy"]
+    ch=canvas.height()
+    if hx<0 or hx>=GW or hy<0 or hy>=ch:
+        st["timer"].stop()
+        QMessageBox.information(win,"Game Over","You lost!"); _reset(); return
+    st["body"].append([hx,hy])
+    if len(st["body"])>st["length"]: st["body"].pop(0)
+    if [hx,hy] in st["body"][:-1]:
+        st["timer"].stop()
+        QMessageBox.information(win,"Game Over","You lost!"); _reset(); return
+    if hx==st["fx"] and hy==st["fy"]:
+        st["length"]+=1
+        st["fx"]=random.randint(0,(GW//BLK)-1)*BLK
+        st["fy"]=random.randint(0,(ch//BLK)-1)*BLK
+    _draw()
+
+def _key(ev):
+    k=ev.key()
+    if k==Qt.Key_Left  and st["dx"]==0: st.update(dx=-BLK,dy=0)
+    elif k==Qt.Key_Right and st["dx"]==0: st.update(dx=BLK,dy=0)
+    elif k==Qt.Key_Up   and st["dy"]==0: st.update(dx=0,dy=-BLK)
+    elif k==Qt.Key_Down  and st["dy"]==0: st.update(dx=0,dy=BLK)
+
+t=QTimer(win); t.timeout.connect(_tick); t.start(100); st["timer"]=t
+win.setFocusPolicy(Qt.StrongFocus); win.keyPressEvent=_key
+win.closeEvent=lambda e:(_on_close(),e.ignore())
+win.show()
+
+def on_program_exit(): pass

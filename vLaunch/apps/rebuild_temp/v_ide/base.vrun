@@ -1,0 +1,131 @@
+
+def _tbar(title, win, on_close):
+    from PyQt5.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton
+    from PyQt5.QtCore import Qt
+    bar = QWidget(win); bar.setFixedHeight(30)
+    bar.setStyleSheet("background:#1a1a1a;")
+    L = QHBoxLayout(bar); L.setContentsMargins(8,0,0,0)
+    lbl = QLabel(title); lbl.setStyleSheet("color:white;font-size:12px;")
+    L.addWidget(lbl); L.addStretch()
+    for t,s,c in (("−",win.showMinimized,"background:#333;color:white;border:none;"),
+                  ("□",lambda: win.showNormal() if win.isMaximized() else win.showMaximized(),
+                   "background:#333;color:white;border:none;"),
+                  ("✕",on_close,"background:#c0392b;color:white;border:none;")):
+        b = QPushButton(t); b.setFixedSize(30,30); b.setStyleSheet(c)
+        b.clicked.connect(s); L.addWidget(b)
+    bar._dp = None
+    def _p(e):
+        if e.button()==Qt.LeftButton: bar._dp=e.globalPos()
+    def _m(e):
+        if bar._dp: win.move(win.pos()+(e.globalPos()-bar._dp)); bar._dp=e.globalPos()
+    bar.mousePressEvent=_p; bar.mouseMoveEvent=_m
+    return bar
+
+import os, zipfile, importlib.util, shutil, random, string
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import Qt, QSize
+from PyQt5.QtGui import *
+
+_par   = globals().get("PARENT_WINDOW")
+_close = globals().get("APP_CLOSE_CALLBACK")
+_aid   = globals().get("APP_ID","")
+_home  = globals().get("HOME_DIR", os.path.expanduser("~"))
+_kern  = globals().get("KERNEL")
+
+def _gp(*p):
+    if _kern and hasattr(_kern,"get_path"): return _kern.get_path(*p)
+    return os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),*p)
+
+win=QWidget(_par); win.setWindowFlags(Qt.Tool|Qt.FramelessWindowHint)
+win.setWindowTitle("v_IDE"); win.setGeometry(200,150,1100,700)
+win.setStyleSheet("background:white;")
+
+def _on_close():
+    if _close: _close(_aid)
+    else: win.close()
+
+lay=QVBoxLayout(win); lay.setContentsMargins(0,0,0,0)
+lay.addWidget(_tbar("v_IDE",win,_on_close))
+
+mb=QMenuBar(win); lay.addWidget(mb)
+
+body=QHBoxLayout()
+sidebar=QListWidget(); sidebar.setFixedWidth(220)
+sidebar.setStyleSheet("QListWidget{border-right:1px solid #ccc;background:#f4f4f4;font-size:13px;}"
+    "QListWidget::item{padding:8px;}QListWidget::item:selected{background:#007aff;color:white;}")
+editor_tabs=QTabWidget(); editor_tabs.setTabsClosable(True)
+editor_tabs.tabCloseRequested.connect(editor_tabs.removeTab)
+body.addWidget(sidebar); body.addWidget(editor_tabs); lay.addLayout(body)
+
+status=QLabel("Ready"); status.setStyleSheet("padding:4px;background:#f0f0f0;color:#666;font-size:11px;")
+lay.addWidget(status)
+
+current_folder=[None]
+
+def _populate(folder):
+    sidebar.clear(); current_folder[0]=folder
+    for root,_,files in os.walk(folder):
+        for f in files:
+            sidebar.addItem(QListWidgetItem(os.path.relpath(os.path.join(root,f),folder)))
+    status.setText(f"Project: {os.path.basename(folder)}")
+
+def _open_file(item):
+    if not current_folder[0]: return
+    fp=os.path.join(current_folder[0],item.text())
+    try:
+        with open(fp,encoding="utf-8",errors="replace") as fh: txt=fh.read()
+    except Exception as e: QMessageBox.warning(win,"Error",str(e)); return
+    ed=QPlainTextEdit(); ed.setPlainText(txt)
+    ed.setFont(QFont("Consolas",11))
+    editor_tabs.addTab(ed,item.text())
+    def _save(ev):
+        if ev.key()==Qt.Key_S and ev.modifiers()&Qt.ControlModifier:
+            with open(fp,"w",encoding="utf-8") as fh: fh.write(ed.toPlainText())
+            status.setText(f"Saved: {item.text()}")
+        else: QPlainTextEdit.keyPressEvent(ed,ev)
+    ed.keyPressEvent=_save
+
+sidebar.itemDoubleClicked.connect(_open_file)
+
+def _new_project():
+    name,ok=QInputDialog.getText(win,"New Project","Project name:")
+    if not ok or not name.strip(): return
+    base=_gp("apps","user_apps")
+    path=os.path.join(base,name.strip())
+    if os.path.exists(path): QMessageBox.warning(win,"Error","Already exists!"); return
+    os.makedirs(os.path.join(path,"license"),exist_ok=True)
+    os.makedirs(os.path.join(path,"src"),exist_ok=True)
+    tmpl='''# base.vrun\nimport os\nfrom PyQt5.QtWidgets import *\nfrom PyQt5.QtCore import Qt\n\n_par=globals().get("PARENT_WINDOW")\n_close=globals().get("APP_CLOSE_CALLBACK")\n_aid=globals().get("APP_ID","")\n\nwin=QWidget(_par)\nwin.setWindowFlags(Qt.Tool|Qt.FramelessWindowHint)\nwin.setWindowTitle("MyApp")\nwin.setGeometry(300,200,600,400)\nlay=QVBoxLayout(win)\nlay.addWidget(QLabel("Hello from MyApp!"))\nwin.show()\n\ndef on_program_exit(): pass\n'''
+    with open(os.path.join(path,"base.vrun"),"w") as f: f.write(tmpl)
+    with open(os.path.join(path,"build.info.py"),"w") as f: f.write(f'name = "{name.strip()}"\nicon = "icon.png"\n')
+    with open(os.path.join(path,"dep.txt"),"w") as f: f.write("# dependencies\n")
+    open(os.path.join(path,"icon.png"),"wb").close()
+    _populate(path)
+    QMessageBox.information(win,"Done",f"Project created:\n{path}")
+
+def _open_project():
+    folder=QFileDialog.getExistingDirectory(win,"Open Project",_gp("apps","user_apps"))
+    if folder: _populate(folder)
+
+def _compile():
+    if not current_folder[0]: QMessageBox.warning(win,"Error","Open a project first"); return
+    folder=current_folder[0]
+    miss=[f for f in ["base.vrun","build.info.py","dep.txt","icon.png"] if not os.path.isfile(os.path.join(folder,f))]
+    miss+=[d for d in ["license","src"] if not os.path.isdir(os.path.join(folder,d))]
+    if miss: QMessageBox.warning(win,"Error","Missing: "+", ".join(miss)); return
+    name=os.path.basename(folder)
+    out=os.path.join(_gp("apps","user_apps"),name+".vysico")
+    with zipfile.ZipFile(out,"w",zipfile.ZIP_DEFLATED) as zf:
+        for root,_,files in os.walk(folder):
+            for f in files:
+                fp=os.path.join(root,f); zf.write(fp,os.path.relpath(fp,folder))
+    status.setText(f"Compiled → {out}")
+    QMessageBox.information(win,"Compiled",f"Output:\n{out}")
+
+for lbl2,slot in (("New project",_new_project),("Open project",_open_project),("Compile → .vysico",_compile)):
+    a=QAction(lbl2,win); a.triggered.connect(slot); mb.addAction(a)
+
+win.closeEvent=lambda e:(_on_close(),e.ignore())
+win.show()
+
+def on_program_exit(): pass

@@ -1,0 +1,104 @@
+
+def _tbar(title, win, on_close):
+    from PyQt5.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton
+    from PyQt5.QtCore import Qt
+    bar = QWidget(win); bar.setFixedHeight(30)
+    bar.setStyleSheet("background:#1a1a1a;")
+    L = QHBoxLayout(bar); L.setContentsMargins(8,0,0,0)
+    lbl = QLabel(title); lbl.setStyleSheet("color:white;font-size:12px;")
+    L.addWidget(lbl); L.addStretch()
+    for t,s,c in (("−",win.showMinimized,"background:#333;color:white;border:none;"),
+                  ("□",lambda: win.showNormal() if win.isMaximized() else win.showMaximized(),
+                   "background:#333;color:white;border:none;"),
+                  ("✕",on_close,"background:#c0392b;color:white;border:none;")):
+        b = QPushButton(t); b.setFixedSize(30,30); b.setStyleSheet(c)
+        b.clicked.connect(s); L.addWidget(b)
+    bar._dp = None
+    def _p(e):
+        if e.button()==Qt.LeftButton: bar._dp=e.globalPos()
+    def _m(e):
+        if bar._dp: win.move(win.pos()+(e.globalPos()-bar._dp)); bar._dp=e.globalPos()
+    bar.mousePressEvent=_p; bar.mouseMoveEvent=_m
+    return bar
+
+import os, time
+import cv2
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import Qt, QTimer
+from PyQt5.QtGui import *
+
+_par   = globals().get("PARENT_WINDOW")
+_close = globals().get("APP_CLOSE_CALLBACK")
+_aid   = globals().get("APP_ID","")
+_home  = globals().get("HOME_DIR", os.path.expanduser("~"))
+_kern  = globals().get("KERNEL")
+
+win=QWidget(_par); win.setWindowFlags(Qt.Tool|Qt.FramelessWindowHint)
+win.setWindowTitle("Camera"); win.setGeometry(300,200,840,600)
+win.setStyleSheet("background:white;")
+
+recording=[False]; video_writer=[None]; tracking=[False]
+cap=cv2.VideoCapture(0)
+
+def _on_close():
+    cap.release()
+    if recording[0] and video_writer[0]: video_writer[0].release()
+    if _close: _close(_aid)
+    else: win.close()
+
+lay=QVBoxLayout(win); lay.setContentsMargins(0,0,0,0)
+lay.addWidget(_tbar("Camera",win,_on_close))
+video_lbl=QLabel(); lay.addWidget(video_lbl)
+btn_row=QHBoxLayout()
+snap_btn=QPushButton("📷 Photo"); rec_btn=QPushButton("⏺ Record"); trk_btn=QPushButton("👁 Tracking OFF")
+for b in (snap_btn,rec_btn,trk_btn): btn_row.addWidget(b); lay.addLayout(btn_row)
+
+def _cc(xml):
+    if _kern:
+        p = _kern.get_path("kernel","config",xml) if hasattr(_kern,"get_path") else None
+    else:
+        p = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),"kernel","config",xml)
+    return cv2.CascadeClassifier(p) if p and os.path.isfile(p) else None
+
+face_cc=_cc("haarcascade_frontalface_default.xml")
+hand_cc=_cc("haarcascade_hand.xml")
+
+def _frame():
+    ret,frame=cap.read()
+    if ret:
+        if tracking[0]:
+            gray=cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
+            if face_cc:
+                for x,y,w,h in face_cc.detectMultiScale(gray,1.1,4):
+                    cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),2)
+                    cv2.putText(frame,"Face",(x,y-10),cv2.FONT_HERSHEY_SIMPLEX,.9,(255,0,0),2)
+            if hand_cc:
+                for x,y,w,h in hand_cc.detectMultiScale(gray,1.1,4):
+                    cv2.rectangle(frame,(x,y),(x+w,y+h),(0,255,0),2)
+                    cv2.putText(frame,"Hand",(x,y-10),cv2.FONT_HERSHEY_SIMPLEX,.9,(0,255,0),2)
+        rgb=cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
+        h2,w2,ch=rgb.shape
+        video_lbl.setPixmap(QPixmap.fromImage(QImage(rgb.data,w2,h2,ch*w2,QImage.Format_RGB888)))
+        if recording[0] and video_writer[0]: video_writer[0].write(frame)
+    QTimer.singleShot(10,_frame)
+
+def _snap():
+    ret,frame=cap.read()
+    if ret: cv2.imwrite(os.path.join(_home,f"snapshot_{int(time.time())}.png"),frame)
+
+def _rec():
+    if not recording[0]:
+        fn=os.path.join(_home,f"video_{int(time.time())}.avi")
+        video_writer[0]=cv2.VideoWriter(fn,cv2.VideoWriter_fourcc(*"XVID"),20.,(int(cap.get(3)),int(cap.get(4))))
+        recording[0]=True; rec_btn.setText("⏹ Stop")
+    else:
+        recording[0]=False; video_writer[0].release(); video_writer[0]=None; rec_btn.setText("⏺ Record")
+
+def _trk():
+    tracking[0]=not tracking[0]
+    trk_btn.setText("👁 Tracking ON" if tracking[0] else "👁 Tracking OFF")
+
+snap_btn.clicked.connect(_snap); rec_btn.clicked.connect(_rec); trk_btn.clicked.connect(_trk)
+win.closeEvent=lambda e:(_on_close(),e.ignore()); _frame(); win.show()
+
+def on_program_exit(): pass

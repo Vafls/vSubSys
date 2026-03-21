@@ -1,0 +1,100 @@
+
+def _tbar(title, win, on_close):
+    from PyQt5.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton
+    from PyQt5.QtCore import Qt
+    bar = QWidget(win); bar.setFixedHeight(30)
+    bar.setStyleSheet("background:#1a1a1a;")
+    L = QHBoxLayout(bar); L.setContentsMargins(8,0,0,0)
+    lbl = QLabel(title); lbl.setStyleSheet("color:white;font-size:12px;")
+    L.addWidget(lbl); L.addStretch()
+    for t,s,c in (("−",win.showMinimized,"background:#333;color:white;border:none;"),
+                  ("□",lambda: win.showNormal() if win.isMaximized() else win.showMaximized(),
+                   "background:#333;color:white;border:none;"),
+                  ("✕",on_close,"background:#c0392b;color:white;border:none;")):
+        b = QPushButton(t); b.setFixedSize(30,30); b.setStyleSheet(c)
+        b.clicked.connect(s); L.addWidget(b)
+    bar._dp = None
+    def _p(e):
+        if e.button()==Qt.LeftButton: bar._dp=e.globalPos()
+    def _m(e):
+        if bar._dp: win.move(win.pos()+(e.globalPos()-bar._dp)); bar._dp=e.globalPos()
+    bar.mousePressEvent=_p; bar.mouseMoveEvent=_m
+    return bar
+
+import os, sys, psutil, platform
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import Qt
+
+_par   = globals().get("PARENT_WINDOW")
+_close = globals().get("APP_CLOSE_CALLBACK")
+_aid   = globals().get("APP_ID", "")
+_kern  = globals().get("KERNEL")
+
+win = QWidget(_par)
+win.setWindowFlags(Qt.Tool | Qt.FramelessWindowHint)
+win.setWindowTitle("Settings"); win.setGeometry(300,200,820,560)
+win.setStyleSheet("background:white;")
+
+def _on_close():
+    if _close: _close(_aid)
+    else: win.close()
+
+main_lay = QVBoxLayout(win); main_lay.setContentsMargins(0,0,0,0)
+main_lay.addWidget(_tbar("Settings", win, _on_close))
+body = QHBoxLayout(); main_lay.addLayout(body)
+
+sidebar = QVBoxLayout(); sidebar.setContentsMargins(0,0,0,0); sidebar.setSpacing(2)
+content = QWidget(); content_lay = QVBoxLayout(content)
+sw = QWidget(); sw.setLayout(sidebar); sw.setFixedWidth(200)
+sw.setStyleSheet("background:#f0f0f0;")
+body.addWidget(sw); body.addWidget(content)
+
+def _clear():
+    for i in reversed(range(content_lay.count())):
+        w = content_lay.itemAt(i).widget()
+        if w: w.setParent(None)
+
+def _sysinfo():
+    _clear()
+    parts=[]
+    for p in psutil.disk_partitions():
+        try:
+            u=psutil.disk_usage(p.mountpoint)
+            parts.append(f"{p.device}  {u.total//(1024**3)} GB  free: {u.free//(1024**3)} GB")
+        except: parts.append(f"{p.device} (no access)")
+    if _kern:
+        parts+=["",
+            f"Kernel:     {_kern.get_cfg('sys_version','?')}",
+            f"Based OS:   {_kern.get_cfg('based_os','?')}",
+            f"Bootloader: {_kern.get_cfg('bootloader_name','?')} v{_kern.get_cfg('bootloader_version','?')}",
+            f"Python:     {sys.version.split()[0]}",
+            f"Platform:   {platform.system()} {platform.release()}"]
+    lbl=QLabel("\n".join(parts)); lbl.setStyleSheet("font-size:13px;padding:12px;")
+    lbl.setAlignment(Qt.AlignTop|Qt.AlignLeft)
+    content_lay.addWidget(lbl); content_lay.addStretch()
+
+def _wifisettings():
+    _clear()
+    nets=QListWidget()
+    content_lay.addWidget(QLabel("Wi-Fi Networks:"))
+    content_lay.addWidget(nets)
+    def _refresh():
+        nets.clear()
+        if sys.platform=="win32":
+            for ln in os.popen("netsh wlan show networks").read().splitlines():
+                if "SSID" in ln and ":" in ln: nets.addItem(ln.split(":",1)[1].strip())
+    for lbl2,slot in (("Toggle Wi-Fi", lambda: os.system('netsh interface set interface name="Wi-Fi" admin=disable') if sys.platform=="win32" else None),
+                      ("Refresh",_refresh),
+                      ("Connect", lambda: os.system(f'netsh wlan connect name="{nets.currentItem().text()}"') if nets.currentItem() and sys.platform=="win32" else None)):
+        b=QPushButton(lbl2); b.clicked.connect(slot); content_lay.addWidget(b)
+    content_lay.addStretch()
+
+btn_st="QPushButton{padding:10px 16px;background:#f5f5f5;border:none;text-align:left;font-size:13px;}QPushButton:hover{background:#e0e0e0;}"
+for lbl2,slot in (("System Info",_sysinfo),("Wi-Fi Settings",_wifisettings)):
+    b=QPushButton(lbl2,sw); b.setStyleSheet(btn_st); b.clicked.connect(slot); sidebar.addWidget(b)
+sidebar.addStretch()
+_sysinfo()
+win.closeEvent=lambda e:(_on_close(),e.ignore())
+win.show()
+
+def on_program_exit(): pass

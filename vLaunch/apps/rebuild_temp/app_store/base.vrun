@@ -1,0 +1,62 @@
+
+def _tbar(title, win, on_close):
+    from PyQt5.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton
+    from PyQt5.QtCore import Qt
+    bar = QWidget(win); bar.setFixedHeight(30)
+    bar.setStyleSheet("background:#1a1a1a;")
+    L = QHBoxLayout(bar); L.setContentsMargins(8,0,0,0)
+    lbl = QLabel(title); lbl.setStyleSheet("color:white;font-size:12px;")
+    L.addWidget(lbl); L.addStretch()
+    for t,s,c in (("−",win.showMinimized,"background:#333;color:white;border:none;"),
+                  ("□",lambda: win.showNormal() if win.isMaximized() else win.showMaximized(),
+                   "background:#333;color:white;border:none;"),
+                  ("✕",on_close,"background:#c0392b;color:white;border:none;")):
+        b = QPushButton(t); b.setFixedSize(30,30); b.setStyleSheet(c)
+        b.clicked.connect(s); L.addWidget(b)
+    bar._dp = None
+    def _p(e):
+        if e.button()==Qt.LeftButton: bar._dp=e.globalPos()
+    def _m(e):
+        if bar._dp: win.move(win.pos()+(e.globalPos()-bar._dp)); bar._dp=e.globalPos()
+    bar.mousePressEvent=_p; bar.mouseMoveEvent=_m
+    return bar
+
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import Qt
+
+_par   = globals().get("PARENT_WINDOW")
+_close = globals().get("APP_CLOSE_CALLBACK")
+_aid   = globals().get("APP_ID","")
+
+win=QWidget(_par); win.setWindowFlags(Qt.Tool|Qt.FramelessWindowHint)
+win.setWindowTitle("App Store"); win.setGeometry(300,200,800,560)
+win.setStyleSheet("background:white;")
+
+def _on_close():
+    if _close: _close(_aid)
+    else: win.close()
+
+lay=QVBoxLayout(win); lay.setContentsMargins(0,0,0,0)
+lay.addWidget(_tbar("App Store",win,_on_close))
+search=QLineEdit(); search.setPlaceholderText("Search apps…")
+search.setStyleSheet("padding:6px;font-size:13px;border:1px solid #ccc;margin:8px;")
+lay.addWidget(search)
+
+app_list=QListWidget()
+stacked=QStackedWidget(); stacked.addWidget(app_list)
+for i in range(1,11): app_list.addItem(QListWidgetItem(f"App {i}"))
+
+def _details(item):
+    w=QWidget(); il=QVBoxLayout(w)
+    back=QPushButton("← Back"); back.setFixedSize(80,36)
+    back.clicked.connect(lambda: stacked.setCurrentWidget(app_list))
+    il.addWidget(back,alignment=Qt.AlignLeft)
+    il.addWidget(QLabel(f"Description of {item.text()}"),alignment=Qt.AlignCenter)
+    dl=QPushButton("Download"); dl.setStyleSheet("background:#6272a4;color:white;border:none;padding:8px;border-radius:6px;")
+    il.addWidget(dl,alignment=Qt.AlignCenter); stacked.addWidget(w); stacked.setCurrentWidget(w)
+
+app_list.itemClicked.connect(_details); lay.addWidget(stacked)
+win.closeEvent=lambda e:(_on_close(),e.ignore())
+win.show()
+
+def on_program_exit(): pass

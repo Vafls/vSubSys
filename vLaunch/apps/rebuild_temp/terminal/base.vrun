@@ -1,0 +1,107 @@
+
+def _tbar(title, win, on_close):
+    from PyQt5.QtWidgets import QWidget, QHBoxLayout, QLabel, QPushButton
+    from PyQt5.QtCore import Qt
+    bar = QWidget(win); bar.setFixedHeight(30)
+    bar.setStyleSheet("background:#1a1a1a;")
+    L = QHBoxLayout(bar); L.setContentsMargins(8,0,0,0)
+    lbl = QLabel(title); lbl.setStyleSheet("color:white;font-size:12px;")
+    L.addWidget(lbl); L.addStretch()
+    for t,s,c in (("−",win.showMinimized,"background:#333;color:white;border:none;"),
+                  ("□",lambda: win.showNormal() if win.isMaximized() else win.showMaximized(),
+                   "background:#333;color:white;border:none;"),
+                  ("✕",on_close,"background:#c0392b;color:white;border:none;")):
+        b = QPushButton(t); b.setFixedSize(30,30); b.setStyleSheet(c)
+        b.clicked.connect(s); L.addWidget(b)
+    bar._dp = None
+    def _p(e):
+        if e.button()==Qt.LeftButton: bar._dp=e.globalPos()
+    def _m(e):
+        if bar._dp: win.move(win.pos()+(e.globalPos()-bar._dp)); bar._dp=e.globalPos()
+    bar.mousePressEvent=_p; bar.mouseMoveEvent=_m
+    return bar
+
+import os, getpass
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import Qt, QSize
+from PyQt5.QtGui import *
+
+_par   = globals().get("PARENT_WINDOW")
+_close = globals().get("APP_CLOSE_CALLBACK")
+_aid   = globals().get("APP_ID", "")
+_home  = globals().get("HOME_DIR", os.path.expanduser("~"))
+_kern  = globals().get("KERNEL")
+cwd    = [_home]
+su     = [False]
+
+win = QWidget(_par)
+win.setWindowFlags(Qt.Tool | Qt.FramelessWindowHint)
+win.setWindowTitle("Terminal")
+win.setGeometry(300,300,800,560)
+win.setStyleSheet("background:black;color:#00ff00;font-family:Consolas;font-size:12px;")
+
+def _on_close():
+    if _close: _close(_aid)
+    else: win.close()
+
+lay = QVBoxLayout(win); lay.setContentsMargins(4,4,4,4); lay.setSpacing(4)
+lay.addWidget(_tbar("Terminal", win, _on_close))
+
+out = QLabel("vLaunch Terminal  |  type 'help'\n")
+out.setStyleSheet("color:#00ff00;padding:4px;"); out.setWordWrap(True)
+out.setAlignment(Qt.AlignTop|Qt.AlignLeft)
+inp = QLineEdit()
+inp.setStyleSheet("background:#002200;color:#00ff00;border:1px solid #00aa00;")
+
+lay.addWidget(out); lay.addWidget(inp)
+
+def _sandbox(path):
+    import os
+    base = globals().get("HOME_DIR", _home)
+    full = os.path.normpath(os.path.join(cwd[0], path))
+    return full if full.startswith(base) else None
+
+def _run(cmd):
+    parts = cmd.split(None,1); verb=parts[0].lower(); arg=parts[1] if len(parts)>1 else ""
+    if verb=="help":
+        lines=["help exit clear whoami pwd cd ls su"]
+        if su[0]: lines+=["[su] del <file>"]
+        return "\n".join(lines)
+    if verb=="exit": _on_close(); return ""
+    if verb=="clear": out.setText(""); return ""
+    if verb=="whoami":
+        if _kern: return _kern.get_cfg("profile_1_name","user")
+        return getpass.getuser()
+    if verb=="pwd": return cwd[0]
+    if verb=="cd":
+        target = _sandbox(arg or _home)
+        if target and os.path.isdir(target): cwd[0]=target; return f"→ {cwd[0]}"
+        return "Directory not found or access denied"
+    if verb=="ls":
+        try: return "  ".join(os.listdir(cwd[0])) or "(empty)"
+        except Exception as e: return str(e)
+    if verb=="su":
+        from PyQt5.QtWidgets import QInputDialog, QLineEdit as QLI
+        correct = _kern.get_cfg("profile_1_pass") if _kern else ""
+        p,ok = QInputDialog.getText(win,"Auth","Password:",QLI.Password)
+        if ok and p==correct: su[0]=True; return "Superuser activated"
+        return "Authentication failed"
+    if verb=="del":
+        if not su[0]: return "su first"
+        t = _sandbox(arg)
+        if t and os.path.isfile(t): os.remove(t); return f"Deleted: {t}"
+        return "File not found or access denied"
+    return f"Unknown command: {verb}"
+
+def _exec():
+    cmd=inp.text().strip(); inp.clear()
+    if not cmd: return
+    out.setText(out.text()+f"\n{cwd[0]}> {cmd}")
+    r=_run(cmd)
+    if r: out.setText(out.text()+"\n"+r)
+
+inp.returnPressed.connect(_exec)
+win.closeEvent = lambda e: (_on_close(), e.ignore())
+win.show()
+
+def on_program_exit(): pass
