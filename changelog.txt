@@ -1,3 +1,15 @@
+# BUILD RECODE 1
+
+- Completely restructured project architecture
+- All components are now interconnected and depend on each other
+- Improved overall performance and internal project structure
+- Introduced a sandbox system - subsystems now operate strictly within isolated environments
+- Added configurable resource usage control inside the sandbox
+- Extended core functionality of the sub-system kernel
+- Visual improvements to the graphical shell and multiple bug fixes
+- Improved structure and execution of .vysico applications
+- New minimalistic system bootloader
+
 # BUILD 1.0.4
 
 - Settings interface fix
