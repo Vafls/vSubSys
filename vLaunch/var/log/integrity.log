@@ -1,0 +1,110 @@
+
+[2026-03-20 17:07:20] Integrity check — 8 issue(s)
+  [INFO    ] Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/v_ide_7761888959'
+  [INFO    ] Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/v_browser_7309961557'
+  [INFO    ] Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/terminal_4254185314'
+  [INFO    ] Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/snake_3799925955'
+  [INFO    ] Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/settings_7849980506'
+  [INFO    ] Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/camera_6150584028'
+  [INFO    ] Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/app_store_4398501806'
+  [INFO    ] Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/camera_1922447728'
+
+[2026-03-20 17:08:54] Integrity check — 0 issue(s)
+
+[2026-03-20 17:09:26] Integrity check — 0 issue(s)
+
+[2026-03-20 17:09:31] Integrity check — 0 issue(s)
+
+[2026-03-20 17:09:58] Integrity check — 0 issue(s)
+
+[2026-03-20 17:11:00] Integrity check — 0 issue(s)
+
+[2026-03-20 17:14:09] Integrity check — 0 issue(s)
+
+[2026-03-20 17:17:21] Integrity check — 1 issue(s)
+  [INFO    ] Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/camera_3508063108'
+
+[2026-03-20 17:19:22] Integrity check — 0 issue(s)
+
+[2026-03-20 17:29:52] Integrity check — 5 issue(s)
+  [WARNING ] kernel.py hash changed since last boot
+  [INFO    ] Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/v_browser_6945209169'
+  [INFO    ] Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/settings_8407333291'
+  [INFO    ] Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/v_browser_2295508859'
+  [INFO    ] Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/v_ide_3647101913'
+
+[2026-03-20 17:30:14] Integrity check — 0 issue(s)
+
+[2026-03-20 17:30:44] Integrity check — 0 issue(s)
+
+[2026-03-20 17:31:12] Integrity check — 0 issue(s)
+
+[2026-03-20 17:32:11] Integrity check — 0 issue(s)
+
+[2026-03-20 17:33:07] Integrity check — 0 issue(s)
+
+[2026-03-20 17:37:39] Integrity check — 0 issue(s)
+
+[2026-03-20 17:38:20] Integrity check — 0 issue(s)
+
+[2026-03-20 17:38:31] Integrity check — 0 issue(s)
+
+[2026-03-20 17:45:36] Integrity check — 1 issue(s)
+  [INFO    ] Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/terminal_4714428190'
+
+[2026-03-20 17:46:11] Integrity check — 0 issue(s)
+
+[2026-03-20 17:46:55] Integrity check — 0 issue(s)
+
+[2026-03-20 20:07:33] Integrity check — 1 issue(s)
+  [INFO    ] Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/settings_8215387112'
+
+[2026-03-20 20:13:01] Integrity check — 0 issue(s)
+
+[2026-03-20 20:13:15] Integrity check — 0 issue(s)
+
+[2026-03-20 20:16:49] Integrity check — 0 issue(s)
+
+[2026-03-21 14:12:52] Integrity check — 0 issue(s)
+
+[2026-03-21 14:26:08] Integrity check — 1 issue(s)
+  [WARNING ] kernel.py hash changed since last boot
+
+[2026-03-21 14:26:31] Integrity check — 0 issue(s)
+
+[2026-03-21 14:27:05] Integrity check — 0 issue(s)
+
+[2026-03-21 14:27:26] Integrity check — 0 issue(s)
+
+[2026-03-21 14:34:22] Integrity check — 1 issue(s)
+  [WARNING ] kernel.py hash changed since last boot
+
+[2026-03-21 14:35:38] Integrity check — 0 issue(s)
+
+[2026-03-21 14:35:51] Integrity check — 0 issue(s)
+
+[2026-03-21 14:36:02] Integrity check — 0 issue(s)
+
+[2026-03-21 14:38:57] Integrity check — 0 issue(s)
+
+[2026-03-21 14:40:46] Integrity check — 0 issue(s)
+
+[2026-03-21 14:41:17] Integrity check — 0 issue(s)
+
+[2026-03-21 14:42:33] Integrity check — 0 issue(s)
+
+[2026-03-21 14:48:26] Integrity check — 0 issue(s)
+
+[2026-03-21 14:49:27] Integrity check — 0 issue(s)
+
+[2026-03-21 14:50:21] Integrity check — 0 issue(s)
+
+[2026-03-21 14:52:00] Integrity check — 0 issue(s)
+
+[2026-03-21 14:54:09] Integrity check — 0 issue(s)
+
+[2026-03-21 14:55:43] Integrity check — 0 issue(s)
+
+[2026-03-21 14:56:29] Integrity check — 0 issue(s)
+
+[2026-03-21 15:09:58] Integrity check — 0 issue(s)

@@ -1,0 +1,168 @@
+Mar 20 16:39:18 kernel: vLaunch Kernel 3.0.0 booted
+Mar 20 16:39:18 kernel: BASE_DIR: /home/kostik/Рабочий стол/vSubSys/vLaunch
+Mar 20 16:39:18 kernel: hostname: vSubSys
+Mar 20 16:40:35 kernel: kernel: reboot initiated by user
+Mar 20 16:40:39 kernel: vLaunch Kernel 3.0.0 booted
+Mar 20 16:40:39 kernel: BASE_DIR: /home/kostik/Рабочий стол/vSubSys/vLaunch
+Mar 20 16:40:39 kernel: hostname: vSubSys
+Mar 20 16:40:42 kernel: kernel: halt initiated by user
+Mar 20 16:40:45 kernel: vLaunch Kernel 3.0.0 booted
+Mar 20 16:40:45 kernel: BASE_DIR: /home/kostik/Рабочий стол/vSubSys/vLaunch
+Mar 20 16:40:45 kernel: hostname: vSubSys
+Mar 20 16:43:59 kernel: vLaunch Kernel 3.0.0 booted
+Mar 20 16:43:59 kernel: BASE_DIR: /home/kostik/Рабочий стол/vSubSys/vLaunch
+Mar 20 16:43:59 kernel: hostname: vSubSys
+Mar 20 16:44:28 kernel: kernel: halt initiated by user
+Mar 20 16:45:13 kernel: vLaunch Kernel 3.0.0 booted
+Mar 20 16:45:13 kernel: BASE_DIR: /home/kostik/Рабочий стол/vSubSys/vLaunch
+Mar 20 16:45:13 kernel: hostname: vSubSys
+Mar 20 16:45:51 kernel: su: root session started
+Mar 20 16:46:57 kernel: kernel: halt initiated by user
+Mar 20 17:07:31 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 20 17:07:31 kernel: hostname=vSubSys  quota=5GB
+Mar 20 17:08:35 kernel: kernel: halt by user
+Mar 20 17:08:54 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/localhost/vLaunch'
+Mar 20 17:08:54 kernel: hostname=vSubSys  quota=5GB
+Mar 20 17:09:26 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 20 17:09:26 kernel: hostname=vSubSys  quota=5GB
+Mar 20 17:09:29 kernel: kernel: halt by user
+Mar 20 17:09:31 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 20 17:09:31 kernel: hostname=vSubSys  quota=5GB
+Mar 20 17:09:59 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 20 17:09:59 kernel: hostname=vSubSys  quota=5GB
+Mar 20 17:11:00 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 20 17:11:00 kernel: hostname=vSubSys  quota=5GB
+Mar 20 17:11:30 kernel: su: root session started
+Mar 20 17:13:58 kernel: su: root session started
+Mar 20 17:14:06 kernel: kernel: reboot by user
+Mar 20 17:14:09 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 20 17:14:09 kernel: hostname=vSubSys  quota=5GB
+Mar 20 17:17:18 kernel: kernel: halt by user
+Mar 20 17:17:21 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 20 17:17:21 kernel: hostname=vSubSys  quota=5GB
+Mar 20 17:19:23 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 20 17:19:23 kernel: hostname=vSubSys  quota=5GB
+Mar 20 17:19:26 kernel: kernel: halt by user
+Mar 20 17:29:52 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 20 17:29:52 kernel: hostname=vSubSys  quota=5GB
+Mar 20 17:30:07 kernel: kernel: halt by user
+Mar 20 17:30:14 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 20 17:30:14 kernel: hostname=vSubSys  quota=5GB
+Mar 20 17:30:14 kernel: PANIC: GuiBridge: gui.py not found at '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/modules/gui.py'
+Mar 20 17:30:44 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 20 17:30:44 kernel: hostname=vSubSys  quota=5GB
+Mar 20 17:31:12 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 20 17:31:12 kernel: hostname=vSubSys  quota=5GB
+Mar 20 17:32:11 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 20 17:32:11 kernel: hostname=vSubSys  quota=5GB
+Mar 20 17:33:07 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 20 17:33:07 kernel: hostname=vSubSys  quota=5GB
+Mar 20 17:33:21 kernel: kernel: halt by user
+Mar 20 17:37:39 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 20 17:37:39 kernel: hostname=vSubSys  quota=5GB
+Mar 20 17:38:09 kernel: kernel: halt by user
+Mar 20 17:38:20 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 20 17:38:20 kernel: hostname=vSubSys  quota=5GB
+Mar 20 17:38:32 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 20 17:38:32 kernel: hostname=vSubSys  quota=5GB
+Mar 20 17:38:38 kernel: kernel: halt by user
+Mar 20 17:45:36 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 20 17:45:36 kernel: hostname=vSubSys  quota=5GB
+Mar 20 17:45:39 kernel: kernel: halt by user
+Mar 20 17:46:11 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 20 17:46:11 kernel: hostname=vSubSys  quota=5GB
+Mar 20 17:46:13 kernel: kernel: halt by user
+Mar 20 17:46:55 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 20 17:46:55 kernel: hostname=vSubSys  quota=5GB
+Mar 20 17:46:58 kernel: kernel: halt by user
+Mar 20 20:07:34 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 20 20:07:34 kernel: hostname=vSubSys  quota=5GB
+Mar 20 20:11:44 kernel: kernel: halt by user
+Mar 20 20:13:02 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 20 20:13:02 kernel: hostname=vSubSys  quota=5GB
+Mar 20 20:13:06 kernel: kernel: halt by user
+Mar 20 20:13:15 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 20 20:13:15 kernel: hostname=vSubSys  quota=5GB
+Mar 20 20:14:34 kernel: su: root session started
+Mar 20 20:16:50 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 20 20:16:50 kernel: hostname=vSubSys  quota=5GB
+Mar 20 20:17:39 kernel: kernel: halt by user
+Mar 21 14:12:53 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 21 14:12:53 kernel: hostname=vSubSys  quota=5GB
+Mar 21 14:26:08 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 21 14:26:08 kernel: hostname=vSubSys  quota=5GB
+Mar 21 14:26:08 kernel: PANIC: gui.py not found at '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/gui.py'
+Mar 21 14:26:31 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 21 14:26:31 kernel: hostname=vSubSys  quota=5GB
+Mar 21 14:26:31 kernel: gui.py spawned pid=14304
+Mar 21 14:26:46 kernel: gui.py exited rc=0
+Mar 21 14:27:05 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 21 14:27:05 kernel: hostname=vSubSys  quota=5GB
+Mar 21 14:27:23 kernel: kernel: halt by user
+Mar 21 14:27:26 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 21 14:27:26 kernel: hostname=vSubSys  quota=5GB
+Mar 21 14:27:26 kernel: gui.py spawned pid=14426
+Mar 21 14:27:35 kernel: gui.py exited rc=0
+Mar 21 14:34:22 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 21 14:34:22 kernel: hostname=vSubSys  quota=5GB
+Mar 21 14:34:22 kernel: gui.py spawned pid=14625
+Mar 21 14:35:12 kernel: gui.py exited rc=0
+Mar 21 14:35:39 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 21 14:35:39 kernel: hostname=vSubSys  quota=5GB
+Mar 21 14:35:39 kernel: gui.py spawned pid=14739
+Mar 21 14:35:43 kernel: gui.py exited rc=0
+Mar 21 14:35:52 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 21 14:35:52 kernel: hostname=vSubSys  quota=5GB
+Mar 21 14:35:52 kernel: gui.py spawned pid=14780
+Mar 21 14:35:56 kernel: gui.py exited rc=0
+Mar 21 14:36:02 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 21 14:36:02 kernel: hostname=vSubSys  quota=5GB
+Mar 21 14:36:11 kernel: kernel: halt by user
+Mar 21 14:38:58 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 21 14:38:58 kernel: hostname=vSubSys  quota=5GB
+Mar 21 14:38:58 kernel: gui.py spawned pid=15452
+Mar 21 14:39:36 kernel: gui.py exited rc=0
+Mar 21 14:40:47 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 21 14:40:47 kernel: hostname=vSubSys  quota=5GB
+Mar 21 14:40:47 kernel: gui.py spawned pid=15579
+Mar 21 14:41:09 kernel: gui.py exited rc=0
+Mar 21 14:41:17 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 21 14:41:17 kernel: hostname=vSubSys  quota=5GB
+Mar 21 14:41:17 kernel: gui.py spawned pid=15624
+Mar 21 14:41:40 kernel: gui.py exited rc=0
+Mar 21 14:42:33 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 21 14:42:33 kernel: hostname=vSubSys  quota=5GB
+Mar 21 14:42:33 kernel: gui.py spawned pid=15728
+Mar 21 14:42:54 kernel: gui.py exited rc=0
+Mar 21 14:48:26 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 21 14:48:26 kernel: hostname=vSubSys  quota=5GB
+Mar 21 14:48:26 kernel: gui.py spawned pid=16426
+Mar 21 14:49:24 kernel: gui.py exited rc=0
+Mar 21 14:49:27 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 21 14:49:27 kernel: hostname=vSubSys  quota=5GB
+Mar 21 14:49:27 kernel: gui.py spawned pid=16508
+Mar 21 14:49:42 kernel: gui.py exited rc=0
+Mar 21 14:50:22 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 21 14:50:22 kernel: hostname=vSubSys  quota=5GB
+Mar 21 14:50:22 kernel: gui.py spawned pid=16555
+Mar 21 14:51:16 kernel: gui.py exited rc=0
+Mar 21 14:52:01 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 21 14:52:01 kernel: hostname=vSubSys  quota=5GB
+Mar 21 14:52:01 kernel: gui.py spawned pid=16634
+Mar 21 14:53:37 kernel: gui.py exited rc=0
+Mar 21 14:54:09 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 21 14:54:09 kernel: hostname=vSubSys  quota=5GB
+Mar 21 14:54:09 kernel: gui.py spawned pid=16697
+Mar 21 14:54:21 kernel: gui.py exited rc=0
+Mar 21 14:55:43 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 21 14:55:43 kernel: hostname=vSubSys  quota=5GB
+Mar 21 14:55:43 kernel: gui.py spawned pid=16844
+Mar 21 14:56:00 kernel: gui.py exited rc=0
+Mar 21 14:56:29 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 21 14:56:29 kernel: hostname=vSubSys  quota=5GB
+Mar 21 14:56:29 kernel: gui.py spawned pid=16898
+Mar 21 14:57:29 kernel: gui.py exited rc=0
+Mar 21 15:09:58 kernel: Kernel 4.0.0 booted  base='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+Mar 21 15:09:58 kernel: hostname=vSubSys  quota=5GB
+Mar 21 15:09:58 kernel: gui.py spawned pid=19097
+Mar 21 15:10:12 kernel: gui.py exited rc=0

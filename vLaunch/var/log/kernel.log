@@ -1,0 +1,693 @@
+[2026-03-20 16:39:17,834] INFO     kernel: Kernel 3.0.0 — BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 16:39:17,834] INFO     kernel:   user: Vafls
+[2026-03-20 16:39:17,834] INFO     kernel:   hostname: vSubSys
+[2026-03-20 16:39:17,834] INFO     kernel:   token: 579ea0d95f42…
+[2026-03-20 16:39:17,834] INFO     kernel: === Boot sequence start ===
+[2026-03-20 16:39:17,835] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 16:39:17,837] INFO     kernel: Module loaded: sheila
+[2026-03-20 16:39:17,982] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 16:39:18,287] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 16:39:18,289] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 16:40:35,347] INFO     kernel: poweroff: reboot
+[2026-03-20 16:40:39,640] INFO     kernel: Kernel 3.0.0 — BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 16:40:39,641] INFO     kernel:   user: Vafls
+[2026-03-20 16:40:39,641] INFO     kernel:   hostname: vSubSys
+[2026-03-20 16:40:39,641] INFO     kernel:   token: 00453158881c…
+[2026-03-20 16:40:39,641] INFO     kernel: === Boot sequence start ===
+[2026-03-20 16:40:39,641] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 16:40:39,643] INFO     kernel: Module loaded: sheila
+[2026-03-20 16:40:39,792] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 16:40:39,904] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 16:40:39,906] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 16:40:42,703] INFO     kernel: poweroff: halt
+[2026-03-20 16:40:44,967] INFO     kernel: Kernel 3.0.0 — BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 16:40:44,968] INFO     kernel:   user: Vafls
+[2026-03-20 16:40:44,968] INFO     kernel:   hostname: vSubSys
+[2026-03-20 16:40:44,968] INFO     kernel:   token: 0f74ade3e407…
+[2026-03-20 16:40:44,968] INFO     kernel: === Boot sequence start ===
+[2026-03-20 16:40:44,969] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 16:40:44,971] INFO     kernel: Module loaded: sheila
+[2026-03-20 16:40:45,115] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 16:40:45,235] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 16:40:45,238] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 16:43:48,989] INFO     kernel: pkg: launched 'terminal' [terminal_554860] pid=6103
+[2026-03-20 16:43:59,544] INFO     kernel: Kernel 3.0.0 — BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 16:43:59,544] INFO     kernel:   user: Vafls
+[2026-03-20 16:43:59,544] INFO     kernel:   hostname: vSubSys
+[2026-03-20 16:43:59,544] INFO     kernel:   token: ebc3a2f1df31…
+[2026-03-20 16:43:59,544] INFO     kernel: === Boot sequence start ===
+[2026-03-20 16:43:59,545] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 16:43:59,546] INFO     kernel: Module loaded: sheila
+[2026-03-20 16:43:59,692] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 16:43:59,813] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 16:43:59,815] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 16:44:28,998] INFO     kernel: poweroff: halt
+[2026-03-20 16:45:13,155] INFO     kernel: Kernel 3.0.0 — BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 16:45:13,155] INFO     kernel:   user: Vafls
+[2026-03-20 16:45:13,155] INFO     kernel:   hostname: vSubSys
+[2026-03-20 16:45:13,155] INFO     kernel:   token: fe228fced349…
+[2026-03-20 16:45:13,155] INFO     kernel: === Boot sequence start ===
+[2026-03-20 16:45:13,156] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 16:45:13,159] INFO     kernel: Module loaded: sheila
+[2026-03-20 16:45:13,316] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 16:45:13,615] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 16:45:13,618] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 16:45:51,341] INFO     kernel: TUI: su granted
+[2026-03-20 16:46:57,355] INFO     kernel: poweroff: halt
+[2026-03-20 17:07:20,571] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 17:07:20,572] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-20 17:07:20,572] INFO     kernel: === Boot sequence start ===
+[2026-03-20 17:07:20,573] WARNING  kernel: integrity: Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/v_ide_7761888959'
+[2026-03-20 17:07:20,574] WARNING  kernel: integrity: Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/v_browser_7309961557'
+[2026-03-20 17:07:20,575] WARNING  kernel: integrity: Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/terminal_4254185314'
+[2026-03-20 17:07:20,576] WARNING  kernel: integrity: Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/snake_3799925955'
+[2026-03-20 17:07:20,577] WARNING  kernel: integrity: Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/settings_7849980506'
+[2026-03-20 17:07:20,578] WARNING  kernel: integrity: Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/camera_6150584028'
+[2026-03-20 17:07:20,579] WARNING  kernel: integrity: Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/app_store_4398501806'
+[2026-03-20 17:07:20,579] WARNING  kernel: integrity: Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/camera_1922447728'
+[2026-03-20 17:07:20,580] INFO     kernel: Integrity check: OK
+[2026-03-20 17:07:20,580] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 17:07:25,035] INFO     kernel: warden auto-config: sandbox_ram_limit_mb = 512
+[2026-03-20 17:07:27,867] INFO     kernel: warden auto-config: sandbox_cpu_warn_pct = 80
+[2026-03-20 17:07:31,509] INFO     kernel: warden auto-config: sandbox_disk_quota_gb = 5
+[2026-03-20 17:07:31,510] INFO     kernel: Config reloaded
+[2026-03-20 17:07:31,511] INFO     kernel: Module loaded: sheila
+[2026-03-20 17:07:31,664] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 17:07:31,914] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 17:07:31,916] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 17:07:31,991] WARNING  kernel: warden: RAM used 3485 MB (watch threshold 512 MB)
+[2026-03-20 17:08:35,235] INFO     kernel: poweroff: halt
+[2026-03-20 17:08:54,682] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/localhost/vLaunch'
+[2026-03-20 17:08:54,682] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-20 17:08:54,682] INFO     kernel: === Boot sequence start ===
+[2026-03-20 17:08:54,684] INFO     kernel: Integrity check: OK
+[2026-03-20 17:08:54,685] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 17:08:54,686] INFO     kernel: Config reloaded
+[2026-03-20 17:08:54,687] INFO     kernel: Module loaded: sheila
+[2026-03-20 17:08:54,835] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 17:08:54,971] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 17:08:54,975] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 17:08:55,067] WARNING  kernel: warden: RAM used 3462 MB (watch threshold 512 MB)
+[2026-03-20 17:09:10,686] ERROR    kernel: TUI 'poweroff'
+Traceback (most recent call last):
+  File "/home/kostik/Рабочий стол/localhost/vLaunch/kernel/kernel.py", line 1154, in run
+  File "/home/kostik/Рабочий стол/localhost/vLaunch/kernel/kernel.py", line 2717, in _c_poweroff
+  File "/home/kostik/Рабочий стол/localhost/vLaunch/kernel/kernel.py", line 723, in _dmesg
+FileNotFoundError: [Errno 2] No such file or directory: '/home/kostik/Рабочий стол/localhost/vLaunch/var/log/dmesg.log'
+[2026-03-20 17:09:22,547] ERROR    kernel: TUI 'poweroff'
+Traceback (most recent call last):
+  File "/home/kostik/Рабочий стол/localhost/vLaunch/kernel/kernel.py", line 1154, in run
+  File "/home/kostik/Рабочий стол/localhost/vLaunch/kernel/kernel.py", line 2717, in _c_poweroff
+  File "/home/kostik/Рабочий стол/localhost/vLaunch/kernel/kernel.py", line 723, in _dmesg
+FileNotFoundError: [Errno 2] No such file or directory: '/home/kostik/Рабочий стол/localhost/vLaunch/var/log/dmesg.log'
+[2026-03-20 17:09:26,534] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 17:09:26,534] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-20 17:09:26,534] INFO     kernel: === Boot sequence start ===
+[2026-03-20 17:09:26,536] INFO     kernel: Integrity check: OK
+[2026-03-20 17:09:26,536] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 17:09:26,537] INFO     kernel: Config reloaded
+[2026-03-20 17:09:26,539] INFO     kernel: Module loaded: sheila
+[2026-03-20 17:09:26,702] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 17:09:26,821] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 17:09:26,823] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 17:09:26,916] WARNING  kernel: warden: RAM used 3340 MB (watch threshold 512 MB)
+[2026-03-20 17:09:29,653] INFO     kernel: poweroff: halt
+[2026-03-20 17:09:31,628] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 17:09:31,628] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-20 17:09:31,628] INFO     kernel: === Boot sequence start ===
+[2026-03-20 17:09:31,630] INFO     kernel: Integrity check: OK
+[2026-03-20 17:09:31,631] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 17:09:31,632] INFO     kernel: Config reloaded
+[2026-03-20 17:09:31,633] INFO     kernel: Module loaded: sheila
+[2026-03-20 17:09:31,792] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 17:09:31,912] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 17:09:31,914] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 17:09:31,997] WARNING  kernel: warden: RAM used 3348 MB (watch threshold 512 MB)
+[2026-03-20 17:09:58,739] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 17:09:58,739] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-20 17:09:58,739] INFO     kernel: === Boot sequence start ===
+[2026-03-20 17:09:58,741] INFO     kernel: Integrity check: OK
+[2026-03-20 17:09:58,741] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 17:09:58,742] INFO     kernel: Config reloaded
+[2026-03-20 17:09:58,744] INFO     kernel: Module loaded: sheila
+[2026-03-20 17:09:58,890] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 17:09:59,001] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 17:09:59,003] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 17:09:59,080] WARNING  kernel: warden: RAM used 3341 MB (watch threshold 512 MB)
+[2026-03-20 17:11:00,426] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 17:11:00,426] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-20 17:11:00,427] INFO     kernel: === Boot sequence start ===
+[2026-03-20 17:11:00,428] INFO     kernel: Integrity check: OK
+[2026-03-20 17:11:00,429] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 17:11:00,430] INFO     kernel: Config reloaded
+[2026-03-20 17:11:00,432] INFO     kernel: Module loaded: sheila
+[2026-03-20 17:11:00,588] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 17:11:00,700] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 17:11:00,702] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 17:11:00,785] WARNING  kernel: warden: RAM used 3532 MB (watch threshold 512 MB)
+[2026-03-20 17:11:30,501] INFO     kernel: TUI: su granted
+[2026-03-20 17:12:13,323] WARNING  kernel: warden: RAM used 3374 MB (watch threshold 512 MB)
+[2026-03-20 17:13:39,700] WARNING  kernel: warden: RAM used 3356 MB (watch threshold 512 MB)
+[2026-03-20 17:13:58,566] INFO     kernel: TUI: su granted
+[2026-03-20 17:14:06,631] INFO     kernel: poweroff: reboot
+[2026-03-20 17:14:09,074] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 17:14:09,075] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-20 17:14:09,075] INFO     kernel: === Boot sequence start ===
+[2026-03-20 17:14:09,077] INFO     kernel: Integrity check: OK
+[2026-03-20 17:14:09,078] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 17:14:09,079] INFO     kernel: Config reloaded
+[2026-03-20 17:14:09,081] INFO     kernel: Module loaded: sheila
+[2026-03-20 17:14:09,236] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 17:14:09,538] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 17:14:09,540] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 17:14:09,621] WARNING  kernel: warden: RAM used 3368 MB (watch threshold 512 MB)
+[2026-03-20 17:17:18,225] INFO     kernel: poweroff: halt
+[2026-03-20 17:17:21,244] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 17:17:21,245] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-20 17:17:21,245] INFO     kernel: === Boot sequence start ===
+[2026-03-20 17:17:21,248] WARNING  kernel: integrity: Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/camera_3508063108'
+[2026-03-20 17:17:21,248] INFO     kernel: Integrity check: OK
+[2026-03-20 17:17:21,249] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 17:17:21,250] INFO     kernel: Config reloaded
+[2026-03-20 17:17:21,251] INFO     kernel: Module loaded: sheila
+[2026-03-20 17:17:21,409] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 17:17:21,524] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 17:17:21,526] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 17:19:22,930] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 17:19:22,930] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-20 17:19:22,930] INFO     kernel: === Boot sequence start ===
+[2026-03-20 17:19:22,932] INFO     kernel: Integrity check: OK
+[2026-03-20 17:19:22,932] WARNING  kernel: Module not found: violence_sysinit
+[2026-03-20 17:19:22,933] WARNING  kernel: violence_sysinit not found
+[2026-03-20 17:19:22,933] INFO     kernel: Config reloaded
+[2026-03-20 17:19:22,935] INFO     kernel: Module loaded: sheila
+[2026-03-20 17:19:23,104] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 17:19:23,391] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 17:19:23,393] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 17:19:23,467] WARNING  kernel: warden: RAM used 3572 MB (watch threshold 512 MB)
+[2026-03-20 17:19:26,619] INFO     kernel: poweroff: halt
+[2026-03-20 17:29:52,263] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 17:29:52,263] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-20 17:29:52,264] INFO     kernel: === Boot sequence start ===
+[2026-03-20 17:29:52,265] WARNING  kernel: integrity: kernel.py hash changed since last boot
+[2026-03-20 17:29:52,267] WARNING  kernel: integrity: Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/v_browser_6945209169'
+[2026-03-20 17:29:52,268] WARNING  kernel: integrity: Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/settings_8407333291'
+[2026-03-20 17:29:52,269] WARNING  kernel: integrity: Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/v_browser_2295508859'
+[2026-03-20 17:29:52,270] WARNING  kernel: integrity: Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/v_ide_3647101913'
+[2026-03-20 17:29:52,270] INFO     kernel: Integrity check: OK
+[2026-03-20 17:29:52,277] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 17:29:52,278] INFO     kernel: Config reloaded
+[2026-03-20 17:29:52,279] INFO     kernel: Module loaded: sheila
+[2026-03-20 17:29:52,423] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 17:29:52,671] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 17:29:52,674] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 17:29:52,750] WARNING  kernel: warden: RAM used 3553 MB (watch threshold 512 MB)
+[2026-03-20 17:30:07,774] INFO     kernel: poweroff: halt
+[2026-03-20 17:30:14,617] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 17:30:14,618] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-20 17:30:14,618] INFO     kernel: === Boot sequence start ===
+[2026-03-20 17:30:14,620] INFO     kernel: Integrity check: OK
+[2026-03-20 17:30:14,621] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 17:30:14,622] INFO     kernel: Config reloaded
+[2026-03-20 17:30:14,623] INFO     kernel: Module loaded: sheila
+[2026-03-20 17:30:14,772] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 17:30:14,888] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 17:30:14,890] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 17:30:14,891] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 17:30:14,942] CRITICAL kernel: GuiBridge launch failed: GuiBridge: gui.py not found at '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/modules/gui.py'
+[2026-03-20 17:30:14,943] CRITICAL kernel: KERNEL PANIC: GuiBridge: gui.py not found at '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/modules/gui.py'  fatal=True
+[2026-03-20 17:30:14,946] CRITICAL kernel: Traceback:
+Traceback (most recent call last):
+  File "/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py", line 2814, in _start_gui
+    bridge.launch()   # enters Qt event loop — does not return normally
+    ~~~~~~~~~~~~~^^
+  File "/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/modules/violence_sysinit.py", line 95, in launch
+    raise RuntimeError(f"GuiBridge: gui.py not found at {gui_path!r}")
+RuntimeError: GuiBridge: gui.py not found at '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/modules/gui.py'
+
+[2026-03-20 17:30:44,378] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 17:30:44,378] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-20 17:30:44,378] INFO     kernel: === Boot sequence start ===
+[2026-03-20 17:30:44,380] INFO     kernel: Integrity check: OK
+[2026-03-20 17:30:44,381] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 17:30:44,382] INFO     kernel: Config reloaded
+[2026-03-20 17:30:44,384] INFO     kernel: Module loaded: sheila
+[2026-03-20 17:30:44,541] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 17:30:44,748] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 17:30:44,750] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 17:30:44,751] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 17:30:47,230] WARNING  kernel: warden: RAM used 3474 MB (watch threshold 512 MB)
+[2026-03-20 17:30:50,265] ERROR    kernel: app_runner.py missing
+[2026-03-20 17:31:01,232] ERROR    kernel: app_runner.py missing
+[2026-03-20 17:31:12,004] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 17:31:12,005] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-20 17:31:12,005] INFO     kernel: === Boot sequence start ===
+[2026-03-20 17:31:12,006] INFO     kernel: Integrity check: OK
+[2026-03-20 17:31:12,007] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 17:31:12,008] INFO     kernel: Config reloaded
+[2026-03-20 17:31:12,009] INFO     kernel: Module loaded: sheila
+[2026-03-20 17:31:12,173] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 17:31:12,303] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 17:31:12,305] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 17:31:12,309] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 17:31:23,715] WARNING  kernel: warden: RAM used 3642 MB (watch threshold 512 MB)
+[2026-03-20 17:31:29,848] ERROR    kernel: app_runner.py missing
+[2026-03-20 17:32:11,526] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 17:32:11,526] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-20 17:32:11,527] INFO     kernel: === Boot sequence start ===
+[2026-03-20 17:32:11,528] INFO     kernel: Integrity check: OK
+[2026-03-20 17:32:11,529] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 17:32:11,530] INFO     kernel: Config reloaded
+[2026-03-20 17:32:11,531] INFO     kernel: Module loaded: sheila
+[2026-03-20 17:32:11,676] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 17:32:11,794] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 17:32:11,796] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 17:32:11,797] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 17:32:13,356] WARNING  kernel: warden: RAM used 3535 MB (watch threshold 512 MB)
+[2026-03-20 17:32:14,689] INFO     kernel: pkg: launched 'settings' [settings_136890] pid=7593
+[2026-03-20 17:33:07,250] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 17:33:07,250] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-20 17:33:07,250] INFO     kernel: === Boot sequence start ===
+[2026-03-20 17:33:07,252] INFO     kernel: Integrity check: OK
+[2026-03-20 17:33:07,253] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 17:33:07,254] INFO     kernel: Config reloaded
+[2026-03-20 17:33:07,255] INFO     kernel: Module loaded: sheila
+[2026-03-20 17:33:07,404] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 17:33:07,515] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 17:33:07,517] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 17:33:07,598] WARNING  kernel: warden: RAM used 3464 MB (watch threshold 512 MB)
+[2026-03-20 17:33:21,624] INFO     kernel: poweroff: halt
+[2026-03-20 17:37:39,338] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 17:37:39,339] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-20 17:37:39,339] INFO     kernel: === Boot sequence start ===
+[2026-03-20 17:37:39,341] INFO     kernel: Integrity check: OK
+[2026-03-20 17:37:39,341] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 17:37:39,342] INFO     kernel: Config reloaded
+[2026-03-20 17:37:39,343] INFO     kernel: Module loaded: sheila
+[2026-03-20 17:37:39,480] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 17:37:39,853] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 17:37:39,856] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 17:37:39,930] WARNING  kernel: warden: RAM used 3585 MB (watch threshold 512 MB)
+[2026-03-20 17:38:09,050] INFO     kernel: poweroff: halt
+[2026-03-20 17:38:20,277] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 17:38:20,278] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-20 17:38:20,278] INFO     kernel: === Boot sequence start ===
+[2026-03-20 17:38:20,280] INFO     kernel: Integrity check: OK
+[2026-03-20 17:38:20,280] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 17:38:20,281] INFO     kernel: Config reloaded
+[2026-03-20 17:38:20,283] INFO     kernel: Module loaded: sheila
+[2026-03-20 17:38:20,435] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 17:38:20,552] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 17:38:20,554] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 17:38:20,555] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 17:38:21,996] WARNING  kernel: warden: RAM used 3632 MB (watch threshold 512 MB)
+[2026-03-20 17:38:31,887] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 17:38:31,888] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-20 17:38:31,888] INFO     kernel: === Boot sequence start ===
+[2026-03-20 17:38:31,889] INFO     kernel: Integrity check: OK
+[2026-03-20 17:38:31,890] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 17:38:31,891] INFO     kernel: Config reloaded
+[2026-03-20 17:38:31,892] INFO     kernel: Module loaded: sheila
+[2026-03-20 17:38:32,032] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 17:38:32,159] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 17:38:32,161] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 17:38:32,235] WARNING  kernel: warden: RAM used 3417 MB (watch threshold 512 MB)
+[2026-03-20 17:38:38,225] INFO     kernel: poweroff: halt
+[2026-03-20 17:45:36,448] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 17:45:36,448] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-20 17:45:36,449] INFO     kernel: === Boot sequence start ===
+[2026-03-20 17:45:36,451] WARNING  kernel: integrity: Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/terminal_4714428190'
+[2026-03-20 17:45:36,452] INFO     kernel: Integrity check: OK
+[2026-03-20 17:45:36,452] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 17:45:36,453] INFO     kernel: Config reloaded
+[2026-03-20 17:45:36,454] INFO     kernel: Module loaded: sheila
+[2026-03-20 17:45:36,588] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 17:45:36,886] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 17:45:36,889] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 17:45:36,959] WARNING  kernel: warden: RAM used 3535 MB (watch threshold 512 MB)
+[2026-03-20 17:45:39,727] INFO     kernel: poweroff: halt
+[2026-03-20 17:46:11,011] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 17:46:11,012] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-20 17:46:11,012] INFO     kernel: === Boot sequence start ===
+[2026-03-20 17:46:11,013] INFO     kernel: Integrity check: OK
+[2026-03-20 17:46:11,020] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 17:46:11,021] INFO     kernel: Config reloaded
+[2026-03-20 17:46:11,025] INFO     kernel: Module loaded: sheila
+[2026-03-20 17:46:11,406] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 17:46:11,553] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 17:46:11,555] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 17:46:11,675] WARNING  kernel: warden: RAM used 3545 MB (watch threshold 512 MB)
+[2026-03-20 17:46:13,542] INFO     kernel: poweroff: halt
+[2026-03-20 17:46:55,130] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 17:46:55,131] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-20 17:46:55,131] INFO     kernel: === Boot sequence start ===
+[2026-03-20 17:46:55,132] INFO     kernel: Integrity check: OK
+[2026-03-20 17:46:55,133] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 17:46:55,134] INFO     kernel: Config reloaded
+[2026-03-20 17:46:55,136] INFO     kernel: Module loaded: sheila
+[2026-03-20 17:46:55,283] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 17:46:55,400] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 17:46:55,403] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 17:46:55,469] WARNING  kernel: warden: RAM used 3529 MB (watch threshold 512 MB)
+[2026-03-20 17:46:58,182] INFO     kernel: poweroff: halt
+[2026-03-20 20:07:33,012] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 20:07:33,013] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-20 20:07:33,013] INFO     kernel: === Boot sequence start ===
+[2026-03-20 20:07:33,020] WARNING  kernel: integrity: Cleaned stale temp dir: '/home/kostik/Рабочий стол/vSubSys/vLaunch/apps/temp/settings_8215387112'
+[2026-03-20 20:07:33,021] INFO     kernel: Integrity check: OK
+[2026-03-20 20:07:33,025] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 20:07:33,027] INFO     kernel: Config reloaded
+[2026-03-20 20:07:33,034] INFO     kernel: Module loaded: sheila
+[2026-03-20 20:07:33,627] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 20:07:34,135] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 20:07:34,141] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 20:07:34,592] WARNING  kernel: warden: RAM used 2784 MB (watch threshold 512 MB)
+[2026-03-20 20:09:38,611] WARNING  kernel: warden: RAM used 2876 MB (watch threshold 512 MB)
+[2026-03-20 20:10:58,959] WARNING  kernel: warden: RAM used 2752 MB (watch threshold 512 MB)
+[2026-03-20 20:11:44,696] INFO     kernel: poweroff: halt
+[2026-03-20 20:13:01,457] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 20:13:01,457] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-20 20:13:01,457] INFO     kernel: === Boot sequence start ===
+[2026-03-20 20:13:01,461] INFO     kernel: Integrity check: OK
+[2026-03-20 20:13:01,462] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 20:13:01,465] INFO     kernel: Config reloaded
+[2026-03-20 20:13:01,470] INFO     kernel: Module loaded: sheila
+[2026-03-20 20:13:01,856] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 20:13:02,231] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 20:13:02,239] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 20:13:02,412] WARNING  kernel: warden: RAM used 2713 MB (watch threshold 512 MB)
+[2026-03-20 20:13:06,942] INFO     kernel: poweroff: halt
+[2026-03-20 20:13:15,117] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 20:13:15,118] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-20 20:13:15,118] INFO     kernel: === Boot sequence start ===
+[2026-03-20 20:13:15,122] INFO     kernel: Integrity check: OK
+[2026-03-20 20:13:15,124] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 20:13:15,126] INFO     kernel: Config reloaded
+[2026-03-20 20:13:15,131] INFO     kernel: Module loaded: sheila
+[2026-03-20 20:13:15,514] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 20:13:15,665] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 20:13:15,671] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 20:13:15,847] WARNING  kernel: warden: RAM used 2709 MB (watch threshold 512 MB)
+[2026-03-20 20:14:29,943] WARNING  kernel: warden: RAM used 2739 MB (watch threshold 512 MB)
+[2026-03-20 20:14:34,085] INFO     kernel: TUI: su granted
+[2026-03-20 20:15:06,975] INFO     kernel: Config reloaded
+[2026-03-20 20:15:51,415] WARNING  kernel: warden: RAM used 2728 MB (watch threshold 512 MB)
+[2026-03-20 20:16:49,354] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 20:16:49,354] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-20 20:16:49,355] INFO     kernel: === Boot sequence start ===
+[2026-03-20 20:16:49,360] INFO     kernel: Integrity check: OK
+[2026-03-20 20:16:49,362] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 20:16:49,365] INFO     kernel: Config reloaded
+[2026-03-20 20:16:49,369] INFO     kernel: Module loaded: sheila
+[2026-03-20 20:16:49,858] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 20:16:50,027] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 20:16:50,035] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 20:16:50,218] WARNING  kernel: warden: RAM used 2810 MB (watch threshold 512 MB)
+[2026-03-20 20:17:39,187] INFO     kernel: poweroff: halt
+[2026-03-21 14:12:52,725] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-21 14:12:52,726] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-21 14:12:52,726] INFO     kernel: === Boot sequence start ===
+[2026-03-21 14:12:52,727] INFO     kernel: Integrity check: OK
+[2026-03-21 14:12:52,729] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-21 14:12:52,729] INFO     kernel: Config reloaded
+[2026-03-21 14:12:52,733] INFO     kernel: Module loaded: sheila
+[2026-03-21 14:12:53,022] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-21 14:12:53,409] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-21 14:12:53,413] INFO     kernel: === Boot sequence complete ===
+[2026-03-21 14:12:53,414] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-21 14:12:55,485] WARNING  kernel: warden: RAM used 4508 MB (watch threshold 512 MB)
+[2026-03-21 14:12:57,251] ERROR    kernel: app_runner.py missing
+[2026-03-21 14:26:08,022] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-21 14:26:08,022] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-21 14:26:08,022] INFO     kernel: === Boot sequence start ===
+[2026-03-21 14:26:08,023] WARNING  kernel: integrity: kernel.py hash changed since last boot
+[2026-03-21 14:26:08,024] INFO     kernel: Integrity check: OK
+[2026-03-21 14:26:08,031] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-21 14:26:08,032] INFO     kernel: Config reloaded
+[2026-03-21 14:26:08,035] INFO     kernel: Module loaded: sheila
+[2026-03-21 14:26:08,292] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-21 14:26:08,540] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-21 14:26:08,543] INFO     kernel: === Boot sequence complete ===
+[2026-03-21 14:26:08,543] CRITICAL kernel: KERNEL PANIC: gui.py not found at '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/gui.py'  fatal=True
+[2026-03-21 14:26:31,719] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-21 14:26:31,719] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-21 14:26:31,719] INFO     kernel: === Boot sequence start ===
+[2026-03-21 14:26:31,721] INFO     kernel: Integrity check: OK
+[2026-03-21 14:26:31,722] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-21 14:26:31,723] INFO     kernel: Config reloaded
+[2026-03-21 14:26:31,724] INFO     kernel: Module loaded: sheila
+[2026-03-21 14:26:31,853] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-21 14:26:31,995] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-21 14:26:31,997] INFO     kernel: === Boot sequence complete ===
+[2026-03-21 14:26:31,998] INFO     kernel: Starting GUI subprocess: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/gui.py'
+[2026-03-21 14:26:31,998] INFO     kernel: GUI child PID: 14304
+[2026-03-21 14:26:37,069] WARNING  kernel: warden: RAM used 4948 MB (watch threshold 512 MB)
+[2026-03-21 14:26:46,998] INFO     kernel: GUI child exited rc=0
+[2026-03-21 14:27:05,531] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-21 14:27:05,531] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-21 14:27:05,531] INFO     kernel: === Boot sequence start ===
+[2026-03-21 14:27:05,533] INFO     kernel: Integrity check: OK
+[2026-03-21 14:27:05,533] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-21 14:27:05,534] INFO     kernel: Config reloaded
+[2026-03-21 14:27:05,536] INFO     kernel: Module loaded: sheila
+[2026-03-21 14:27:05,665] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-21 14:27:05,804] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-21 14:27:05,806] INFO     kernel: === Boot sequence complete ===
+[2026-03-21 14:27:05,876] WARNING  kernel: warden: RAM used 4799 MB (watch threshold 512 MB)
+[2026-03-21 14:27:23,169] INFO     kernel: poweroff: halt
+[2026-03-21 14:27:26,027] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-21 14:27:26,027] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-21 14:27:26,027] INFO     kernel: === Boot sequence start ===
+[2026-03-21 14:27:26,029] INFO     kernel: Integrity check: OK
+[2026-03-21 14:27:26,029] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-21 14:27:26,030] INFO     kernel: Config reloaded
+[2026-03-21 14:27:26,031] INFO     kernel: Module loaded: sheila
+[2026-03-21 14:27:26,162] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-21 14:27:26,324] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-21 14:27:26,326] INFO     kernel: === Boot sequence complete ===
+[2026-03-21 14:27:26,327] INFO     kernel: Starting GUI subprocess: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/gui.py'
+[2026-03-21 14:27:26,327] INFO     kernel: GUI child PID: 14426
+[2026-03-21 14:27:31,382] WARNING  kernel: warden: RAM used 4919 MB (watch threshold 512 MB)
+[2026-03-21 14:27:35,513] INFO     kernel: GUI child exited rc=0
+[2026-03-21 14:34:22,127] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-21 14:34:22,128] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-21 14:34:22,128] INFO     kernel: === Boot sequence start ===
+[2026-03-21 14:34:22,129] WARNING  kernel: integrity: kernel.py hash changed since last boot
+[2026-03-21 14:34:22,130] INFO     kernel: Integrity check: OK
+[2026-03-21 14:34:22,131] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-21 14:34:22,132] INFO     kernel: Config reloaded
+[2026-03-21 14:34:22,133] INFO     kernel: Module loaded: sheila
+[2026-03-21 14:34:22,265] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-21 14:34:22,511] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-21 14:34:22,514] INFO     kernel: === Boot sequence complete ===
+[2026-03-21 14:34:22,514] INFO     kernel: Starting GUI subprocess: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/gui.py'
+[2026-03-21 14:34:22,514] INFO     kernel: GUI child PID: 14625
+[2026-03-21 14:34:27,571] WARNING  kernel: warden: RAM used 4972 MB (watch threshold 512 MB)
+[2026-03-21 14:35:12,155] INFO     kernel: GUI child exited rc=0
+[2026-03-21 14:35:38,789] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-21 14:35:38,789] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-21 14:35:38,789] INFO     kernel: === Boot sequence start ===
+[2026-03-21 14:35:38,791] INFO     kernel: Integrity check: OK
+[2026-03-21 14:35:38,791] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-21 14:35:38,792] INFO     kernel: Config reloaded
+[2026-03-21 14:35:38,793] INFO     kernel: Module loaded: sheila
+[2026-03-21 14:35:38,922] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-21 14:35:39,057] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-21 14:35:39,060] INFO     kernel: === Boot sequence complete ===
+[2026-03-21 14:35:39,060] INFO     kernel: Starting GUI subprocess: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/gui.py'
+[2026-03-21 14:35:39,061] INFO     kernel: GUI child PID: 14739
+[2026-03-21 14:35:43,087] INFO     kernel: GUI child exited rc=0
+[2026-03-21 14:35:51,776] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-21 14:35:51,776] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-21 14:35:51,776] INFO     kernel: === Boot sequence start ===
+[2026-03-21 14:35:51,777] INFO     kernel: Integrity check: OK
+[2026-03-21 14:35:51,778] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-21 14:35:51,779] INFO     kernel: Config reloaded
+[2026-03-21 14:35:51,780] INFO     kernel: Module loaded: sheila
+[2026-03-21 14:35:51,910] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-21 14:35:52,067] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-21 14:35:52,070] INFO     kernel: === Boot sequence complete ===
+[2026-03-21 14:35:52,070] INFO     kernel: Starting GUI subprocess: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/gui.py'
+[2026-03-21 14:35:52,071] INFO     kernel: GUI child PID: 14780
+[2026-03-21 14:35:56,596] INFO     kernel: GUI child exited rc=0
+[2026-03-21 14:36:02,286] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-21 14:36:02,287] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-21 14:36:02,287] INFO     kernel: === Boot sequence start ===
+[2026-03-21 14:36:02,288] INFO     kernel: Integrity check: OK
+[2026-03-21 14:36:02,289] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-21 14:36:02,289] INFO     kernel: Config reloaded
+[2026-03-21 14:36:02,291] INFO     kernel: Module loaded: sheila
+[2026-03-21 14:36:02,421] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-21 14:36:02,556] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-21 14:36:02,559] INFO     kernel: === Boot sequence complete ===
+[2026-03-21 14:36:02,623] WARNING  kernel: warden: RAM used 4792 MB (watch threshold 512 MB)
+[2026-03-21 14:36:11,647] INFO     kernel: poweroff: halt
+[2026-03-21 14:38:57,859] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-21 14:38:57,859] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-21 14:38:57,859] INFO     kernel: === Boot sequence start ===
+[2026-03-21 14:38:57,860] INFO     kernel: Integrity check: OK
+[2026-03-21 14:38:57,861] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-21 14:38:57,862] INFO     kernel: Config reloaded
+[2026-03-21 14:38:57,863] INFO     kernel: Module loaded: sheila
+[2026-03-21 14:38:57,996] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-21 14:38:58,137] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-21 14:38:58,141] INFO     kernel: === Boot sequence complete ===
+[2026-03-21 14:38:58,141] INFO     kernel: Starting GUI subprocess: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/gui.py'
+[2026-03-21 14:38:58,141] INFO     kernel: GUI child PID: 15452
+[2026-03-21 14:39:03,198] WARNING  kernel: warden: RAM used 4969 MB (watch threshold 512 MB)
+[2026-03-21 14:39:36,539] INFO     kernel: GUI child exited rc=0
+[2026-03-21 14:40:46,802] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-21 14:40:46,802] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-21 14:40:46,803] INFO     kernel: === Boot sequence start ===
+[2026-03-21 14:40:46,804] INFO     kernel: Integrity check: OK
+[2026-03-21 14:40:46,805] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-21 14:40:46,807] INFO     kernel: Config reloaded
+[2026-03-21 14:40:46,809] INFO     kernel: Module loaded: sheila
+[2026-03-21 14:40:46,939] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-21 14:40:47,354] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-21 14:40:47,357] INFO     kernel: === Boot sequence complete ===
+[2026-03-21 14:40:47,357] INFO     kernel: Starting GUI subprocess: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/gui.py'
+[2026-03-21 14:40:47,358] INFO     kernel: GUI child PID: 15579
+[2026-03-21 14:40:52,412] WARNING  kernel: warden: RAM used 4951 MB (watch threshold 512 MB)
+[2026-03-21 14:41:09,875] INFO     kernel: GUI child exited rc=0
+[2026-03-21 14:41:17,287] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-21 14:41:17,287] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-21 14:41:17,287] INFO     kernel: === Boot sequence start ===
+[2026-03-21 14:41:17,288] INFO     kernel: Integrity check: OK
+[2026-03-21 14:41:17,289] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-21 14:41:17,290] INFO     kernel: Config reloaded
+[2026-03-21 14:41:17,291] INFO     kernel: Module loaded: sheila
+[2026-03-21 14:41:17,422] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-21 14:41:17,561] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-21 14:41:17,564] INFO     kernel: === Boot sequence complete ===
+[2026-03-21 14:41:17,564] INFO     kernel: Starting GUI subprocess: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/gui.py'
+[2026-03-21 14:41:17,565] INFO     kernel: GUI child PID: 15624
+[2026-03-21 14:41:22,631] WARNING  kernel: warden: RAM used 4980 MB (watch threshold 512 MB)
+[2026-03-21 14:41:40,539] INFO     kernel: GUI child exited rc=0
+[2026-03-21 14:42:33,373] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-21 14:42:33,373] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-21 14:42:33,373] INFO     kernel: === Boot sequence start ===
+[2026-03-21 14:42:33,375] INFO     kernel: Integrity check: OK
+[2026-03-21 14:42:33,376] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-21 14:42:33,377] INFO     kernel: Config reloaded
+[2026-03-21 14:42:33,378] INFO     kernel: Module loaded: sheila
+[2026-03-21 14:42:33,508] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-21 14:42:33,647] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-21 14:42:33,650] INFO     kernel: === Boot sequence complete ===
+[2026-03-21 14:42:33,651] INFO     kernel: Starting GUI subprocess: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/gui.py'
+[2026-03-21 14:42:33,651] INFO     kernel: GUI child PID: 15728
+[2026-03-21 14:42:38,706] WARNING  kernel: warden: RAM used 4981 MB (watch threshold 512 MB)
+[2026-03-21 14:42:54,853] INFO     kernel: GUI child exited rc=0
+[2026-03-21 14:48:26,267] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-21 14:48:26,267] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-21 14:48:26,267] INFO     kernel: === Boot sequence start ===
+[2026-03-21 14:48:26,268] INFO     kernel: Integrity check: OK
+[2026-03-21 14:48:26,269] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-21 14:48:26,270] INFO     kernel: Config reloaded
+[2026-03-21 14:48:26,271] INFO     kernel: Module loaded: sheila
+[2026-03-21 14:48:26,401] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-21 14:48:26,647] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-21 14:48:26,649] INFO     kernel: === Boot sequence complete ===
+[2026-03-21 14:48:26,650] INFO     kernel: Starting GUI subprocess: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/gui.py'
+[2026-03-21 14:48:26,650] INFO     kernel: GUI child PID: 16426
+[2026-03-21 14:48:31,707] WARNING  kernel: warden: RAM used 4909 MB (watch threshold 512 MB)
+[2026-03-21 14:49:24,914] INFO     kernel: GUI child exited rc=0
+[2026-03-21 14:49:27,212] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-21 14:49:27,212] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-21 14:49:27,212] INFO     kernel: === Boot sequence start ===
+[2026-03-21 14:49:27,214] INFO     kernel: Integrity check: OK
+[2026-03-21 14:49:27,214] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-21 14:49:27,216] INFO     kernel: Config reloaded
+[2026-03-21 14:49:27,218] INFO     kernel: Module loaded: sheila
+[2026-03-21 14:49:27,350] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-21 14:49:27,483] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-21 14:49:27,485] INFO     kernel: === Boot sequence complete ===
+[2026-03-21 14:49:27,486] INFO     kernel: Starting GUI subprocess: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/gui.py'
+[2026-03-21 14:49:27,486] INFO     kernel: GUI child PID: 16508
+[2026-03-21 14:49:32,546] WARNING  kernel: warden: RAM used 4959 MB (watch threshold 512 MB)
+[2026-03-21 14:49:42,678] INFO     kernel: GUI child exited rc=0
+[2026-03-21 14:50:21,837] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-21 14:50:21,837] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-21 14:50:21,837] INFO     kernel: === Boot sequence start ===
+[2026-03-21 14:50:21,838] INFO     kernel: Integrity check: OK
+[2026-03-21 14:50:21,839] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-21 14:50:21,841] INFO     kernel: Config reloaded
+[2026-03-21 14:50:21,842] INFO     kernel: Module loaded: sheila
+[2026-03-21 14:50:21,973] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-21 14:50:22,116] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-21 14:50:22,118] INFO     kernel: === Boot sequence complete ===
+[2026-03-21 14:50:22,119] INFO     kernel: Starting GUI subprocess: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/gui.py'
+[2026-03-21 14:50:22,119] INFO     kernel: GUI child PID: 16555
+[2026-03-21 14:50:27,174] WARNING  kernel: warden: RAM used 4931 MB (watch threshold 512 MB)
+[2026-03-21 14:51:16,283] INFO     kernel: GUI child exited rc=0
+[2026-03-21 14:52:00,967] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-21 14:52:00,967] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-21 14:52:00,967] INFO     kernel: === Boot sequence start ===
+[2026-03-21 14:52:00,968] INFO     kernel: Integrity check: OK
+[2026-03-21 14:52:00,969] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-21 14:52:00,970] INFO     kernel: Config reloaded
+[2026-03-21 14:52:00,971] INFO     kernel: Module loaded: sheila
+[2026-03-21 14:52:01,110] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-21 14:52:01,244] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-21 14:52:01,247] INFO     kernel: === Boot sequence complete ===
+[2026-03-21 14:52:01,247] INFO     kernel: Starting GUI subprocess: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/gui.py'
+[2026-03-21 14:52:01,247] INFO     kernel: GUI child PID: 16634
+[2026-03-21 14:52:06,306] WARNING  kernel: warden: RAM used 5095 MB (watch threshold 512 MB)
+[2026-03-21 14:53:06,847] WARNING  kernel: warden: RAM used 4924 MB (watch threshold 512 MB)
+[2026-03-21 14:53:37,304] INFO     kernel: GUI child exited rc=0
+[2026-03-21 14:54:09,543] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-21 14:54:09,543] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-21 14:54:09,543] INFO     kernel: === Boot sequence start ===
+[2026-03-21 14:54:09,545] INFO     kernel: Integrity check: OK
+[2026-03-21 14:54:09,545] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-21 14:54:09,546] INFO     kernel: Config reloaded
+[2026-03-21 14:54:09,547] INFO     kernel: Module loaded: sheila
+[2026-03-21 14:54:09,678] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-21 14:54:09,966] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-21 14:54:09,968] INFO     kernel: === Boot sequence complete ===
+[2026-03-21 14:54:09,969] INFO     kernel: Starting GUI subprocess: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/gui.py'
+[2026-03-21 14:54:09,969] INFO     kernel: GUI child PID: 16697
+[2026-03-21 14:54:15,029] WARNING  kernel: warden: RAM used 4915 MB (watch threshold 512 MB)
+[2026-03-21 14:54:21,043] INFO     kernel: GUI child exited rc=0
+[2026-03-21 14:55:43,200] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-21 14:55:43,200] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-21 14:55:43,201] INFO     kernel: === Boot sequence start ===
+[2026-03-21 14:55:43,203] INFO     kernel: Integrity check: OK
+[2026-03-21 14:55:43,203] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-21 14:55:43,204] INFO     kernel: Config reloaded
+[2026-03-21 14:55:43,206] INFO     kernel: Module loaded: sheila
+[2026-03-21 14:55:43,336] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-21 14:55:43,491] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-21 14:55:43,493] INFO     kernel: === Boot sequence complete ===
+[2026-03-21 14:55:43,493] INFO     kernel: Starting GUI subprocess: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/gui.py'
+[2026-03-21 14:55:43,494] INFO     kernel: GUI child PID: 16844
+[2026-03-21 14:55:48,552] WARNING  kernel: warden: RAM used 5009 MB (watch threshold 512 MB)
+[2026-03-21 14:56:00,105] INFO     kernel: GUI child exited rc=0
+[2026-03-21 14:56:29,379] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-21 14:56:29,379] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-21 14:56:29,379] INFO     kernel: === Boot sequence start ===
+[2026-03-21 14:56:29,381] INFO     kernel: Integrity check: OK
+[2026-03-21 14:56:29,382] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-21 14:56:29,383] INFO     kernel: Config reloaded
+[2026-03-21 14:56:29,384] INFO     kernel: Module loaded: sheila
+[2026-03-21 14:56:29,514] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-21 14:56:29,650] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-21 14:56:29,652] INFO     kernel: === Boot sequence complete ===
+[2026-03-21 14:56:29,652] INFO     kernel: Starting GUI subprocess: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/gui.py'
+[2026-03-21 14:56:29,653] INFO     kernel: GUI child PID: 16898
+[2026-03-21 14:56:34,718] WARNING  kernel: warden: RAM used 4952 MB (watch threshold 512 MB)
+[2026-03-21 14:57:29,116] INFO     kernel: GUI child exited rc=0
+[2026-03-21 15:09:58,273] INFO     kernel: Kernel 4.0.0  BASE_DIR='/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-21 15:09:58,275] INFO     kernel:   user=Vafls  hostname=vSubSys
+[2026-03-21 15:09:58,275] INFO     kernel: === Boot sequence start ===
+[2026-03-21 15:09:58,276] INFO     kernel: Integrity check: OK
+[2026-03-21 15:09:58,277] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-21 15:09:58,278] INFO     kernel: Config reloaded
+[2026-03-21 15:09:58,279] INFO     kernel: Module loaded: sheila
+[2026-03-21 15:09:58,410] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-21 15:09:58,732] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-21 15:09:58,736] INFO     kernel: === Boot sequence complete ===
+[2026-03-21 15:09:58,737] INFO     kernel: Starting GUI subprocess: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/gui.py'
+[2026-03-21 15:09:58,737] INFO     kernel: GUI child PID: 19097
+[2026-03-21 15:10:03,799] WARNING  kernel: warden: RAM used 4757 MB (watch threshold 512 MB)
+[2026-03-21 15:10:12,270] INFO     kernel: GUI child exited rc=0

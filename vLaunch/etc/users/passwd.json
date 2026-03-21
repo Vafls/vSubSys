@@ -1,0 +1,14 @@
+{
+  "root": {
+    "uid": 0,
+    "gid": 0,
+    "home": "/home/root",
+    "shell": "/bin/sh",
+    "groups": [
+      "wheel",
+      "admin"
+    ],
+    "passwd_hash": "",
+    "created": "2026-03-20T17:07:20.571629"
+  }
+}

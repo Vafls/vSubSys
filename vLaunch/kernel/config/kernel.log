@@ -1,0 +1,162 @@
+[2026-03-19 13:37:12,440] INFO     kernel: Kernel 2.0.0 init  BASE_DIR=/home/kostik/Рабочий стол/vSubSys/vLaunch  user=Vafls
+[2026-03-19 13:37:12,440] INFO     kernel: === Boot sequence start ===
+[2026-03-19 13:37:12,445] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-19 13:37:12,462] INFO     kernel: Module loaded: sheila
+[2026-03-19 13:37:12,776] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-19 13:37:13,187] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-19 13:37:13,189] INFO     kernel: === Boot sequence complete ===
+[2026-03-19 13:40:24,559] INFO     kernel: Kernel 2.0.0 init  BASE_DIR=/home/kostik/Рабочий стол/vSubSys/vLaunch  user=Vafls
+[2026-03-19 13:40:24,559] INFO     kernel: === Boot sequence start ===
+[2026-03-19 13:40:24,560] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-19 13:40:24,569] INFO     kernel: Module loaded: sheila
+[2026-03-19 13:40:24,846] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-19 13:40:25,006] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-19 13:40:25,009] INFO     kernel: === Boot sequence complete ===
+[2026-03-19 13:40:36,396] INFO     kernel: Module loaded: sheila
+[2026-03-19 13:40:36,397] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-19 13:40:36,509] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-19 13:42:11,442] INFO     kernel: Kernel 2.0.0 init  BASE_DIR=/home/kostik/Рабочий стол/vSubSys/vLaunch  user=Vafls
+[2026-03-19 13:42:11,442] INFO     kernel: === Boot sequence start ===
+[2026-03-19 13:42:11,443] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-19 13:42:11,450] INFO     kernel: Module loaded: sheila
+[2026-03-19 13:42:11,618] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-19 13:42:11,762] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-19 13:42:11,764] INFO     kernel: === Boot sequence complete ===
+[2026-03-19 13:42:25,909] INFO     kernel: Launched: v_ide [v_ide_9823335391]
+[2026-03-19 13:42:29,216] INFO     kernel: Repacked → /home/kostik/Рабочий стол/vSubSys/vLaunch/apps/user_apps/v_ide.vysico
+[2026-03-19 13:42:29,216] INFO     kernel: Closed: v_ide [v_ide_9823335391]
+[2026-03-19 13:42:37,815] INFO     kernel: Launched: v_browser [v_browser_1690472351]
+[2026-03-19 13:42:38,877] INFO     kernel: Launched: terminal [terminal_8947730977]
+[2026-03-19 13:42:40,880] INFO     kernel: Repacked → /home/kostik/Рабочий стол/vSubSys/vLaunch/apps/user_apps/terminal.vysico
+[2026-03-19 13:42:40,881] INFO     kernel: Closed: terminal [terminal_8947730977]
+[2026-03-19 13:42:43,217] INFO     kernel: Launched: snake [snake_8374903118]
+[2026-03-19 13:42:49,264] INFO     kernel: Repacked → /home/kostik/Рабочий стол/vSubSys/vLaunch/apps/user_apps/snake.vysico
+[2026-03-19 13:42:49,265] INFO     kernel: Closed: snake [snake_8374903118]
+[2026-03-19 13:42:51,924] INFO     kernel: Launched: camera [camera_3878538796]
+[2026-03-19 13:43:21,145] INFO     kernel: Repacked → /home/kostik/Рабочий стол/vSubSys/vLaunch/apps/user_apps/camera.vysico
+[2026-03-19 13:43:21,146] INFO     kernel: Closed: camera [camera_3878538796]
+[2026-03-19 13:43:22,328] INFO     kernel: Launched: app_store [app_store_1220047345]
+[2026-03-19 13:43:26,850] INFO     kernel: Repacked → /home/kostik/Рабочий стол/vSubSys/vLaunch/apps/user_apps/app_store.vysico
+[2026-03-19 13:43:26,850] INFO     kernel: Closed: app_store [app_store_1220047345]
+[2026-03-19 13:43:36,362] INFO     kernel: Repacked → /home/kostik/Рабочий стол/vSubSys/vLaunch/apps/user_apps/v_browser.vysico
+[2026-03-19 13:43:36,363] INFO     kernel: Closed: v_browser [v_browser_1690472351]
+[2026-03-19 13:55:46,036] INFO     kernel: Kernel 2.0.0 init  BASE_DIR=/home/kostik/Рабочий стол/vSubSys/vLaunch  user=Vafls
+[2026-03-19 13:55:46,037] INFO     kernel: === Boot sequence start ===
+[2026-03-19 13:55:46,040] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-19 13:55:46,046] INFO     kernel: Module loaded: sheila
+[2026-03-19 13:55:46,209] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-19 13:55:46,556] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-19 13:55:46,558] INFO     kernel: === Boot sequence complete ===
+[2026-03-19 13:55:53,093] INFO     kernel: Launched: v_ide [v_ide_4689241372]
+[2026-03-19 13:55:55,863] INFO     kernel: Repacked → /home/kostik/Рабочий стол/vSubSys/vLaunch/apps/user_apps/v_ide.vysico
+[2026-03-19 13:55:55,864] INFO     kernel: Closed: v_ide [v_ide_4689241372]
+[2026-03-19 13:55:59,512] INFO     kernel: Kernel 2.0.0 init  BASE_DIR=/home/kostik/Рабочий стол/vSubSys/vLaunch  user=Vafls
+[2026-03-19 13:55:59,513] INFO     kernel: === Boot sequence start ===
+[2026-03-19 13:55:59,513] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-19 13:55:59,521] INFO     kernel: Module loaded: sheila
+[2026-03-19 13:55:59,716] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-19 13:55:59,837] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-19 13:55:59,838] INFO     kernel: === Boot sequence complete ===
+[2026-03-19 13:56:04,101] INFO     kernel: Launched: app_store [app_store_3757376365]
+[2026-03-19 13:56:10,581] INFO     kernel: Repacked → /home/kostik/Рабочий стол/vSubSys/vLaunch/apps/user_apps/app_store.vysico
+[2026-03-19 13:56:10,582] INFO     kernel: Closed: app_store [app_store_3757376365]
+[2026-03-19 13:56:16,023] INFO     kernel: Launched: settings [settings_4241464108]
+[2026-03-19 13:56:17,696] INFO     kernel: Launched: camera [camera_1895755317]
+[2026-03-19 13:56:17,725] INFO     kernel: Launched: app_store [app_store_4138774495]
+[2026-03-19 13:56:17,993] INFO     kernel: Launched: camera [camera_4871148992]
+[2026-03-19 13:56:18,231] INFO     kernel: Launched: settings [settings_7708371472]
+[2026-03-19 13:56:18,480] INFO     kernel: Launched: snake [snake_6969189932]
+[2026-03-19 13:56:20,424] INFO     kernel: Launched: v_ide [v_ide_3906549400]
+[2026-03-19 13:56:22,317] INFO     kernel: Launched: v_browser [v_browser_9797892754]
+[2026-03-19 13:56:30,693] INFO     kernel: Repacked → /home/kostik/Рабочий стол/vSubSys/vLaunch/apps/user_apps/settings.vysico
+[2026-03-19 13:56:30,695] INFO     kernel: Closed: settings [settings_4241464108]
+[2026-03-19 13:56:30,697] INFO     kernel: Repacked → /home/kostik/Рабочий стол/vSubSys/vLaunch/apps/user_apps/camera.vysico
+[2026-03-19 13:56:30,699] INFO     kernel: Closed: camera [camera_1895755317]
+[2026-03-19 13:56:30,700] INFO     kernel: Repacked → /home/kostik/Рабочий стол/vSubSys/vLaunch/apps/user_apps/app_store.vysico
+[2026-03-19 13:56:30,701] INFO     kernel: Closed: app_store [app_store_4138774495]
+[2026-03-19 13:56:30,703] INFO     kernel: Repacked → /home/kostik/Рабочий стол/vSubSys/vLaunch/apps/user_apps/camera.vysico
+[2026-03-19 13:56:30,704] INFO     kernel: Closed: camera [camera_4871148992]
+[2026-03-19 13:56:30,705] INFO     kernel: Repacked → /home/kostik/Рабочий стол/vSubSys/vLaunch/apps/user_apps/settings.vysico
+[2026-03-19 13:56:30,706] INFO     kernel: Closed: settings [settings_7708371472]
+[2026-03-19 13:56:30,708] INFO     kernel: Repacked → /home/kostik/Рабочий стол/vSubSys/vLaunch/apps/user_apps/snake.vysico
+[2026-03-19 13:56:30,709] INFO     kernel: Closed: snake [snake_6969189932]
+[2026-03-19 13:56:30,711] INFO     kernel: Repacked → /home/kostik/Рабочий стол/vSubSys/vLaunch/apps/user_apps/v_ide.vysico
+[2026-03-19 13:56:30,711] INFO     kernel: Closed: v_ide [v_ide_3906549400]
+[2026-03-19 13:56:30,713] INFO     kernel: Repacked → /home/kostik/Рабочий стол/vSubSys/vLaunch/apps/user_apps/v_browser.vysico
+[2026-03-19 13:56:30,714] INFO     kernel: Closed: v_browser [v_browser_9797892754]
+[2026-03-19 14:28:20,341] INFO     kernel: Kernel 2.0.0 init  BASE_DIR=/home/kostik/Рабочий стол/vSubSys/vLaunch  user=Vafls
+[2026-03-19 14:28:20,341] INFO     kernel: === Boot sequence start ===
+[2026-03-19 14:28:20,349] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-19 14:28:20,355] INFO     kernel: Module loaded: sheila
+[2026-03-19 14:28:20,554] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-19 14:28:20,890] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-19 14:28:20,892] INFO     kernel: === Boot sequence complete ===
+[2026-03-19 14:28:43,278] INFO     kernel: Module loaded: sheila
+[2026-03-19 14:28:43,279] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-19 14:28:43,396] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-19 14:28:53,526] INFO     kernel: Kernel 2.0.0 init  BASE_DIR=/home/kostik/Рабочий стол/vSubSys/vLaunch  user=Vafls
+[2026-03-19 14:28:53,526] INFO     kernel: === Boot sequence start ===
+[2026-03-19 14:28:53,527] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-19 14:28:53,535] INFO     kernel: Module loaded: sheila
+[2026-03-19 14:28:53,704] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-19 14:28:53,816] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-19 14:28:53,819] INFO     kernel: === Boot sequence complete ===
+[2026-03-19 14:29:00,279] INFO     kernel: Launched: settings [settings_9440210800]
+[2026-03-19 14:29:03,444] INFO     kernel: Repacked → /home/kostik/Рабочий стол/vSubSys/vLaunch/apps/user_apps/settings.vysico
+[2026-03-19 14:29:03,445] INFO     kernel: Closed: settings [settings_9440210800]
+[2026-03-19 14:50:02,560] INFO     kernel: Kernel 2.0.0 init  BASE_DIR=/home/kostik/Рабочий стол/vSubSys/vLaunch  user=Vafls
+[2026-03-19 14:50:02,561] INFO     kernel: === Boot sequence start ===
+[2026-03-19 14:50:02,567] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-19 14:50:02,573] INFO     kernel: Module loaded: sheila
+[2026-03-19 14:50:02,752] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-19 14:50:03,120] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-19 14:50:03,123] INFO     kernel: === Boot sequence complete ===
+[2026-03-19 14:50:35,041] INFO     kernel: Kernel 2.0.0 init  BASE_DIR=/home/kostik/Рабочий стол/vSubSys/vLaunch  user=Vafls
+[2026-03-19 14:50:35,041] INFO     kernel: === Boot sequence start ===
+[2026-03-19 14:50:35,042] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-19 14:50:35,047] INFO     kernel: Module loaded: sheila
+[2026-03-19 14:50:35,216] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-19 14:50:35,408] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-19 14:50:35,410] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 16:14:06,446] INFO     kernel: Kernel 2.0.0 init  BASE_DIR=/home/kostik/Рабочий стол/vSubSys/vLaunch  user=Vafls
+[2026-03-20 16:14:06,448] INFO     kernel: === Boot sequence start ===
+[2026-03-20 16:14:06,449] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 16:14:06,457] INFO     kernel: Module loaded: sheila
+[2026-03-20 16:14:06,701] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 16:14:07,067] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 16:14:07,069] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 16:26:26,175] INFO     kernel: Kernel 2.0.0 init  BASE_DIR=/home/kostik/Рабочий стол/vSubSys/vLaunch  user=Vafls
+[2026-03-20 16:26:26,175] INFO     kernel: === Boot sequence start ===
+[2026-03-20 16:26:26,180] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 16:26:26,186] INFO     kernel: Module loaded: sheila
+[2026-03-20 16:26:26,334] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 16:26:26,705] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 16:26:26,707] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 16:27:36,333] INFO     kernel: Kernel 2.0.0 init  BASE_DIR=/home/kostik/Рабочий стол/vSubSys/vLaunch  user=Vafls
+[2026-03-20 16:27:36,333] INFO     kernel: === Boot sequence start ===
+[2026-03-20 16:27:36,333] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 16:27:36,339] INFO     kernel: Module loaded: sheila
+[2026-03-20 16:27:36,493] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 16:27:36,614] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 16:27:36,616] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 16:28:40,979] INFO     kernel: Kernel 2.0.0 init  BASE_DIR=/home/kostik/Рабочий стол/vSubSys/vLaunch  user=Vafls
+[2026-03-20 16:28:40,979] INFO     kernel: === Boot sequence start ===
+[2026-03-20 16:28:40,980] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 16:28:40,985] INFO     kernel: Module loaded: sheila
+[2026-03-20 16:28:41,129] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 16:28:41,292] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 16:28:41,294] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 16:28:48,798] INFO     kernel: Kernel 2.0.0 init  BASE_DIR=/home/kostik/Рабочий стол/vSubSys/vLaunch  user=Vafls
+[2026-03-20 16:28:48,799] INFO     kernel: === Boot sequence start ===
+[2026-03-20 16:28:48,799] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 16:28:48,805] INFO     kernel: Module loaded: sheila
+[2026-03-20 16:28:48,957] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 16:28:49,077] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 16:28:49,078] INFO     kernel: === Boot sequence complete ===
+[2026-03-20 16:28:56,985] INFO     kernel: Kernel 2.0.0 init  BASE_DIR=/home/kostik/Рабочий стол/vSubSys/vLaunch  user=Vafls
+[2026-03-20 16:28:56,985] INFO     kernel: === Boot sequence start ===
+[2026-03-20 16:28:56,986] INFO     kernel: Module loaded: violence_sysinit
+[2026-03-20 16:28:56,991] INFO     kernel: Module loaded: sheila
+[2026-03-20 16:28:57,131] DEBUG    urllib3.connectionpool: Starting new HTTPS connection (1): raw.githubusercontent.com:443
+[2026-03-20 16:28:57,248] DEBUG    urllib3.connectionpool: https://raw.githubusercontent.com:443 "GET /Vafls/vSubSys_UPD/main/version_info.txt HTTP/1.1" 200 55
+[2026-03-20 16:28:57,251] INFO     kernel: === Boot sequence complete ===

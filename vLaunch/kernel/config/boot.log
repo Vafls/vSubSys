@@ -1,0 +1,604 @@
+[2026-03-19 13:28:14] [boot] vLaunch Bootloader  |  kernel: /home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py
+[2026-03-19 13:28:14] [boot] Auto-starting in 5s  (type 'settings' or 'start')
+[2026-03-19 13:28:19] [boot]   [1/6] Trying: default
+[2026-03-19 13:28:20] [boot]   Kernel exited early (rc=2)
+[2026-03-19 13:28:21] [boot]   [2/6] Trying: QT_QPA_PLATFORM=xcb
+[2026-03-19 13:28:21] [boot]   Kernel exited early (rc=2)
+[2026-03-19 13:28:22] [boot]   [3/6] Trying: QT_QPA_PLATFORM=wayland
+[2026-03-19 13:28:22] [boot]   Kernel exited early (rc=2)
+[2026-03-19 13:28:23] [boot]   [4/6] Trying: QT_QPA_PLATFORM=wayland-egl
+[2026-03-19 13:28:23] [boot]   Kernel exited early (rc=2)
+[2026-03-19 13:28:24] [boot]   [5/6] Trying: DISPLAY=:0, QT_QPA_PLATFORM=xcb
+[2026-03-19 13:28:25] [boot]   Kernel exited early (rc=2)
+[2026-03-19 13:28:25] [boot]   [6/6] Trying: QT_QPA_PLATFORM=offscreen
+[2026-03-19 13:28:26] [boot]   Kernel exited early (rc=2)
+[2026-03-19 13:28:26] [boot] 
+✗ All launch strategies failed.
+[2026-03-19 13:28:26] [boot]   See log: /home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/config/boot.log
+[2026-03-19 13:28:26] [boot] BOOT_FAILURE: all strategies exhausted
+[2026-03-19 13:28:26] [boot] 
+Manual options:
+[2026-03-19 13:28:26] [boot]   env QT_QPA_PLATFORM=xcb python kernel/kernel.py -auth8354
+[2026-03-19 13:28:26] [boot]   env QT_QPA_PLATFORM=wayland python kernel/kernel.py -auth8354
+[2026-03-19 13:28:26] [boot]   python kernel/kernel.py --gui=0    ← TTY mode
+[2026-03-19 13:35:24] [boot] Detecting Qt plugin paths…
+[2026-03-19 13:35:24] [boot] Found 1 plugin dir(s): /home/kostik/Рабочий стол/AppleTrustHead_v_0_1/AppleTrustHead/website/venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins …
+[2026-03-19 13:35:24] [boot] Total launch strategies: 10
+[2026-03-19 13:35:24] [boot] vLaunch Bootloader  |  kernel → /home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py
+[2026-03-19 13:35:24] [boot] Plugin path: /home/kostik/Рабочий стол/AppleTrustHead_v_0_1/AppleTrustHead/website/venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins
+[2026-03-19 13:35:24] [boot] Auto-starting in 5s  (click input or type 'settings' to interrupt)
+[2026-03-19 13:35:29] [boot]   [1/10]  system defaults
+[2026-03-19 13:35:30] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:35:30] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:35:30] [boot]   [2/10]  system defaults
+[2026-03-19 13:35:31] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:35:31] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:35:31] [boot]   [3/10]  QT_QPA_PLATFORM=wayland
+[2026-03-19 13:35:32] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:35:32] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:35:32] [boot]   [4/10]  QT_QPA_PLATFORM=wayland-egl
+[2026-03-19 13:35:32] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:35:32] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:35:33] [boot]   [5/10]  QT_QPA_PLATFORM=offscreen
+[2026-03-19 13:35:33] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:35:33] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:35:34] [boot]   [6/10]  system defaults
+[2026-03-19 13:35:34] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:35:34] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:35:34] [boot]   [7/10]  QT_QPA_PLATFORM=wayland
+[2026-03-19 13:35:35] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:35:35] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:35:35] [boot]   [8/10]  QT_QPA_PLATFORM=wayland-egl
+[2026-03-19 13:35:36] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:35:36] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:35:36] [boot]   [9/10]  QT_QPA_PLATFORM=offscreen
+[2026-03-19 13:35:36] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:35:36] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:35:37] [boot]   [10/10]  system defaults
+[2026-03-19 13:35:37] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:35:37] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:35:38] [boot] 
+✗  All launch strategies exhausted.
+   Log saved to: /home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/config/boot.log
+
+Manual options:
+  python /home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py --gui=0          ← TTY mode
+  QT_QPA_PLATFORM=xcb python /home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py -auth8354
+  Open ⚙ settings and set the plugin path manually, then 'retry'.
+[2026-03-19 13:35:38] [boot] BOOT_FAILURE: all strategies exhausted
+[2026-03-19 13:36:17] [boot] Retrying from strategy #1…
+[2026-03-19 13:36:17] [boot]   [1/10]  system defaults
+[2026-03-19 13:36:17] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:36:17] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:36:18] [boot]   [2/10]  system defaults
+[2026-03-19 13:36:18] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:36:18] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:36:19] [boot]   [3/10]  QT_QPA_PLATFORM=wayland
+[2026-03-19 13:36:19] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:36:19] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:36:19] [boot]   [4/10]  QT_QPA_PLATFORM=wayland-egl
+[2026-03-19 13:36:20] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:36:20] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:36:20] [boot]   [5/10]  QT_QPA_PLATFORM=offscreen
+[2026-03-19 13:36:21] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:36:21] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:36:21] [boot]   [6/10]  system defaults
+[2026-03-19 13:36:22] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:36:22] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:36:22] [boot]   [7/10]  QT_QPA_PLATFORM=wayland
+[2026-03-19 13:36:22] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:36:22] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:36:23] [boot]   [8/10]  QT_QPA_PLATFORM=wayland-egl
+[2026-03-19 13:36:23] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:36:23] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:36:24] [boot]   [9/10]  QT_QPA_PLATFORM=offscreen
+[2026-03-19 13:36:24] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:36:24] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:36:24] [boot]   [10/10]  system defaults
+[2026-03-19 13:36:25] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:36:25] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:36:25] [boot] 
+✗  All launch strategies exhausted.
+   Log saved to: /home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/config/boot.log
+
+Manual options:
+  python /home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py --gui=0          ← TTY mode
+  QT_QPA_PLATFORM=xcb python /home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py -auth8354
+  Open ⚙ settings and set the plugin path manually, then 'retry'.
+[2026-03-19 13:36:25] [boot] BOOT_FAILURE: all strategies exhausted
+[2026-03-19 13:41:36] [boot] Detecting Qt plugin paths…
+[2026-03-19 13:41:36] [boot] Found 1 plugin dir(s): /home/kostik/Рабочий стол/AppleTrustHead_v_0_1/AppleTrustHead/website/venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins …
+[2026-03-19 13:41:36] [boot] Total launch strategies: 10
+[2026-03-19 13:41:36] [boot] vLaunch Bootloader  |  kernel → /home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py
+[2026-03-19 13:41:36] [boot] Plugin path: /home/kostik/Рабочий стол/AppleTrustHead_v_0_1/AppleTrustHead/website/venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins
+[2026-03-19 13:41:36] [boot] Auto-starting in 5s  (click input or type 'settings' to interrupt)
+[2026-03-19 13:41:41] [boot]   [1/10]  system defaults
+[2026-03-19 13:41:42] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:41:42] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:41:42] [boot]   [2/10]  system defaults
+[2026-03-19 13:41:43] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:41:43] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:41:43] [boot]   [3/10]  QT_QPA_PLATFORM=wayland
+[2026-03-19 13:41:44] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:41:44] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:41:44] [boot]   [4/10]  QT_QPA_PLATFORM=wayland-egl
+[2026-03-19 13:41:45] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:41:45] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:41:45] [boot]   [5/10]  QT_QPA_PLATFORM=offscreen
+[2026-03-19 13:41:45] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:41:45] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:41:46] [boot]   [6/10]  system defaults
+[2026-03-19 13:41:46] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:41:46] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:41:46] [boot]   [7/10]  QT_QPA_PLATFORM=wayland
+[2026-03-19 13:41:47] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:41:47] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:41:47] [boot]   [8/10]  QT_QPA_PLATFORM=wayland-egl
+[2026-03-19 13:41:48] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:41:48] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:41:48] [boot]   [9/10]  QT_QPA_PLATFORM=offscreen
+[2026-03-19 13:41:49] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:41:49] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:41:49] [boot]   [10/10]  system defaults
+[2026-03-19 13:41:49] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:41:49] [boot]   ✗ kernel exited (rc=2)
+[2026-03-19 13:41:50] [boot] 
+✗  All launch strategies exhausted.
+   Log saved to: /home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/config/boot.log
+
+Manual options:
+  python /home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py --gui=0          ← TTY mode
+  QT_QPA_PLATFORM=xcb python /home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py -auth8354
+  Open ⚙ settings and set the plugin path manually, then 'retry'.
+[2026-03-19 13:41:50] [boot] BOOT_FAILURE: all strategies exhausted
+[2026-03-19 13:54:55] [boot] Detecting Qt plugin paths…
+[2026-03-19 13:54:55] [boot] Found 1 path(s): /home/kostik/Рабочий стол/AppleTrustHead_v_0_1/AppleTrustHead/website/venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins
+[2026-03-19 13:54:55] [boot] Total launch strategies: 10
+[2026-03-19 13:54:55] [boot] vLaunch Bootloader  |  kernel → /home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py
+[2026-03-19 13:54:55] [boot] Plugin path: /home/kostik/Рабочий стол/AppleTrustHead_v_0_1/AppleTrustHead/website/venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins
+[2026-03-19 13:54:55] [boot] Auto-starting in 5s  (click input or type 'settings' to interrupt)
+[2026-03-19 13:55:00] [boot]   [1/10]  inherit env unchanged
+[2026-03-19 13:55:01] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:55:01] [boot]   ✗ process exited (rc=2) before KERNEL_READY
+[2026-03-19 13:55:01] [boot]   [2/10]  inherit env unchanged
+[2026-03-19 13:55:01] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:55:01] [boot]   ✗ process exited (rc=2) before KERNEL_READY
+[2026-03-19 13:55:02] [boot]   [3/10]  inherit env unchanged
+[2026-03-19 13:55:02] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:55:02] [boot]   ✗ process exited (rc=2) before KERNEL_READY
+[2026-03-19 13:55:02] [boot]   [4/10]  QT_QPA_PLATFORM=wayland
+[2026-03-19 13:55:03] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:55:03] [boot]   ✗ process exited (rc=2) before KERNEL_READY
+[2026-03-19 13:55:03] [boot]   [5/10]  QT_QPA_PLATFORM=wayland-egl
+[2026-03-19 13:55:03] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:55:03] [boot]   ✗ process exited (rc=2) before KERNEL_READY
+[2026-03-19 13:55:04] [boot]   [6/10]  QT_QPA_PLATFORM=offscreen
+[2026-03-19 13:55:04] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:55:04] [boot]   ✗ process exited (rc=2) before KERNEL_READY
+[2026-03-19 13:55:04] [boot]   [7/10]  inherit env unchanged
+[2026-03-19 13:55:04] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:55:04] [boot]   ✗ process exited (rc=2) before KERNEL_READY
+[2026-03-19 13:55:05] [boot]   [8/10]  QT_QPA_PLATFORM=wayland
+[2026-03-19 13:55:05] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:55:05] [boot]   ✗ process exited (rc=2) before KERNEL_READY
+[2026-03-19 13:55:05] [boot]   [9/10]  QT_QPA_PLATFORM=wayland-egl
+[2026-03-19 13:55:06] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:55:06] [boot]   ✗ process exited (rc=2) before KERNEL_READY
+[2026-03-19 13:55:06] [boot]   [10/10]  QT_QPA_PLATFORM=offscreen
+[2026-03-19 13:55:06] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 13:55:06] [boot]   ✗ process exited (rc=2) before KERNEL_READY
+[2026-03-19 13:55:07] [boot] 
+✗  All launch strategies exhausted.
+   Log: /home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/config/boot.log
+
+Manual options:
+  env QT_QPA_PLATFORM=xcb python /home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py --gui=1
+  python /home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py --gui=0   ← TTY mode
+  Open ⚙ and set plugin path manually, then 'retry'.
+[2026-03-19 13:55:07] [boot] BOOT_FAILURE: all strategies exhausted
+[2026-03-19 14:26:10] [boot] vLaunch Bootloader v2.0  |  /home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py
+[2026-03-19 14:26:10] [boot] ── Boot-chain start ──────────────────────────────
+[2026-03-19 14:26:10] [boot]   Requirements : /home/kostik/Рабочий стол/vSubSys/vLaunch/requirements.txt
+[2026-03-19 14:26:10] [boot]   Venv         : /home/kostik/Рабочий стол/vSubSys/vLaunch/.venv
+[2026-03-19 14:26:10] [boot]   Running setup… (this may take a minute on first run)
+[2026-03-19 14:26:10] [boot] System Python missing packages: PyQt5-Qt5
+[2026-03-19 14:26:10] [boot] Venv not found at /home/kostik/Рабочий стол/vSubSys/vLaunch/.venv — creating…
+[2026-03-19 14:26:10] [boot] Creating venv at /home/kostik/Рабочий стол/vSubSys/vLaunch/.venv …
+[2026-03-19 14:26:10] [boot] System Python missing packages: PyQt5-Qt5
+[2026-03-19 14:26:10] [boot] Venv not found at /home/kostik/Рабочий стол/vSubSys/vLaunch/.venv — creating…
+[2026-03-19 14:26:10] [boot] Creating venv at /home/kostik/Рабочий стол/vSubSys/vLaunch/.venv …
+[2026-03-19 14:26:15] [boot] Venv created OK.
+[2026-03-19 14:26:15] [boot] Installing requirements from /home/kostik/Рабочий стол/vSubSys/vLaunch/requirements.txt …
+[2026-03-19 14:26:15] [boot] Venv created OK.
+[2026-03-19 14:26:15] [boot] Installing requirements from /home/kostik/Рабочий стол/vSubSys/vLaunch/requirements.txt …
+[2026-03-19 14:26:31] [boot] Requirements installed OK.
+[2026-03-19 14:26:31] [boot] Requirements installed OK.
+[2026-03-19 14:26:31] [boot]   Kernel python: /home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python
+[2026-03-19 14:26:31] [boot]   Plugin path  : /home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins
+[2026-03-19 14:26:31] [boot]   Strategies   : 15
+[2026-03-19 14:26:31] [boot] ── Boot-chain ready — launching kernel ────────────
+[2026-03-19 14:26:31] [boot]   [1/15]  inherit env
+[2026-03-19 14:26:31] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:26:31] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:26:32] [boot]   [2/15]  QT_QPA_PLATFORM_PLUGIN_PATH=/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins
+[2026-03-19 14:26:32] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:26:32] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:26:32] [boot]   [3/15]  QT_QPA_PLATFORM_PLUGIN_PATH=/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins
+[2026-03-19 14:26:33] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:26:33] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:26:33] [boot]   [4/15]  QT_QPA_PLATFORM_PLUGIN_PATH=/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins  QT_QPA_PLATFORM=wayland
+[2026-03-19 14:26:33] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:26:33] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:26:34] [boot]   [5/15]  QT_QPA_PLATFORM_PLUGIN_PATH=/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins  QT_QPA_PLATFORM=wayland-egl
+[2026-03-19 14:26:34] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:26:34] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:26:34] [boot]   [6/15]  QT_QPA_PLATFORM_PLUGIN_PATH=/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins  QT_QPA_PLATFORM=offscreen
+[2026-03-19 14:26:34] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:26:34] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:26:35] [boot]   [7/15]  inherit env
+[2026-03-19 14:26:35] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:26:35] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:26:35] [boot]   [8/15]  inherit env
+[2026-03-19 14:26:36] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:26:36] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:26:36] [boot]   [9/15]  QT_QPA_PLATFORM=wayland
+[2026-03-19 14:26:36] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:26:36] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:26:37] [boot]   [10/15]  QT_QPA_PLATFORM=wayland-egl
+[2026-03-19 14:26:37] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:26:37] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:26:37] [boot]   [11/15]  QT_QPA_PLATFORM=offscreen
+[2026-03-19 14:26:37] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:26:37] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:26:38] [boot]   [12/15]  inherit env
+[2026-03-19 14:26:38] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:26:38] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:26:38] [boot]   [13/15]  QT_QPA_PLATFORM=wayland
+[2026-03-19 14:26:39] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:26:39] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:26:39] [boot]   [14/15]  QT_QPA_PLATFORM=wayland-egl
+[2026-03-19 14:26:39] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:26:39] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:26:40] [boot]   [15/15]  QT_QPA_PLATFORM=offscreen
+[2026-03-19 14:26:40] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:26:40] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:26:40] [boot] 
+✗  All strategies failed.
+   Log: /home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/config/boot.log
+
+Manual:
+  env QT_QPA_PLATFORM=xcb /home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python /home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py --gui=1
+  /home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python /home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py --gui=0   ← TTY mode
+  Open ⚙, set plugin path, then 'retry'.
+[2026-03-19 14:26:40] [boot] BOOT_FAILURE
+[2026-03-19 14:27:09] [boot] Retrying…
+[2026-03-19 14:27:09] [boot]   [1/15]  inherit env
+[2026-03-19 14:27:09] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:27:09] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:27:09] [boot]   [2/15]  QT_QPA_PLATFORM_PLUGIN_PATH=/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins
+[2026-03-19 14:27:10] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:27:10] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:27:10] [boot]   [3/15]  QT_QPA_PLATFORM_PLUGIN_PATH=/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins
+[2026-03-19 14:27:10] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:27:10] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:27:11] [boot]   [4/15]  QT_QPA_PLATFORM_PLUGIN_PATH=/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins  QT_QPA_PLATFORM=wayland
+[2026-03-19 14:27:11] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:27:11] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:27:11] [boot]   [5/15]  QT_QPA_PLATFORM_PLUGIN_PATH=/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins  QT_QPA_PLATFORM=wayland-egl
+[2026-03-19 14:27:11] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:27:11] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:27:12] [boot]   [6/15]  QT_QPA_PLATFORM_PLUGIN_PATH=/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins  QT_QPA_PLATFORM=offscreen
+[2026-03-19 14:27:12] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:27:12] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:27:12] [boot]   [7/15]  inherit env
+[2026-03-19 14:27:13] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:27:13] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:27:13] [boot]   [8/15]  inherit env
+[2026-03-19 14:27:13] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:27:13] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:27:14] [boot]   [9/15]  QT_QPA_PLATFORM=wayland
+[2026-03-19 14:27:14] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:27:14] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:27:14] [boot]   [10/15]  QT_QPA_PLATFORM=wayland-egl
+[2026-03-19 14:27:14] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:27:14] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:27:15] [boot]   [11/15]  QT_QPA_PLATFORM=offscreen
+[2026-03-19 14:27:15] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:27:15] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:27:15] [boot]   [12/15]  inherit env
+[2026-03-19 14:27:16] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:27:16] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:27:16] [boot]   [13/15]  QT_QPA_PLATFORM=wayland
+[2026-03-19 14:27:16] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:27:16] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:27:17] [boot]   [14/15]  QT_QPA_PLATFORM=wayland-egl
+[2026-03-19 14:27:17] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:27:17] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:27:17] [boot]   [15/15]  QT_QPA_PLATFORM=offscreen
+[2026-03-19 14:27:18] [boot]   kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:27:18] [boot]   ✗ process exited (rc=2)
+[2026-03-19 14:27:18] [boot] 
+✗  All strategies failed.
+   Log: /home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/config/boot.log
+
+Manual:
+  env QT_QPA_PLATFORM=xcb /home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python /home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py --gui=1
+  /home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python /home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py --gui=0   ← TTY mode
+  Open ⚙, set plugin path, then 'retry'.
+[2026-03-19 14:27:18] [boot] BOOT_FAILURE
+[2026-03-19 14:49:26] 
+══════════════════════════════════════════════════════════════════════
+[2026-03-19 14:49:26] vLaunch Bootloader v3.0  starting
+[2026-03-19 14:49:26] ══════════════════════════════════════════════════════════════════════
+[2026-03-19 14:49:26]   boot path : '/home/kostik/Рабочий стол/vSubSys/vLaunch/boot/violence_boot.py'
+[2026-03-19 14:49:26]   BASE_DIR  : '/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-19 14:49:26]   internet  : yes
+[2026-03-19 14:49:26] Running boot-chain in background…
+[2026-03-19 14:49:26] 
+[2026-03-19 14:49:26] §1  Path validation
+[2026-03-19 14:49:26] ────────────────────────────────────────────────────────────
+[2026-03-19 14:49:26]     __file__: '/home/kostik/Рабочий стол/vSubSys/vLaunch/boot/violence_boot.py'  [✓ exists]
+[2026-03-19 14:49:26]       (raw bytes: b'/home/kostik/\xd0\xa0\xd0\xb0\xd0\xb1\xd0\xbe\xd1\x87\xd0\xb8\xd0\xb9 \xd1\x81\xd1\x82\xd0\xbe\xd0\xbb/vSubSys/vLaunch/boot/violence_boot.py')
+[2026-03-19 14:49:26]     BASE_DIR: '/home/kostik/Рабочий стол/vSubSys/vLaunch'  [✓ exists]
+[2026-03-19 14:49:26]       (raw bytes: b'/home/kostik/\xd0\xa0\xd0\xb0\xd0\xb1\xd0\xbe\xd1\x87\xd0\xb8\xd0\xb9 \xd1\x81\xd1\x82\xd0\xbe\xd0\xbb/vSubSys/vLaunch')
+[2026-03-19 14:49:26]     KERNEL_PY: '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py'  [✓ exists]
+[2026-03-19 14:49:26]       (raw bytes: b'/home/kostik/\xd0\xa0\xd0\xb0\xd0\xb1\xd0\xbe\xd1\x87\xd0\xb8\xd0\xb9 \xd1\x81\xd1\x82\xd0\xbe\xd0\xbb/vSubSys/vLaunch/kernel/kernel.py')
+[2026-03-19 14:49:26]     REQUIREMENTS: '/home/kostik/Рабочий стол/vSubSys/vLaunch/requirements.txt'  [✓ exists]
+[2026-03-19 14:49:26]       (raw bytes: b'/home/kostik/\xd0\xa0\xd0\xb0\xd0\xb1\xd0\xbe\xd1\x87\xd0\xb8\xd0\xb9 \xd1\x81\xd1\x82\xd0\xbe\xd0\xbb/vSubSys/vLaunch/requirements.txt')
+[2026-03-19 14:49:26]     VENV_DIR: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv'  [✓ exists]
+[2026-03-19 14:49:26]       (raw bytes: b'/home/kostik/\xd0\xa0\xd0\xb0\xd0\xb1\xd0\xbe\xd1\x87\xd0\xb8\xd0\xb9 \xd1\x81\xd1\x82\xd0\xbe\xd0\xbb/vSubSys/vLaunch/.venv')
+[2026-03-19 14:49:26]     BOOT_LOG: '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/config/boot.log'  [✓ exists]
+[2026-03-19 14:49:26]       (raw bytes: b'/home/kostik/\xd0\xa0\xd0\xb0\xd0\xb1\xd0\xbe\xd1\x87\xd0\xb8\xd0\xb9 \xd1\x81\xd1\x82\xd0\xbe\xd0\xbb/vSubSys/vLaunch/kernel/config/boot.log')
+[2026-03-19 14:49:26]   ⚠  BASE_DIR contains non-ASCII characters (Cyrillic, etc.)
+[2026-03-19 14:49:26]     Attempting os.chdir to BASE_DIR to verify filesystem access…
+[2026-03-19 14:49:26]     ✓  os.chdir to BASE_DIR succeeded
+[2026-03-19 14:49:26]   ⚠  BASE_DIR contains spaces — subprocess args will use list form (safe)
+[2026-03-19 14:49:26]     sys.executable: '/home/kostik/Рабочий стол/AppleTrustHead_v_0_1/AppleTrustHead/website/venv/bin/python'  [✓ exists]
+[2026-03-19 14:49:26]       (raw bytes: b'/home/kostik/\xd0\xa0\xd0\xb0\xd0\xb1\xd0\xbe\xd1\x87\xd0\xb8\xd0\xb9 \xd1\x81\xd1\x82\xd0\xbe\xd0\xbb/AppleTrustHead_v_0_1/AppleTrustHead/website/venv/bin/python')
+[2026-03-19 14:49:26]   ✓  sys.executable runs: Python 3.14.3
+[2026-03-19 14:49:26]   ✓  kernel.py found
+[2026-03-19 14:49:26] 
+[2026-03-19 14:49:26] §2  Dependency check
+[2026-03-19 14:49:26] ────────────────────────────────────────────────────────────
+[2026-03-19 14:49:26]   •  Reading '/home/kostik/Рабочий стол/vSubSys/vLaunch/requirements.txt'
+[2026-03-19 14:49:26]     ✓  PyQt5                          → import 'PyQt5' OK
+[2026-03-19 14:49:26]     ⚠  PyQt5-Qt5                      → import 'pyqt5_qt5' MISSING
+[2026-03-19 14:49:26]     ✓  PyQtWebEngine                  → import 'PyQt5.QtWebEngineWidgets' OK
+[2026-03-19 14:49:26]     ✓  psutil                         → import 'psutil' OK
+[2026-03-19 14:49:26]     ✓  opencv-python-headless         → import 'cv2' OK
+[2026-03-19 14:49:26]     ✓  requests                       → import 'requests' OK
+[2026-03-19 14:49:26]   ⚠  1 package(s) missing in system Python
+[2026-03-19 14:49:26] 
+[2026-03-19 14:49:26] §3  Venv setup
+[2026-03-19 14:49:26] ────────────────────────────────────────────────────────────
+[2026-03-19 14:49:26]     VENV_DIR: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv'  [✓ exists]
+[2026-03-19 14:49:26]       (raw bytes: b'/home/kostik/\xd0\xa0\xd0\xb0\xd0\xb1\xd0\xbe\xd1\x87\xd0\xb8\xd0\xb9 \xd1\x81\xd1\x82\xd0\xbe\xd0\xbb/vSubSys/vLaunch/.venv')
+[2026-03-19 14:49:26]   ✓  Venv already exists → '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python'
+[2026-03-19 14:49:26]     ✓  Venv python runs: Python 3.14.3
+[2026-03-19 14:49:26] 
+[2026-03-19 14:49:26] §4  Install dependencies into venv
+[2026-03-19 14:49:26] ────────────────────────────────────────────────────────────
+[2026-03-19 14:49:26]     pip: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/pip'  [✓ exists]
+[2026-03-19 14:49:26]       (raw bytes: b'/home/kostik/\xd0\xa0\xd0\xb0\xd0\xb1\xd0\xbe\xd1\x87\xd0\xb8\xd0\xb9 \xd1\x81\xd1\x82\xd0\xbe\xd0\xbb/vSubSys/vLaunch/.venv/bin/pip')
+[2026-03-19 14:49:26]   •  pip install -r '/home/kostik/Рабочий стол/vSubSys/vLaunch/requirements.txt'
+[2026-03-19 14:49:27]   ✓  pip install succeeded
+[2026-03-19 14:49:27] 
+[2026-03-19 14:49:27] §5  Qt plugin-path detection
+[2026-03-19 14:49:27] ────────────────────────────────────────────────────────────
+[2026-03-19 14:49:27]   •  Checking PyQt5 in current process
+[2026-03-19 14:49:27]     ✓  Found: '/home/kostik/Рабочий стол/AppleTrustHead_v_0_1/AppleTrustHead/website/venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins'
+[2026-03-19 14:49:27]   •  Asking venv python for PyQt5 location
+[2026-03-19 14:49:27]     ✓  Venv: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins'
+[2026-03-19 14:49:27]   •  Scanning site-packages
+[2026-03-19 14:49:28]   •  Checking common system paths
+[2026-03-19 14:49:28]   •  Env QT_QPA_PLATFORM_PLUGIN_PATH='/home/kostik/Рабочий стол/AppleTrustHead_v_0_1/AppleTrustHead/website/venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins'
+[2026-03-19 14:49:28]     ✓  Path exists — prepending
+[2026-03-19 14:49:28]     Total unique plugin dirs: 2
+[2026-03-19 14:49:28]     Kernel will use: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python'
+[2026-03-19 14:49:28] 
+[2026-03-19 14:49:28] §6  Kernel launch
+[2026-03-19 14:49:28] ────────────────────────────────────────────────────────────
+[2026-03-19 14:49:28]     python: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python'
+[2026-03-19 14:49:28]     strategies: 15
+[2026-03-19 14:49:28] Setup done — 15 launch strategies — starting kernel…
+[2026-03-19 14:49:28]     [1/15]  inherit env
+[2026-03-19 14:49:28]       Spawning: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py' -auth8354
+[2026-03-19 14:49:28]       PID=11202
+[2026-03-19 14:49:28]         kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:49:28]     ✗  Process exited rc=2 before KERNEL_READY
+[2026-03-19 14:49:28]     [2/15]  QT_QPA_PLATFORM_PLUGIN_PATH=/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins
+[2026-03-19 14:49:28]       Spawning: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py' -auth8354
+[2026-03-19 14:49:28]       PID=11207
+[2026-03-19 14:49:29]         kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:49:29]     ✗  Process exited rc=2 before KERNEL_READY
+[2026-03-19 14:49:29]     [3/15]  QT_QPA_PLATFORM_PLUGIN_PATH=/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins
+[2026-03-19 14:49:29]       Spawning: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py' -auth8354
+[2026-03-19 14:49:29]       PID=11212
+[2026-03-19 14:49:29]         kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:49:29]     ✗  Process exited rc=2 before KERNEL_READY
+[2026-03-19 14:49:30]     [4/15]  QT_QPA_PLATFORM_PLUGIN_PATH=/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins  QT_QPA_PLATFORM=wayland
+[2026-03-19 14:49:30]       Spawning: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py' -auth8354
+[2026-03-19 14:49:30]       PID=11217
+[2026-03-19 14:49:30]         kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:49:30]     ✗  Process exited rc=2 before KERNEL_READY
+[2026-03-19 14:49:30]     [5/15]  QT_QPA_PLATFORM_PLUGIN_PATH=/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins  QT_QPA_PLATFORM=wayland-egl
+[2026-03-19 14:49:30]       Spawning: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py' -auth8354
+[2026-03-19 14:49:30]       PID=11218
+[2026-03-19 14:49:30]         kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:49:30]     ✗  Process exited rc=2 before KERNEL_READY
+[2026-03-19 14:49:31]     [6/15]  QT_QPA_PLATFORM_PLUGIN_PATH=/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins  QT_QPA_PLATFORM=offscreen
+[2026-03-19 14:49:31]       Spawning: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py' -auth8354
+[2026-03-19 14:49:31]       PID=11219
+[2026-03-19 14:49:31]         kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:49:31]     ✗  Process exited rc=2 before KERNEL_READY
+[2026-03-19 14:49:31]     [7/15]  inherit env
+[2026-03-19 14:49:31]       Spawning: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py' -auth8354
+[2026-03-19 14:49:31]       PID=11220
+[2026-03-19 14:49:32]         kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:49:32]     ✗  Process exited rc=2 before KERNEL_READY
+[2026-03-19 14:49:32]     [8/15]  inherit env
+[2026-03-19 14:49:32]       Spawning: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py' -auth8354
+[2026-03-19 14:49:32]       PID=11221
+[2026-03-19 14:49:32]         kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:49:32]     ✗  Process exited rc=2 before KERNEL_READY
+[2026-03-19 14:49:33]     [9/15]  QT_QPA_PLATFORM=wayland
+[2026-03-19 14:49:33]       Spawning: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py' -auth8354
+[2026-03-19 14:49:33]       PID=11222
+[2026-03-19 14:49:33]         kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:49:33]     ✗  Process exited rc=2 before KERNEL_READY
+[2026-03-19 14:49:33]     [10/15]  QT_QPA_PLATFORM=wayland-egl
+[2026-03-19 14:49:33]       Spawning: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py' -auth8354
+[2026-03-19 14:49:33]       PID=11223
+[2026-03-19 14:49:34]         kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:49:34]     ✗  Process exited rc=2 before KERNEL_READY
+[2026-03-19 14:49:34]     [11/15]  QT_QPA_PLATFORM=offscreen
+[2026-03-19 14:49:34]       Spawning: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py' -auth8354
+[2026-03-19 14:49:34]       PID=11235
+[2026-03-19 14:49:34]         kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:49:34]     ✗  Process exited rc=2 before KERNEL_READY
+[2026-03-19 14:49:34]     [12/15]  inherit env
+[2026-03-19 14:49:34]       Spawning: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py' -auth8354
+[2026-03-19 14:49:34]       PID=11236
+[2026-03-19 14:49:35]         kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:49:35]     ✗  Process exited rc=2 before KERNEL_READY
+[2026-03-19 14:49:35]     [13/15]  QT_QPA_PLATFORM=wayland
+[2026-03-19 14:49:35]       Spawning: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py' -auth8354
+[2026-03-19 14:49:35]       PID=11237
+[2026-03-19 14:49:35]         kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:49:35]     ✗  Process exited rc=2 before KERNEL_READY
+[2026-03-19 14:49:36]     [14/15]  QT_QPA_PLATFORM=wayland-egl
+[2026-03-19 14:49:36]       Spawning: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py' -auth8354
+[2026-03-19 14:49:36]       PID=11238
+[2026-03-19 14:49:36]         kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:49:36]     ✗  Process exited rc=2 before KERNEL_READY
+[2026-03-19 14:49:36]     [15/15]  QT_QPA_PLATFORM=offscreen
+[2026-03-19 14:49:36]       Spawning: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py' -auth8354
+[2026-03-19 14:49:36]       PID=11239
+[2026-03-19 14:49:37]         kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-19 14:49:37]     ✗  Process exited rc=2 before KERNEL_READY
+[2026-03-19 14:49:37] ✗ BOOT_FAILURE: all strategies exhausted
+[2026-03-20 16:11:29] 
+══════════════════════════════════════════════════════════════════════
+[2026-03-20 16:11:29] vLaunch Bootloader v3.0  starting
+[2026-03-20 16:11:29] ══════════════════════════════════════════════════════════════════════
+[2026-03-20 16:11:29]   boot path : '/home/kostik/Рабочий стол/vSubSys/vLaunch/boot/violence_boot.py'
+[2026-03-20 16:11:29]   BASE_DIR  : '/home/kostik/Рабочий стол/vSubSys/vLaunch'
+[2026-03-20 16:11:29]   internet  : yes
+[2026-03-20 16:11:29] Running boot-chain in background…
+[2026-03-20 16:11:29] 
+[2026-03-20 16:11:29] §1  Path validation
+[2026-03-20 16:11:29] ────────────────────────────────────────────────────────────
+[2026-03-20 16:11:29]     __file__: '/home/kostik/Рабочий стол/vSubSys/vLaunch/boot/violence_boot.py'  [✓ exists]
+[2026-03-20 16:11:29]       (raw bytes: b'/home/kostik/\xd0\xa0\xd0\xb0\xd0\xb1\xd0\xbe\xd1\x87\xd0\xb8\xd0\xb9 \xd1\x81\xd1\x82\xd0\xbe\xd0\xbb/vSubSys/vLaunch/boot/violence_boot.py')
+[2026-03-20 16:11:29]     BASE_DIR: '/home/kostik/Рабочий стол/vSubSys/vLaunch'  [✓ exists]
+[2026-03-20 16:11:29]       (raw bytes: b'/home/kostik/\xd0\xa0\xd0\xb0\xd0\xb1\xd0\xbe\xd1\x87\xd0\xb8\xd0\xb9 \xd1\x81\xd1\x82\xd0\xbe\xd0\xbb/vSubSys/vLaunch')
+[2026-03-20 16:11:29]     KERNEL_PY: '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py'  [✓ exists]
+[2026-03-20 16:11:29]       (raw bytes: b'/home/kostik/\xd0\xa0\xd0\xb0\xd0\xb1\xd0\xbe\xd1\x87\xd0\xb8\xd0\xb9 \xd1\x81\xd1\x82\xd0\xbe\xd0\xbb/vSubSys/vLaunch/kernel/kernel.py')
+[2026-03-20 16:11:29]     REQUIREMENTS: '/home/kostik/Рабочий стол/vSubSys/vLaunch/requirements.txt'  [✓ exists]
+[2026-03-20 16:11:29]       (raw bytes: b'/home/kostik/\xd0\xa0\xd0\xb0\xd0\xb1\xd0\xbe\xd1\x87\xd0\xb8\xd0\xb9 \xd1\x81\xd1\x82\xd0\xbe\xd0\xbb/vSubSys/vLaunch/requirements.txt')
+[2026-03-20 16:11:29]     VENV_DIR: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv'  [✓ exists]
+[2026-03-20 16:11:29]       (raw bytes: b'/home/kostik/\xd0\xa0\xd0\xb0\xd0\xb1\xd0\xbe\xd1\x87\xd0\xb8\xd0\xb9 \xd1\x81\xd1\x82\xd0\xbe\xd0\xbb/vSubSys/vLaunch/.venv')
+[2026-03-20 16:11:29]     BOOT_LOG: '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/config/boot.log'  [✓ exists]
+[2026-03-20 16:11:29]       (raw bytes: b'/home/kostik/\xd0\xa0\xd0\xb0\xd0\xb1\xd0\xbe\xd1\x87\xd0\xb8\xd0\xb9 \xd1\x81\xd1\x82\xd0\xbe\xd0\xbb/vSubSys/vLaunch/kernel/config/boot.log')
+[2026-03-20 16:11:29]   ⚠  BASE_DIR contains non-ASCII characters (Cyrillic, etc.)
+[2026-03-20 16:11:29]     Attempting os.chdir to BASE_DIR to verify filesystem access…
+[2026-03-20 16:11:29]     ✓  os.chdir to BASE_DIR succeeded
+[2026-03-20 16:11:29]   ⚠  BASE_DIR contains spaces — subprocess args will use list form (safe)
+[2026-03-20 16:11:29]     sys.executable: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python'  [✓ exists]
+[2026-03-20 16:11:29]       (raw bytes: b'/home/kostik/\xd0\xa0\xd0\xb0\xd0\xb1\xd0\xbe\xd1\x87\xd0\xb8\xd0\xb9 \xd1\x81\xd1\x82\xd0\xbe\xd0\xbb/vSubSys/vLaunch/.venv/bin/python')
+[2026-03-20 16:11:29]   ✓  sys.executable runs: Python 3.14.3
+[2026-03-20 16:11:29]   ✓  kernel.py found
+[2026-03-20 16:11:29] 
+[2026-03-20 16:11:29] §2  Dependency check
+[2026-03-20 16:11:29] ────────────────────────────────────────────────────────────
+[2026-03-20 16:11:29]   •  Reading '/home/kostik/Рабочий стол/vSubSys/vLaunch/requirements.txt'
+[2026-03-20 16:11:29]     ✓  PyQt5                          → import 'PyQt5' OK
+[2026-03-20 16:11:29]     ⚠  PyQt5-Qt5                      → import 'pyqt5_qt5' MISSING
+[2026-03-20 16:11:29]     ✓  PyQtWebEngine                  → import 'PyQt5.QtWebEngineWidgets' OK
+[2026-03-20 16:11:29]     ✓  psutil                         → import 'psutil' OK
+[2026-03-20 16:11:29]     ✓  opencv-python-headless         → import 'cv2' OK
+[2026-03-20 16:11:29]     ✓  requests                       → import 'requests' OK
+[2026-03-20 16:11:29]   ⚠  1 package(s) missing in system Python
+[2026-03-20 16:11:29] 
+[2026-03-20 16:11:29] §3  Venv setup
+[2026-03-20 16:11:29] ────────────────────────────────────────────────────────────
+[2026-03-20 16:11:29]     VENV_DIR: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv'  [✓ exists]
+[2026-03-20 16:11:29]       (raw bytes: b'/home/kostik/\xd0\xa0\xd0\xb0\xd0\xb1\xd0\xbe\xd1\x87\xd0\xb8\xd0\xb9 \xd1\x81\xd1\x82\xd0\xbe\xd0\xbb/vSubSys/vLaunch/.venv')
+[2026-03-20 16:11:29]   ✓  Venv already exists → '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python'
+[2026-03-20 16:11:29]     ✓  Venv python runs: Python 3.14.3
+[2026-03-20 16:11:29] 
+[2026-03-20 16:11:29] §4  Install dependencies into venv
+[2026-03-20 16:11:29] ────────────────────────────────────────────────────────────
+[2026-03-20 16:11:29]     pip: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/pip'  [✓ exists]
+[2026-03-20 16:11:29]       (raw bytes: b'/home/kostik/\xd0\xa0\xd0\xb0\xd0\xb1\xd0\xbe\xd1\x87\xd0\xb8\xd0\xb9 \xd1\x81\xd1\x82\xd0\xbe\xd0\xbb/vSubSys/vLaunch/.venv/bin/pip')
+[2026-03-20 16:11:29]   •  pip install -r '/home/kostik/Рабочий стол/vSubSys/vLaunch/requirements.txt'
+[2026-03-20 16:11:30]   ✓  pip install succeeded
+[2026-03-20 16:11:30] 
+[2026-03-20 16:11:30] §5  Qt plugin-path detection
+[2026-03-20 16:11:30] ────────────────────────────────────────────────────────────
+[2026-03-20 16:11:30]   •  Checking PyQt5 in current process
+[2026-03-20 16:11:30]     ✓  Found: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins'
+[2026-03-20 16:11:30]   •  Asking venv python for PyQt5 location
+[2026-03-20 16:11:30]   •  Scanning site-packages
+[2026-03-20 16:11:30]   •  Checking common system paths
+[2026-03-20 16:11:30]   •  Env QT_QPA_PLATFORM_PLUGIN_PATH='/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/lib/python3.14/site-packages/PyQt5/Qt5/plugins'
+[2026-03-20 16:11:30]     ✓  Path exists — prepending
+[2026-03-20 16:11:30]     Total unique plugin dirs: 1
+[2026-03-20 16:11:30]     Kernel will use: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python'
+[2026-03-20 16:11:30] 
+[2026-03-20 16:11:30] §6  Kernel launch
+[2026-03-20 16:11:30] ────────────────────────────────────────────────────────────
+[2026-03-20 16:11:30]     python: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python'
+[2026-03-20 16:11:30]     strategies: 10
+[2026-03-20 16:11:30] Setup done — 10 launch strategies — starting kernel…
+[2026-03-20 16:11:30]     [1/10]  inherit env
+[2026-03-20 16:11:30]       Spawning: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py' -auth8354
+[2026-03-20 16:11:30]       PID=5108
+[2026-03-20 16:11:31]         kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-20 16:11:31]     ✗  Process exited rc=2 before KERNEL_READY
+[2026-03-20 16:11:31]     [2/10]  inherit env
+[2026-03-20 16:11:31]       Spawning: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py' -auth8354
+[2026-03-20 16:11:31]       PID=5109
+[2026-03-20 16:11:31]         kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-20 16:11:31]     ✗  Process exited rc=2 before KERNEL_READY
+[2026-03-20 16:11:32]     [3/10]  inherit env
+[2026-03-20 16:11:32]       Spawning: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py' -auth8354
+[2026-03-20 16:11:32]       PID=5110
+[2026-03-20 16:11:32]         kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-20 16:11:32]     ✗  Process exited rc=2 before KERNEL_READY
+[2026-03-20 16:11:32]     [4/10]  QT_QPA_PLATFORM=wayland
+[2026-03-20 16:11:32]       Spawning: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py' -auth8354
+[2026-03-20 16:11:32]       PID=5111
+[2026-03-20 16:11:32]         kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-20 16:11:32]     ✗  Process exited rc=2 before KERNEL_READY
+[2026-03-20 16:11:33]     [5/10]  QT_QPA_PLATFORM=wayland-egl
+[2026-03-20 16:11:33]       Spawning: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py' -auth8354
+[2026-03-20 16:11:33]       PID=5112
+[2026-03-20 16:11:33]         kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-20 16:11:33]     ✗  Process exited rc=2 before KERNEL_READY
+[2026-03-20 16:11:33]     [6/10]  QT_QPA_PLATFORM=offscreen
+[2026-03-20 16:11:33]       Spawning: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py' -auth8354
+[2026-03-20 16:11:33]       PID=5113
+[2026-03-20 16:11:34]         kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-20 16:11:34]     ✗  Process exited rc=2 before KERNEL_READY
+[2026-03-20 16:11:34]     [7/10]  inherit env
+[2026-03-20 16:11:34]       Spawning: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py' -auth8354
+[2026-03-20 16:11:34]       PID=5114
+[2026-03-20 16:11:34]         kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-20 16:11:34]     ✗  Process exited rc=2 before KERNEL_READY
+[2026-03-20 16:11:35]     [8/10]  QT_QPA_PLATFORM=wayland
+[2026-03-20 16:11:35]       Spawning: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py' -auth8354
+[2026-03-20 16:11:35]       PID=5115
+[2026-03-20 16:11:35]         kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-20 16:11:35]     ✗  Process exited rc=2 before KERNEL_READY
+[2026-03-20 16:11:35]     [9/10]  QT_QPA_PLATFORM=wayland-egl
+[2026-03-20 16:11:35]       Spawning: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py' -auth8354
+[2026-03-20 16:11:35]       PID=5117
+[2026-03-20 16:11:35]         kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-20 16:11:35]     ✗  Process exited rc=2 before KERNEL_READY
+[2026-03-20 16:11:36]     [10/10]  QT_QPA_PLATFORM=offscreen
+[2026-03-20 16:11:36]       Spawning: '/home/kostik/Рабочий стол/vSubSys/vLaunch/.venv/bin/python' '/home/kostik/Рабочий стол/vSubSys/vLaunch/kernel/kernel.py' -auth8354
+[2026-03-20 16:11:36]       PID=5118
+[2026-03-20 16:11:36]         kernel> usage: kernel.py [--gui {0|1}] [--tty]
+[2026-03-20 16:11:36]     ✗  Process exited rc=2 before KERNEL_READY
+[2026-03-20 16:11:36] ✗ BOOT_FAILURE: all strategies exhausted

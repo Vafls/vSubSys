@@ -1,0 +1,6 @@
+PyQt5
+PyQt5-Qt5
+PyQtWebEngine
+psutil
+opencv-python-headless
+requests
