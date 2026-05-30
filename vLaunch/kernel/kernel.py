@@ -108,27 +108,48 @@ os.environ["VLAUNCH_HOME"]        = BASE_DIR
 # ─────────────────────────────────────────────────────────────────────────────
 
 def _load_cfg(path: str) -> dict:
+    """
+    Read a key=value config file.
+    Handles UTF-8, CRLF line endings (Windows), BOM, and missing files.
+    """
     cfg: dict = {}
-    if os.path.isfile(path):
-        with open(path, encoding="utf-8") as fh:
-            for line in fh:
-                line = line.strip()
-                if "=" in line and not line.startswith("#"):
+    if not os.path.isfile(path):
+        return cfg
+    try:
+        with open(path, encoding="utf-8-sig", errors="replace") as fh:
+            for raw_line in fh:
+                line = raw_line.strip()
+                if not line or line.startswith("#"):
+                    continue
+                if "=" in line:
                     k, v = line.split("=", 1)
                     cfg[k.strip()] = v.strip()
+    except OSError as exc:
+        log.error(f"_load_cfg({path!r}): {exc}")
     return cfg
 
 
 def _save_cfg(path: str, data: dict):
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    # Preserve comments: read existing, update values, write back
+    """
+    Save key=value config.  Preserves existing comments and ordering.
+    Windows-safe: explicit UTF-8 encoding, directory auto-created,
+    newlines normalised to \n (avoids CRLF issues on Windows).
+    """
+    dir_ = os.path.dirname(path)
+    if dir_:
+        os.makedirs(dir_, exist_ok=True)
+
+    # Read existing lines (preserve comments / ordering)
     existing: list = []
     if os.path.isfile(path):
-        with open(path, encoding="utf-8") as fh:
-            existing = fh.readlines()
-    # Build index of existing keys
-    written: set = set()
-    result: list = []
+        try:
+            with open(path, encoding="utf-8", errors="replace") as fh:
+                existing = fh.readlines()
+        except OSError:
+            existing = []
+
+    written: set  = set()
+    result:  list = []
     for line in existing:
         stripped = line.strip()
         if "=" in stripped and not stripped.startswith("#"):
@@ -137,19 +158,118 @@ def _save_cfg(path: str, data: dict):
                 result.append(f"{k}={data[k]}\n")
                 written.add(k)
             else:
-                result.append(line)
+                result.append(line.rstrip("\r\n") + "\n")   # normalise CRLF
         else:
-            result.append(line)
-    # Append new keys
+            result.append(line.rstrip("\r\n") + "\n")
+
+    # Append keys not already in file
     for k, v in data.items():
         if k not in written:
             result.append(f"{k}={v}\n")
-    with open(path, "w", encoding="utf-8") as fh:
-        fh.writelines(result)
+
+    # Write atomically via temp file to avoid corrupt cfg on crash
+    tmp = path + ".tmp"
+    try:
+        with open(tmp, "w", encoding="utf-8", newline="\n") as fh:
+            fh.writelines(result)
+        # On Windows os.replace is atomic within the same filesystem
+        os.replace(tmp, path)
+    except Exception as exc:
+        # Fallback: direct write
+        try: os.remove(tmp)
+        except OSError: pass
+        with open(path, "w", encoding="utf-8", newline="\n") as fh:
+            fh.writelines(result)
 
 
 _GLOBAL_CFG_PATH = get_path("kernel", "config", "global.cfg")
 _LOCAL_CFG_PATH  = get_path("kernel", "config", "local.cfg")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Config auto-generation (first-run setup)
+# ─────────────────────────────────────────────────────────────────────────────
+
+_GLOBAL_CFG_DEFAULTS: dict = {
+    "profile_1_name": "",          # filled interactively on first run
+    "profile_1_pass": "",
+    "sys_version":    _VERSION,
+    "based_os":       platform.system(),
+    "bootloader_auto_start": "1",
+    "bootloader_timeout":    "5",
+}
+
+_LOCAL_CFG_DEFAULTS: dict = {
+    "gui":                  "1",
+    "sandbox_ram_limit_mb": "512",
+    "sandbox_cpu_warn_pct": "80",
+    "sandbox_disk_quota_gb":"10",
+}
+
+
+def _ensure_configs() -> None:
+    """
+    Create global.cfg and local.cfg with defaults if they are missing.
+
+    On first run (global.cfg absent) the user is prompted for a username
+    and password in the terminal.  Subsequent runs skip the prompt.
+    All directories are created automatically — fixes the Windows first-run
+    problem where kernel/config/ does not exist yet.
+    """
+    cfg_dir = get_path("kernel", "config")
+    os.makedirs(cfg_dir, exist_ok=True)
+
+    # ── global.cfg ───────────────────────────────────────────────────────────
+    first_run = not os.path.isfile(_GLOBAL_CFG_PATH)
+
+    if first_run:
+        print("\n" + "═" * 60)
+        print("  vLaunch — First run setup")
+        print("═" * 60)
+
+        try:
+            name = input("  Username [user]: ").strip() or "user"
+        except (EOFError, KeyboardInterrupt):
+            name = "user"
+
+        try:
+            import getpass as _gp
+            pwd = _gp.getpass("  Password [leave blank for none]: ")
+        except Exception:
+            pwd = ""
+
+        defaults = dict(_GLOBAL_CFG_DEFAULTS)
+        defaults["profile_1_name"] = name
+        defaults["profile_1_pass"] = pwd
+        defaults["sys_version"]    = _VERSION
+        defaults["based_os"]       = platform.system()
+        _save_cfg(_GLOBAL_CFG_PATH, defaults)
+        print(f"  global.cfg created at {_GLOBAL_CFG_PATH!r}")
+        print("═" * 60 + "\n")
+    else:
+        # Fill in any keys added in newer versions
+        existing = _load_cfg(_GLOBAL_CFG_PATH)
+        changed  = False
+        for k, v in _GLOBAL_CFG_DEFAULTS.items():
+            if k not in existing and v:
+                existing[k] = v
+                changed = True
+        if changed:
+            _save_cfg(_GLOBAL_CFG_PATH, existing)
+
+    # ── local.cfg ────────────────────────────────────────────────────────────
+    if not os.path.isfile(_LOCAL_CFG_PATH):
+        _save_cfg(_LOCAL_CFG_PATH, _LOCAL_CFG_DEFAULTS)
+        print(f"  local.cfg created at {_LOCAL_CFG_PATH!r}")
+    else:
+        existing = _load_cfg(_LOCAL_CFG_PATH)
+        changed  = False
+        for k, v in _LOCAL_CFG_DEFAULTS.items():
+            if k not in existing:
+                existing[k] = v
+                changed = True
+        if changed:
+            _save_cfg(_LOCAL_CFG_PATH, existing)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -622,6 +742,11 @@ class Kernel:
     VERSION = _VERSION
 
     def __init__(self):
+        # Guarantee config files exist before loading them.
+        # This is the Windows first-run fix: on Linux the files often exist
+        # already from previous runs, but on Windows a fresh install has none.
+        _ensure_configs()
+
         self._global_cfg = _load_cfg(_GLOBAL_CFG_PATH)
         self._local_cfg  = _load_cfg(_LOCAL_CFG_PATH)
         self._running_apps: dict = {}
